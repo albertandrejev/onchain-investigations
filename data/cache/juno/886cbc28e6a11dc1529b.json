@@ -1,0 +1,2073 @@
+{
+ "key": "juno|/cosmos/tx/v1beta1/txs?query=message.sender%3D%27juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0%27&pagination.limit=100&order_by=ORDER_BY_ASC|",
+ "fetched_at": 1793397777,
+ "response": {
+  "txs": [
+   {
+    "body": {
+     "messages": [
+      {
+       "@type": "/cosmos.bank.v1beta1.MsgSend",
+       "from_address": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+       "to_address": "juno100umj2mnu0u6ujf37c9a3xfy9gl53hu9ekxyyw",
+       "amount": [
+        {
+         "denom": "ujuno",
+         "amount": "1000000"
+        }
+       ]
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "unordered": false,
+     "timeout_timestamp": null,
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+        }
+       },
+       "sequence": "0"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "ujuno",
+        "amount": "7834"
+       }
+      ],
+      "gas_limit": "104444",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "OtzNs6C+w6lHXNnKIGsVMy+lLU87deVfWqxuX2EBTKp/v5j6shNW7SPvh4b9HIJ7Zurm5GrCvIgt9skHQSKBzg=="
+    ]
+   },
+   {
+    "body": {
+     "messages": [
+      {
+       "@type": "/cosmwasm.wasm.v1.MsgExecuteContract",
+       "sender": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+       "contract": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+       "msg": {
+        "send": {
+         "amount": "12000000000",
+         "contract": "juno1v4887y83d6g28puzvt8cl0f3cdhd3y6y9mpysnsp3k8krdm7l6jqgm0rkn",
+         "msg": "eyJjaGFubmVsIjoiY2hhbm5lbC00NyIsInJlbW90ZV9hZGRyZXNzIjoib3NtbzFwcWFyZGMzOWQ1NThtcjU4bng1bTJ3Z215NDQ4cHY5NDg3YWp2cCIsInRpbWVvdXQiOjI5OX0="
+        }
+       },
+       "funds": []
+      }
+     ],
+     "memo": "OsmosisFE",
+     "timeout_height": "38734513",
+     "unordered": false,
+     "timeout_timestamp": null,
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+        }
+       },
+       "sequence": "1"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "ujuno",
+        "amount": "40784"
+       }
+      ],
+      "gas_limit": "326268",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "bzqZoGRG1Pg/z/WKDErdkoqQvEy8I+IvBQoXvJpVur0EXkLfT9BwJuFd02sL/fTWdp1AUGcjYMfrzryqWdcXPQ=="
+    ]
+   },
+   {
+    "body": {
+     "messages": [
+      {
+       "@type": "/cosmwasm.wasm.v1.MsgExecuteContract",
+       "sender": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+       "contract": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+       "msg": {
+        "send": {
+         "amount": "12000000000",
+         "contract": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+         "msg": "eyJjaGFubmVsIjoiY2hhbm5lbC02NTkiLCJyZW1vdGVfYWRkcmVzcyI6Im5ldXRyb24xcHFhcmRjMzlkNTU4bXI1OG54NW0yd2dteTQ0OHB2OTR0NjhxcTUiLCJ0aW1lb3V0IjoyOTl9"
+        }
+       },
+       "funds": []
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "unordered": false,
+     "timeout_timestamp": null,
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_DIRECT"
+        }
+       },
+       "sequence": "2"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "ujuno",
+        "amount": "24776"
+       }
+      ],
+      "gas_limit": "330345",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "w0EwVbxIjx6MF0miSxHYVlGVQXYl9sMQ+qHcqBtc00ZCin7KoV00mA39y26deVQ0lzijIX1e627JiwbnNk4FWw=="
+    ]
+   },
+   {
+    "body": {
+     "messages": [
+      {
+       "@type": "/cosmwasm.wasm.v1.MsgExecuteContract",
+       "sender": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+       "contract": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+       "msg": {
+        "send": {
+         "amount": "3000000000",
+         "contract": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+         "msg": "eyJjaGFubmVsIjoiY2hhbm5lbC02NTkiLCJyZW1vdGVfYWRkcmVzcyI6Im5ldXRyb24xcHFhcmRjMzlkNTU4bXI1OG54NW0yd2dteTQ0OHB2OTR0NjhxcTUiLCJ0aW1lb3V0IjoyOTl9"
+        }
+       },
+       "funds": []
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "unordered": false,
+     "timeout_timestamp": null,
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_DIRECT"
+        }
+       },
+       "sequence": "3"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "ujuno",
+        "amount": "24775"
+       }
+      ],
+      "gas_limit": "330327",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "uqZ1XQGuLJ7UQmklZwIqO4rmjS4AmU9fgiBXt6zh2mp106iKEUP2zfEADtIgBB2YHNZnjs8Juic81UxsTBZN9w=="
+    ]
+   },
+   {
+    "body": {
+     "messages": [
+      {
+       "@type": "/ibc.applications.transfer.v1.MsgTransfer",
+       "source_port": "transfer",
+       "source_channel": "channel-0",
+       "token": {
+        "denom": "ujuno",
+        "amount": "6604673"
+       },
+       "sender": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+       "receiver": "osmo10a3k4hvk37cc4hnxctw4p95fhscd2z6h2rmx0aukc6rm8u9qqx9smfsh7u",
+       "timeout_height": {
+        "revision_number": "1",
+        "revision_height": "64638251"
+       },
+       "timeout_timestamp": "0",
+       "memo": "{\"wasm\":{\"contract\":\"osmo10a3k4hvk37cc4hnxctw4p95fhscd2z6h2rmx0aukc6rm8u9qqx9smfsh7u\",\"msg\":{\"swap_and_action\":{\"user_swap\":{\"swap_exact_asset_in\":{\"swap_venue_name\":\"osmosis-poolmanager\",\"operations\":[{\"pool\":\"498\",\"denom_in\":\"ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED\",\"denom_out\":\"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2\"},{\"pool\":\"1251\",\"denom_in\":\"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2\",\"denom_out\":\"ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4\"}]}},\"min_asset\":{\"native\":{\"denom\":\"ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4\",\"amount\":\"188761\"}},\"timeout_timestamp\":1782112031329910528,\"post_swap_action\":{\"ibc_transfer\":{\"ibc_info\":{\"source_channel\":\"channel-750\",\"receiver\":\"noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za\",\"memo\":\"\",\"recover_address\":\"osmo1pqardc39d558mr58nx5m2wgmy448pv9487ajvp\"}}},\"affiliates\":[{\"basis_points_fee\":\"57\",\"address\":\"osmo1gy30axzt9djlqnykmmqdjn4z670ctxsyr97pvf\"},{\"basis_points_fee\":\"18\",\"address\":\"osmo14gf6xslwe9phn2z965t4dcu7vchhthfgv2lhyy\"}]}}}}",
+       "encoding": ""
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "unordered": false,
+     "timeout_timestamp": null,
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+        }
+       },
+       "sequence": "4"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "ujuno",
+        "amount": "10190"
+       }
+      ],
+      "gas_limit": "135860",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "g8408OdjsDhDE2z3T+bp4fo1hNkulK1MNLvtrp8SqD4k7aRZm5G391PunBfkL+bjozEwDTJqcIcPWitvDs9P5Q=="
+    ]
+   }
+  ],
+  "tx_responses": [
+   {
+    "height": "38733958",
+    "txhash": "C261BF88CD9A5ECEA0CD1E8999011436BF73FC6D5D7553A518EC0A72EDF3AB52",
+    "codespace": "",
+    "code": 0,
+    "data": "12260A242F636F736D6F732E62616E6B2E763162657461312E4D736753656E64526573706F6E7365",
+    "raw_log": "",
+    "logs": [],
+    "info": "",
+    "gas_wanted": "104444",
+    "gas_used": "84490",
+    "tx": {
+     "@type": "/cosmos.tx.v1beta1.Tx",
+     "body": {
+      "messages": [
+       {
+        "@type": "/cosmos.bank.v1beta1.MsgSend",
+        "from_address": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "to_address": "juno100umj2mnu0u6ujf37c9a3xfy9gl53hu9ekxyyw",
+        "amount": [
+         {
+          "denom": "ujuno",
+          "amount": "1000000"
+         }
+        ]
+       }
+      ],
+      "memo": "",
+      "timeout_height": "0",
+      "unordered": false,
+      "timeout_timestamp": null,
+      "extension_options": [],
+      "non_critical_extension_options": []
+     },
+     "auth_info": {
+      "signer_infos": [
+       {
+        "public_key": {
+         "@type": "/cosmos.crypto.secp256k1.PubKey",
+         "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+        },
+        "mode_info": {
+         "single": {
+          "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+         }
+        },
+        "sequence": "0"
+       }
+      ],
+      "fee": {
+       "amount": [
+        {
+         "denom": "ujuno",
+         "amount": "7834"
+        }
+       ],
+       "gas_limit": "104444",
+       "payer": "",
+       "granter": ""
+      },
+      "tip": null
+     },
+     "signatures": [
+      "OtzNs6C+w6lHXNnKIGsVMy+lLU87deVfWqxuX2EBTKp/v5j6shNW7SPvh4b9HIJ7Zurm5GrCvIgt9skHQSKBzg=="
+     ]
+    },
+    "timestamp": "2026-06-10T09:26:16Z",
+    "events": [
+     {
+      "type": "coin_spent",
+      "attributes": [
+       {
+        "key": "spender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "7834ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_received",
+      "attributes": [
+       {
+        "key": "receiver",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "7834ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "transfer",
+      "attributes": [
+       {
+        "key": "recipient",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "7834ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "fee",
+        "value": "7834ujuno",
+        "index": true
+       },
+       {
+        "key": "fee_payer",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "acc_seq",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0/0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "signature",
+        "value": "OtzNs6C+w6lHXNnKIGsVMy+lLU87deVfWqxuX2EBTKp/v5j6shNW7SPvh4b9HIJ7Zurm5GrCvIgt9skHQSKBzg==",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "action",
+        "value": "/cosmos.bank.v1beta1.MsgSend",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "module",
+        "value": "bank",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_spent",
+      "attributes": [
+       {
+        "key": "spender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "1000000ujuno",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_received",
+      "attributes": [
+       {
+        "key": "receiver",
+        "value": "juno100umj2mnu0u6ujf37c9a3xfy9gl53hu9ekxyyw",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "1000000ujuno",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "transfer",
+      "attributes": [
+       {
+        "key": "recipient",
+        "value": "juno100umj2mnu0u6ujf37c9a3xfy9gl53hu9ekxyyw",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "1000000ujuno",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "height": "38734440",
+    "txhash": "C3435C1B2EEC6114985E895817A10DF909A1CB98B494D5FD9198F4C6496DC030",
+    "codespace": "",
+    "code": 0,
+    "data": "122E0A2C2F636F736D7761736D2E7761736D2E76312E4D736745786563757465436F6E7472616374526573706F6E7365",
+    "raw_log": "",
+    "logs": [],
+    "info": "",
+    "gas_wanted": "326268",
+    "gas_used": "239826",
+    "tx": {
+     "@type": "/cosmos.tx.v1beta1.Tx",
+     "body": {
+      "messages": [
+       {
+        "@type": "/cosmwasm.wasm.v1.MsgExecuteContract",
+        "sender": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "contract": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "msg": {
+         "send": {
+          "amount": "12000000000",
+          "contract": "juno1v4887y83d6g28puzvt8cl0f3cdhd3y6y9mpysnsp3k8krdm7l6jqgm0rkn",
+          "msg": "eyJjaGFubmVsIjoiY2hhbm5lbC00NyIsInJlbW90ZV9hZGRyZXNzIjoib3NtbzFwcWFyZGMzOWQ1NThtcjU4bng1bTJ3Z215NDQ4cHY5NDg3YWp2cCIsInRpbWVvdXQiOjI5OX0="
+         }
+        },
+        "funds": []
+       }
+      ],
+      "memo": "OsmosisFE",
+      "timeout_height": "38734513",
+      "unordered": false,
+      "timeout_timestamp": null,
+      "extension_options": [],
+      "non_critical_extension_options": []
+     },
+     "auth_info": {
+      "signer_infos": [
+       {
+        "public_key": {
+         "@type": "/cosmos.crypto.secp256k1.PubKey",
+         "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+        },
+        "mode_info": {
+         "single": {
+          "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+         }
+        },
+        "sequence": "1"
+       }
+      ],
+      "fee": {
+       "amount": [
+        {
+         "denom": "ujuno",
+         "amount": "40784"
+        }
+       ],
+       "gas_limit": "326268",
+       "payer": "",
+       "granter": ""
+      },
+      "tip": null
+     },
+     "signatures": [
+      "bzqZoGRG1Pg/z/WKDErdkoqQvEy8I+IvBQoXvJpVur0EXkLfT9BwJuFd02sL/fTWdp1AUGcjYMfrzryqWdcXPQ=="
+     ]
+    },
+    "timestamp": "2026-06-10T09:48:35Z",
+    "events": [
+     {
+      "type": "coin_spent",
+      "attributes": [
+       {
+        "key": "spender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "40784ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_received",
+      "attributes": [
+       {
+        "key": "receiver",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "40784ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "transfer",
+      "attributes": [
+       {
+        "key": "recipient",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "40784ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "fee",
+        "value": "40784ujuno",
+        "index": true
+       },
+       {
+        "key": "fee_payer",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "acc_seq",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0/1",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "signature",
+        "value": "bzqZoGRG1Pg/z/WKDErdkoqQvEy8I+IvBQoXvJpVur0EXkLfT9BwJuFd02sL/fTWdp1AUGcjYMfrzryqWdcXPQ==",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "action",
+        "value": "/cosmwasm.wasm.v1.MsgExecuteContract",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "module",
+        "value": "wasm",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "execute",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "wasm",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "action",
+        "value": "send",
+        "index": true
+       },
+       {
+        "key": "from",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "to",
+        "value": "juno1v4887y83d6g28puzvt8cl0f3cdhd3y6y9mpysnsp3k8krdm7l6jqgm0rkn",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "12000000000",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "execute",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1v4887y83d6g28puzvt8cl0f3cdhd3y6y9mpysnsp3k8krdm7l6jqgm0rkn",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "wasm",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1v4887y83d6g28puzvt8cl0f3cdhd3y6y9mpysnsp3k8krdm7l6jqgm0rkn",
+        "index": true
+       },
+       {
+        "key": "action",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "12000000000",
+        "index": true
+       },
+       {
+        "key": "denom",
+        "value": "cw20:juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "receiver",
+        "value": "osmo1pqardc39d558mr58nx5m2wgmy448pv9487ajvp",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "send_packet",
+      "attributes": [
+       {
+        "key": "connection_id",
+        "value": "connection-0",
+        "index": true
+       },
+       {
+        "key": "packet_channel_ordering",
+        "value": "ORDER_UNORDERED",
+        "index": true
+       },
+       {
+        "key": "packet_connection",
+        "value": "connection-0",
+        "index": true
+       },
+       {
+        "key": "packet_data",
+        "value": "{\"amount\":\"12000000000\",\"denom\":\"cw20:juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l\",\"receiver\":\"osmo1pqardc39d558mr58nx5m2wgmy448pv9487ajvp\",\"sender\":\"juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0\"}",
+        "index": true
+       },
+       {
+        "key": "packet_data_hex",
+        "value": "7b22616d6f756e74223a223132303030303030303030222c2264656e6f6d223a22637732303a6a756e6f317277733834757a373936396161613770656a3330337564686c6b74336a396361306c3365677063616539386a77616b3971757a7138737a6e326c222c227265636569766572223a226f736d6f317071617264633339643535386d7235386e78356d3277676d79343438707639343837616a7670222c2273656e646572223a226a756e6f317071617264633339643535386d7235386e78356d3277676d7934343870763934656864656130227d",
+        "index": true
+       },
+       {
+        "key": "packet_dst_channel",
+        "value": "channel-169",
+        "index": true
+       },
+       {
+        "key": "packet_dst_port",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "packet_sequence",
+        "value": "136099",
+        "index": true
+       },
+       {
+        "key": "packet_src_channel",
+        "value": "channel-47",
+        "index": true
+       },
+       {
+        "key": "packet_src_port",
+        "value": "wasm.juno1v4887y83d6g28puzvt8cl0f3cdhd3y6y9mpysnsp3k8krdm7l6jqgm0rkn",
+        "index": true
+       },
+       {
+        "key": "packet_timeout_height",
+        "value": "0-0",
+        "index": true
+       },
+       {
+        "key": "packet_timeout_timestamp",
+        "value": "1781085214875923230",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "height": "38734482",
+    "txhash": "2C36F0BE8D886759769DA90D2E83EE2830A6EE32110ABD1F8706602806B0C321",
+    "codespace": "",
+    "code": 0,
+    "data": "122E0A2C2F636F736D7761736D2E7761736D2E76312E4D736745786563757465436F6E7472616374526573706F6E7365",
+    "raw_log": "",
+    "logs": [],
+    "info": "",
+    "gas_wanted": "330345",
+    "gas_used": "238622",
+    "tx": {
+     "@type": "/cosmos.tx.v1beta1.Tx",
+     "body": {
+      "messages": [
+       {
+        "@type": "/cosmwasm.wasm.v1.MsgExecuteContract",
+        "sender": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "contract": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "msg": {
+         "send": {
+          "amount": "12000000000",
+          "contract": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+          "msg": "eyJjaGFubmVsIjoiY2hhbm5lbC02NTkiLCJyZW1vdGVfYWRkcmVzcyI6Im5ldXRyb24xcHFhcmRjMzlkNTU4bXI1OG54NW0yd2dteTQ0OHB2OTR0NjhxcTUiLCJ0aW1lb3V0IjoyOTl9"
+         }
+        },
+        "funds": []
+       }
+      ],
+      "memo": "",
+      "timeout_height": "0",
+      "unordered": false,
+      "timeout_timestamp": null,
+      "extension_options": [],
+      "non_critical_extension_options": []
+     },
+     "auth_info": {
+      "signer_infos": [
+       {
+        "public_key": {
+         "@type": "/cosmos.crypto.secp256k1.PubKey",
+         "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+        },
+        "mode_info": {
+         "single": {
+          "mode": "SIGN_MODE_DIRECT"
+         }
+        },
+        "sequence": "2"
+       }
+      ],
+      "fee": {
+       "amount": [
+        {
+         "denom": "ujuno",
+         "amount": "24776"
+        }
+       ],
+       "gas_limit": "330345",
+       "payer": "",
+       "granter": ""
+      },
+      "tip": null
+     },
+     "signatures": [
+      "w0EwVbxIjx6MF0miSxHYVlGVQXYl9sMQ+qHcqBtc00ZCin7KoV00mA39y26deVQ0lzijIX1e627JiwbnNk4FWw=="
+     ]
+    },
+    "timestamp": "2026-06-10T09:50:33Z",
+    "events": [
+     {
+      "type": "coin_spent",
+      "attributes": [
+       {
+        "key": "spender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "24776ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_received",
+      "attributes": [
+       {
+        "key": "receiver",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "24776ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "transfer",
+      "attributes": [
+       {
+        "key": "recipient",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "24776ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "fee",
+        "value": "24776ujuno",
+        "index": true
+       },
+       {
+        "key": "fee_payer",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "acc_seq",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0/2",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "signature",
+        "value": "w0EwVbxIjx6MF0miSxHYVlGVQXYl9sMQ+qHcqBtc00ZCin7KoV00mA39y26deVQ0lzijIX1e627JiwbnNk4FWw==",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "action",
+        "value": "/cosmwasm.wasm.v1.MsgExecuteContract",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "module",
+        "value": "wasm",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "execute",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "wasm",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "action",
+        "value": "send",
+        "index": true
+       },
+       {
+        "key": "from",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "to",
+        "value": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "12000000000",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "execute",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "wasm",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+        "index": true
+       },
+       {
+        "key": "action",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "12000000000",
+        "index": true
+       },
+       {
+        "key": "denom",
+        "value": "cw20:juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "receiver",
+        "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "send_packet",
+      "attributes": [
+       {
+        "key": "connection_id",
+        "value": "connection-555",
+        "index": true
+       },
+       {
+        "key": "packet_channel_ordering",
+        "value": "ORDER_UNORDERED",
+        "index": true
+       },
+       {
+        "key": "packet_connection",
+        "value": "connection-555",
+        "index": true
+       },
+       {
+        "key": "packet_data",
+        "value": "{\"amount\":\"12000000000\",\"denom\":\"cw20:juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l\",\"receiver\":\"neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5\",\"sender\":\"juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0\"}",
+        "index": true
+       },
+       {
+        "key": "packet_data_hex",
+        "value": "7b22616d6f756e74223a223132303030303030303030222c2264656e6f6d223a22637732303a6a756e6f317277733834757a373936396161613770656a3330337564686c6b74336a396361306c3365677063616539386a77616b3971757a7138737a6e326c222c227265636569766572223a226e657574726f6e317071617264633339643535386d7235386e78356d3277676d7934343870763934743638717135222c2273656e646572223a226a756e6f317071617264633339643535386d7235386e78356d3277676d7934343870763934656864656130227d",
+        "index": true
+       },
+       {
+        "key": "packet_dst_channel",
+        "value": "channel-7293",
+        "index": true
+       },
+       {
+        "key": "packet_dst_port",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "packet_sequence",
+        "value": "275",
+        "index": true
+       },
+       {
+        "key": "packet_src_channel",
+        "value": "channel-659",
+        "index": true
+       },
+       {
+        "key": "packet_src_port",
+        "value": "wasm.juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+        "index": true
+       },
+       {
+        "key": "packet_timeout_height",
+        "value": "0-0",
+        "index": true
+       },
+       {
+        "key": "packet_timeout_timestamp",
+        "value": "1781085332069478302",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "height": "38734501",
+    "txhash": "A2FE8D423DCF95553E28129ACCAF5142F6610C1062ECCDBC9410C068D4E3E6B9",
+    "codespace": "",
+    "code": 0,
+    "data": "122E0A2C2F636F736D7761736D2E7761736D2E76312E4D736745786563757465436F6E7472616374526573706F6E7365",
+    "raw_log": "",
+    "logs": [],
+    "info": "",
+    "gas_wanted": "330327",
+    "gas_used": "238610",
+    "tx": {
+     "@type": "/cosmos.tx.v1beta1.Tx",
+     "body": {
+      "messages": [
+       {
+        "@type": "/cosmwasm.wasm.v1.MsgExecuteContract",
+        "sender": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "contract": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "msg": {
+         "send": {
+          "amount": "3000000000",
+          "contract": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+          "msg": "eyJjaGFubmVsIjoiY2hhbm5lbC02NTkiLCJyZW1vdGVfYWRkcmVzcyI6Im5ldXRyb24xcHFhcmRjMzlkNTU4bXI1OG54NW0yd2dteTQ0OHB2OTR0NjhxcTUiLCJ0aW1lb3V0IjoyOTl9"
+         }
+        },
+        "funds": []
+       }
+      ],
+      "memo": "",
+      "timeout_height": "0",
+      "unordered": false,
+      "timeout_timestamp": null,
+      "extension_options": [],
+      "non_critical_extension_options": []
+     },
+     "auth_info": {
+      "signer_infos": [
+       {
+        "public_key": {
+         "@type": "/cosmos.crypto.secp256k1.PubKey",
+         "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+        },
+        "mode_info": {
+         "single": {
+          "mode": "SIGN_MODE_DIRECT"
+         }
+        },
+        "sequence": "3"
+       }
+      ],
+      "fee": {
+       "amount": [
+        {
+         "denom": "ujuno",
+         "amount": "24775"
+        }
+       ],
+       "gas_limit": "330327",
+       "payer": "",
+       "granter": ""
+      },
+      "tip": null
+     },
+     "signatures": [
+      "uqZ1XQGuLJ7UQmklZwIqO4rmjS4AmU9fgiBXt6zh2mp106iKEUP2zfEADtIgBB2YHNZnjs8Juic81UxsTBZN9w=="
+     ]
+    },
+    "timestamp": "2026-06-10T09:51:23Z",
+    "events": [
+     {
+      "type": "coin_spent",
+      "attributes": [
+       {
+        "key": "spender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "24775ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_received",
+      "attributes": [
+       {
+        "key": "receiver",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "24775ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "transfer",
+      "attributes": [
+       {
+        "key": "recipient",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "24775ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "fee",
+        "value": "24775ujuno",
+        "index": true
+       },
+       {
+        "key": "fee_payer",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "acc_seq",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0/3",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "signature",
+        "value": "uqZ1XQGuLJ7UQmklZwIqO4rmjS4AmU9fgiBXt6zh2mp106iKEUP2zfEADtIgBB2YHNZnjs8Juic81UxsTBZN9w==",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "action",
+        "value": "/cosmwasm.wasm.v1.MsgExecuteContract",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "module",
+        "value": "wasm",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "execute",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "wasm",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "action",
+        "value": "send",
+        "index": true
+       },
+       {
+        "key": "from",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "to",
+        "value": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "3000000000",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "execute",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "wasm",
+      "attributes": [
+       {
+        "key": "_contract_address",
+        "value": "juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+        "index": true
+       },
+       {
+        "key": "action",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "3000000000",
+        "index": true
+       },
+       {
+        "key": "denom",
+        "value": "cw20:juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "index": true
+       },
+       {
+        "key": "receiver",
+        "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "send_packet",
+      "attributes": [
+       {
+        "key": "connection_id",
+        "value": "connection-555",
+        "index": true
+       },
+       {
+        "key": "packet_channel_ordering",
+        "value": "ORDER_UNORDERED",
+        "index": true
+       },
+       {
+        "key": "packet_connection",
+        "value": "connection-555",
+        "index": true
+       },
+       {
+        "key": "packet_data",
+        "value": "{\"amount\":\"3000000000\",\"denom\":\"cw20:juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l\",\"receiver\":\"neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5\",\"sender\":\"juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0\"}",
+        "index": true
+       },
+       {
+        "key": "packet_data_hex",
+        "value": "7b22616d6f756e74223a2233303030303030303030222c2264656e6f6d223a22637732303a6a756e6f317277733834757a373936396161613770656a3330337564686c6b74336a396361306c3365677063616539386a77616b3971757a7138737a6e326c222c227265636569766572223a226e657574726f6e317071617264633339643535386d7235386e78356d3277676d7934343870763934743638717135222c2273656e646572223a226a756e6f317071617264633339643535386d7235386e78356d3277676d7934343870763934656864656130227d",
+        "index": true
+       },
+       {
+        "key": "packet_dst_channel",
+        "value": "channel-7293",
+        "index": true
+       },
+       {
+        "key": "packet_dst_port",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "packet_sequence",
+        "value": "276",
+        "index": true
+       },
+       {
+        "key": "packet_src_channel",
+        "value": "channel-659",
+        "index": true
+       },
+       {
+        "key": "packet_src_port",
+        "value": "wasm.juno1vw6l0gjwju73chh0nqc097347r7ucdx7vshm38qp25xr36wckhqsepcmsd",
+        "index": true
+       },
+       {
+        "key": "packet_timeout_height",
+        "value": "0-0",
+        "index": true
+       },
+       {
+        "key": "packet_timeout_timestamp",
+        "value": "1781085382954197777",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "height": "39104162",
+    "txhash": "B6B191538E5A28D3FF68C6AD1DED8B684228A7D56D420BE8968768F50970E32A",
+    "codespace": "",
+    "code": 0,
+    "data": "12390A312F6962632E6170706C69636174696F6E732E7472616E736665722E76312E4D73675472616E73666572526573706F6E7365120408C7E850",
+    "raw_log": "",
+    "logs": [],
+    "info": "",
+    "gas_wanted": "135860",
+    "gas_used": "108656",
+    "tx": {
+     "@type": "/cosmos.tx.v1beta1.Tx",
+     "body": {
+      "messages": [
+       {
+        "@type": "/ibc.applications.transfer.v1.MsgTransfer",
+        "source_port": "transfer",
+        "source_channel": "channel-0",
+        "token": {
+         "denom": "ujuno",
+         "amount": "6604673"
+        },
+        "sender": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "receiver": "osmo10a3k4hvk37cc4hnxctw4p95fhscd2z6h2rmx0aukc6rm8u9qqx9smfsh7u",
+        "timeout_height": {
+         "revision_number": "1",
+         "revision_height": "64638251"
+        },
+        "timeout_timestamp": "0",
+        "memo": "{\"wasm\":{\"contract\":\"osmo10a3k4hvk37cc4hnxctw4p95fhscd2z6h2rmx0aukc6rm8u9qqx9smfsh7u\",\"msg\":{\"swap_and_action\":{\"user_swap\":{\"swap_exact_asset_in\":{\"swap_venue_name\":\"osmosis-poolmanager\",\"operations\":[{\"pool\":\"498\",\"denom_in\":\"ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED\",\"denom_out\":\"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2\"},{\"pool\":\"1251\",\"denom_in\":\"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2\",\"denom_out\":\"ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4\"}]}},\"min_asset\":{\"native\":{\"denom\":\"ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4\",\"amount\":\"188761\"}},\"timeout_timestamp\":1782112031329910528,\"post_swap_action\":{\"ibc_transfer\":{\"ibc_info\":{\"source_channel\":\"channel-750\",\"receiver\":\"noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za\",\"memo\":\"\",\"recover_address\":\"osmo1pqardc39d558mr58nx5m2wgmy448pv9487ajvp\"}}},\"affiliates\":[{\"basis_points_fee\":\"57\",\"address\":\"osmo1gy30axzt9djlqnykmmqdjn4z670ctxsyr97pvf\"},{\"basis_points_fee\":\"18\",\"address\":\"osmo14gf6xslwe9phn2z965t4dcu7vchhthfgv2lhyy\"}]}}}}",
+        "encoding": ""
+       }
+      ],
+      "memo": "",
+      "timeout_height": "0",
+      "unordered": false,
+      "timeout_timestamp": null,
+      "extension_options": [],
+      "non_critical_extension_options": []
+     },
+     "auth_info": {
+      "signer_infos": [
+       {
+        "public_key": {
+         "@type": "/cosmos.crypto.secp256k1.PubKey",
+         "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+        },
+        "mode_info": {
+         "single": {
+          "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+         }
+        },
+        "sequence": "4"
+       }
+      ],
+      "fee": {
+       "amount": [
+        {
+         "denom": "ujuno",
+         "amount": "10190"
+        }
+       ],
+       "gas_limit": "135860",
+       "payer": "",
+       "granter": ""
+      },
+      "tip": null
+     },
+     "signatures": [
+      "g8408OdjsDhDE2z3T+bp4fo1hNkulK1MNLvtrp8SqD4k7aRZm5G391PunBfkL+bjozEwDTJqcIcPWitvDs9P5Q=="
+     ]
+    },
+    "timestamp": "2026-06-22T07:02:12Z",
+    "events": [
+     {
+      "type": "coin_spent",
+      "attributes": [
+       {
+        "key": "spender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "10190ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_received",
+      "attributes": [
+       {
+        "key": "receiver",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "10190ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "transfer",
+      "attributes": [
+       {
+        "key": "recipient",
+        "value": "juno17xpfvakm2amg962yls6f84z3kell8c5lxtqmvp",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "10190ujuno",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "fee",
+        "value": "10190ujuno",
+        "index": true
+       },
+       {
+        "key": "fee_payer",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "acc_seq",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0/4",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "tx",
+      "attributes": [
+       {
+        "key": "signature",
+        "value": "g8408OdjsDhDE2z3T+bp4fo1hNkulK1MNLvtrp8SqD4k7aRZm5G391PunBfkL+bjozEwDTJqcIcPWitvDs9P5Q==",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "action",
+        "value": "/ibc.applications.transfer.v1.MsgTransfer",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_spent",
+      "attributes": [
+       {
+        "key": "spender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "6604673ujuno",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "coin_received",
+      "attributes": [
+       {
+        "key": "receiver",
+        "value": "juno1a53udazy8ayufvy0s434pfwjcedzqv34q7p7vj",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "6604673ujuno",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "transfer",
+      "attributes": [
+       {
+        "key": "recipient",
+        "value": "juno1a53udazy8ayufvy0s434pfwjcedzqv34q7p7vj",
+        "index": true
+       },
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "6604673ujuno",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "send_packet",
+      "attributes": [
+       {
+        "key": "packet_data",
+        "value": "{\"amount\":\"6604673\",\"denom\":\"ujuno\",\"memo\":\"{\\\"wasm\\\":{\\\"contract\\\":\\\"osmo10a3k4hvk37cc4hnxctw4p95fhscd2z6h2rmx0aukc6rm8u9qqx9smfsh7u\\\",\\\"msg\\\":{\\\"swap_and_action\\\":{\\\"user_swap\\\":{\\\"swap_exact_asset_in\\\":{\\\"swap_venue_name\\\":\\\"osmosis-poolmanager\\\",\\\"operations\\\":[{\\\"pool\\\":\\\"498\\\",\\\"denom_in\\\":\\\"ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED\\\",\\\"denom_out\\\":\\\"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2\\\"},{\\\"pool\\\":\\\"1251\\\",\\\"denom_in\\\":\\\"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2\\\",\\\"denom_out\\\":\\\"ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4\\\"}]}},\\\"min_asset\\\":{\\\"native\\\":{\\\"denom\\\":\\\"ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4\\\",\\\"amount\\\":\\\"188761\\\"}},\\\"timeout_timestamp\\\":1782112031329910528,\\\"post_swap_action\\\":{\\\"ibc_transfer\\\":{\\\"ibc_info\\\":{\\\"source_channel\\\":\\\"channel-750\\\",\\\"receiver\\\":\\\"noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za\\\",\\\"memo\\\":\\\"\\\",\\\"recover_address\\\":\\\"osmo1pqardc39d558mr58nx5m2wgmy448pv9487ajvp\\\"}}},\\\"affiliates\\\":[{\\\"basis_points_fee\\\":\\\"57\\\",\\\"address\\\":\\\"osmo1gy30axzt9djlqnykmmqdjn4z670ctxsyr97pvf\\\"},{\\\"basis_points_fee\\\":\\\"18\\\",\\\"address\\\":\\\"osmo14gf6xslwe9phn2z965t4dcu7vchhthfgv2lhyy\\\"}]}}}}\",\"receiver\":\"osmo10a3k4hvk37cc4hnxctw4p95fhscd2z6h2rmx0aukc6rm8u9qqx9smfsh7u\",\"sender\":\"juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0\"}",
+        "index": true
+       },
+       {
+        "key": "packet_data_hex",
+        "value": "7b22616d6f756e74223a2236363034363733222c2264656e6f6d223a22756a756e6f222c226d656d6f223a227b5c227761736d5c223a7b5c22636f6e74726163745c223a5c226f736d6f313061336b3468766b3337636334686e78637477347039356668736364327a366832726d783061756b6336726d38753971717839736d66736837755c222c5c226d73675c223a7b5c22737761705f616e645f616374696f6e5c223a7b5c22757365725f737761705c223a7b5c22737761705f65786163745f61737365745f696e5c223a7b5c22737761705f76656e75655f6e616d655c223a5c226f736d6f7369732d706f6f6c6d616e616765725c222c5c226f7065726174696f6e735c223a5b7b5c22706f6f6c5c223a5c223439385c222c5c2264656e6f6d5f696e5c223a5c226962632f343642343438393933323246334344383534443244343644454546383831393538343637434444344233423130303836444134393239364242454439344245445c222c5c2264656e6f6d5f6f75745c223a5c226962632f323733393446423039324432454343443536313233433734463336453443314639323630303143454144413943413937454136323242323546343145354542325c227d2c7b5c22706f6f6c5c223a5c22313235315c222c5c2264656e6f6d5f696e5c223a5c226962632f323733393446423039324432454343443536313233433734463336453443314639323630303143454144413943413937454136323242323546343145354542325c222c5c2264656e6f6d5f6f75745c223a5c226962632f343938413037353143373938413044394133383941413336393131323344414441353744414134464531363544354337353839343530354238373642413645345c227d5d7d7d2c5c226d696e5f61737365745c223a7b5c226e61746976655c223a7b5c2264656e6f6d5c223a5c226962632f343938413037353143373938413044394133383941413336393131323344414441353744414134464531363544354337353839343530354238373642413645345c222c5c22616d6f756e745c223a5c223138383736315c227d7d2c5c2274696d656f75745f74696d657374616d705c223a313738323131323033313332393931303532382c5c22706f73745f737761705f616374696f6e5c223a7b5c226962635f7472616e736665725c223a7b5c226962635f696e666f5c223a7b5c22736f757263655f6368616e6e656c5c223a5c226368616e6e656c2d3735305c222c5c2272656365697665725c223a5c226e6f626c65317071617264633339643535386d7235386e78356d3277676d793434387076393438786d327a615c222c5c226d656d6f5c223a5c225c222c5c227265636f7665725f616464726573735c223a5c226f736d6f317071617264633339643535386d7235386e78356d3277676d79343438707639343837616a76705c227d7d7d2c5c22616666696c69617465735c223a5b7b5c2262617369735f706f696e74735f6665655c223a5c2235375c222c5c22616464726573735c223a5c226f736d6f316779333061787a7439646a6c716e796b6d6d71646a6e347a36373063747873797239377076665c227d2c7b5c2262617369735f706f696e74735f6665655c223a5c2231385c222c5c22616464726573735c223a5c226f736d6f313467663678736c77653970686e327a393635743464637537766368687468666776326c6879795c227d5d7d7d7d7d222c227265636569766572223a226f736d6f313061336b3468766b3337636334686e78637477347039356668736364327a366832726d783061756b6336726d38753971717839736d6673683775222c2273656e646572223a226a756e6f317071617264633339643535386d7235386e78356d3277676d7934343870763934656864656130227d",
+        "index": true
+       },
+       {
+        "key": "packet_timeout_height",
+        "value": "1-64638251",
+        "index": true
+       },
+       {
+        "key": "packet_timeout_timestamp",
+        "value": "0",
+        "index": true
+       },
+       {
+        "key": "packet_sequence",
+        "value": "1324103",
+        "index": true
+       },
+       {
+        "key": "packet_src_port",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "packet_src_channel",
+        "value": "channel-0",
+        "index": true
+       },
+       {
+        "key": "packet_dst_port",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "packet_dst_channel",
+        "value": "channel-42",
+        "index": true
+       },
+       {
+        "key": "packet_channel_ordering",
+        "value": "ORDER_UNORDERED",
+        "index": true
+       },
+       {
+        "key": "packet_connection",
+        "value": "connection-0",
+        "index": true
+       },
+       {
+        "key": "connection_id",
+        "value": "connection-0",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "module",
+        "value": "ibc_channel",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "ibc_transfer",
+      "attributes": [
+       {
+        "key": "sender",
+        "value": "juno1pqardc39d558mr58nx5m2wgmy448pv94ehdea0",
+        "index": true
+       },
+       {
+        "key": "receiver",
+        "value": "osmo10a3k4hvk37cc4hnxctw4p95fhscd2z6h2rmx0aukc6rm8u9qqx9smfsh7u",
+        "index": true
+       },
+       {
+        "key": "amount",
+        "value": "6604673",
+        "index": true
+       },
+       {
+        "key": "denom",
+        "value": "ujuno",
+        "index": true
+       },
+       {
+        "key": "memo",
+        "value": "{\"wasm\":{\"contract\":\"osmo10a3k4hvk37cc4hnxctw4p95fhscd2z6h2rmx0aukc6rm8u9qqx9smfsh7u\",\"msg\":{\"swap_and_action\":{\"user_swap\":{\"swap_exact_asset_in\":{\"swap_venue_name\":\"osmosis-poolmanager\",\"operations\":[{\"pool\":\"498\",\"denom_in\":\"ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED\",\"denom_out\":\"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2\"},{\"pool\":\"1251\",\"denom_in\":\"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2\",\"denom_out\":\"ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4\"}]}},\"min_asset\":{\"native\":{\"denom\":\"ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4\",\"amount\":\"188761\"}},\"timeout_timestamp\":1782112031329910528,\"post_swap_action\":{\"ibc_transfer\":{\"ibc_info\":{\"source_channel\":\"channel-750\",\"receiver\":\"noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za\",\"memo\":\"\",\"recover_address\":\"osmo1pqardc39d558mr58nx5m2wgmy448pv9487ajvp\"}}},\"affiliates\":[{\"basis_points_fee\":\"57\",\"address\":\"osmo1gy30axzt9djlqnykmmqdjn4z670ctxsyr97pvf\"},{\"basis_points_fee\":\"18\",\"address\":\"osmo14gf6xslwe9phn2z965t4dcu7vchhthfgv2lhyy\"}]}}}}",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     },
+     {
+      "type": "message",
+      "attributes": [
+       {
+        "key": "module",
+        "value": "transfer",
+        "index": true
+       },
+       {
+        "key": "msg_index",
+        "value": "0",
+        "index": true
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "pagination": null,
+  "total": "5"
+ }
+}

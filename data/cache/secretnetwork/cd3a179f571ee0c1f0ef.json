@@ -1,0 +1,326 @@
+{
+ "key": "secretnetwork|/cosmos/tx/v1beta1/txs/344DDD42B2C83977AFB746E1EF5CF296C1E002A7FF702093937F6618EC09E016|",
+ "fetched_at": 1793397689,
+ "response": {
+  "tx": {
+   "body": {
+    "messages": [
+     {
+      "@type": "/cosmos.bank.v1beta1.MsgSend",
+      "from_address": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+      "to_address": "secret1j2n0znmwyy95jc8auvdr7ydk05ff97sgd8t7rn",
+      "amount": [
+       {
+        "denom": "uscrt",
+        "amount": "56102115"
+       }
+      ]
+     }
+    ],
+    "memo": "",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+   },
+   "auth_info": {
+    "signer_infos": [
+     {
+      "public_key": {
+       "@type": "/cosmos.crypto.secp256k1.PubKey",
+       "key": "AxRIzvaIHYKrs6QA0jW97HQemjjR2wPH/XDAWfAEHcRQ"
+      },
+      "mode_info": {
+       "single": {
+        "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+       }
+      },
+      "sequence": "29149"
+     }
+    ],
+    "fee": {
+     "amount": [
+      {
+       "denom": "uscrt",
+       "amount": "1721"
+      }
+     ],
+     "gas_limit": "17201",
+     "payer": "",
+     "granter": ""
+    },
+    "tip": null
+   },
+   "signatures": [
+    "LpLlmkX/owgWmMyVCoKU45oz2lgCOSy4WwOpQDPZdfYuULpwkxp6mCNCs5YLeezmU0DShZSPxnh7dkyad1Qd7A=="
+   ]
+  },
+  "tx_response": {
+   "height": "25650962",
+   "txhash": "344DDD42B2C83977AFB746E1EF5CF296C1E002A7FF702093937F6618EC09E016",
+   "codespace": "",
+   "code": 0,
+   "data": "12260A242F636F736D6F732E62616E6B2E763162657461312E4D736753656E64526573706F6E7365",
+   "raw_log": "",
+   "logs": [],
+   "info": "",
+   "gas_wanted": "17201",
+   "gas_used": "13976",
+   "tx": {
+    "@type": "/cosmos.tx.v1beta1.Tx",
+    "body": {
+     "messages": [
+      {
+       "@type": "/cosmos.bank.v1beta1.MsgSend",
+       "from_address": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "to_address": "secret1j2n0znmwyy95jc8auvdr7ydk05ff97sgd8t7rn",
+       "amount": [
+        {
+         "denom": "uscrt",
+         "amount": "56102115"
+        }
+       ]
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AxRIzvaIHYKrs6QA0jW97HQemjjR2wPH/XDAWfAEHcRQ"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+        }
+       },
+       "sequence": "29149"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "uscrt",
+        "amount": "1721"
+       }
+      ],
+      "gas_limit": "17201",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "LpLlmkX/owgWmMyVCoKU45oz2lgCOSy4WwOpQDPZdfYuULpwkxp6mCNCs5YLeezmU0DShZSPxnh7dkyad1Qd7A=="
+    ]
+   },
+   "timestamp": "2026-06-08T08:22:59Z",
+   "events": [
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "1721uscrt",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "secret17xpfvakm2amg962yls6f84z3kell8c5ljuhfkp",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "1721uscrt",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "secret17xpfvakm2amg962yls6f84z3kell8c5ljuhfkp",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "1721uscrt",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "fee",
+       "value": "1721uscrt",
+       "index": true
+      },
+      {
+       "key": "fee_payer",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "acc_seq",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k/29149",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "signature",
+       "value": "LpLlmkX/owgWmMyVCoKU45oz2lgCOSy4WwOpQDPZdfYuULpwkxp6mCNCs5YLeezmU0DShZSPxnh7dkyad1Qd7A==",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "action",
+       "value": "/cosmos.bank.v1beta1.MsgSend",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "index": true
+      },
+      {
+       "key": "module",
+       "value": "bank",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "56102115uscrt",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "secret1j2n0znmwyy95jc8auvdr7ydk05ff97sgd8t7rn",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "56102115uscrt",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "secret1j2n0znmwyy95jc8auvdr7ydk05ff97sgd8t7rn",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "56102115uscrt",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "secret1h3grxcfts9uc8lvu9vclhahus2npk24pg0jz5k",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

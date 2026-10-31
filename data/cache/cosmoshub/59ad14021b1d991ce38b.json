@@ -1,0 +1,45 @@
+{
+ "key": "cosmoshub|/cosmos/gov/v1/proposals/1056|",
+ "fetched_at": 1793398010,
+ "response": {
+  "proposal": {
+   "id": "1056",
+   "messages": [
+    {
+     "@type": "/cosmos.distribution.v1beta1.MsgCommunityPoolSpend",
+     "authority": "cosmos10d07y265gmmuvt4z0w9aw880jnsr700j6zn9kn",
+     "recipient": "cosmos1erq7tre6nk0jfx203z8ey75g4m7yfrckh2nk3v",
+     "amount": [
+      {
+       "denom": "uatom",
+       "amount": "1721120000000"
+      }
+     ]
+    }
+   ],
+   "status": "PROPOSAL_STATUS_REJECTED",
+   "final_tally_result": {
+    "yes_count": "590539880162",
+    "abstain_count": "3855415471193",
+    "no_count": "6017273957202",
+    "no_with_veto_count": "91513508906190"
+   },
+   "submit_time": "2026-09-23T23:20:17.999314823Z",
+   "deposit_end_time": "2026-10-07T23:20:17.999314823Z",
+   "total_deposit": [
+    {
+     "denom": "uatom",
+     "amount": "500000000"
+    }
+   ],
+   "voting_start_time": "2026-09-23T23:20:17.999314823Z",
+   "voting_end_time": "2026-09-30T23:20:17.999314823Z",
+   "metadata": "",
+   "title": "ATOM Refund & Justice Bounty",
+   "summary": "1.2M ATOM Refund and 500K ATOM Justice Bounty\n\n## Background\n\nOn September 22-23 Cosmos Hub reps coordinated validators to unjustifiably steal 1.2M ATOM from cosmos1dd25c4sshelrpfs0433apg24c5phrhk8m96c4n (ch_user)\n\nEven though the source of these ATOMs should not be Cosmos Hub's problem; here is background:\n\nch_user conducted series of fair actions with accordance to independent chain governance outside of Cosmos Hub authority.\n\nAll actions followed the formal protocol:\n\n1. Governance vote created\n2. Community voted\n3. Proposal passed\n\nBut then:\n\n4. Cosmos hub freezes the chain and steals the balance from ch_user\n\n## Community opinion\n\nWhy Cosmos Hub has authority over any user funds?\n\nShouldn't a decentralized governed system follow rules community has agreed on when chose to participate in Cosmos Hub in the first place?\n\nIf the rules can be thrown out whenever someone feels like it, what's the point of having rules at all?\n\n## Proposal description\n\n- Refund 1,221,120 ATOM to ch_user\n    - If the liquidity and selling pressure is a concern: ch_user offers a voluntary staking lockup of 1,200,000 ATOM for 2 years, ending October 1, 2028.\n- 500,000 ATOM Justice Bounty to all voters who vote \"YES\" in this proposal\n    - 500,000 ATOM will be distributed to voters who voted \"YES\" proportionally to staking weight.\n    - Over the course of 6 months\n    - With a cap per voting party of 5,000 ATOM\n\n## Closing thoughts\n\nDecentralized Governed Hub shouldn't be a dictatorship. Otherwise, why governance token ATOM is needed?\n\nIf someone in the community or inside Cosmos Hub thinks it is fair to freeze and block any user - they should also need to submit a proposal for the community to vote.\n\nIf we wanted one party controlling everything without our consent, we wouldn't be here. We'd be... well, somewhere with a very different political system.\n\nThis is Cosmos Hub's chance to prove it actually believes in decentralization, not just talk about it.\n\nVote YES to fix this mess and stand up for community governance.",
+   "proposer": "cosmos1erq7tre6nk0jfx203z8ey75g4m7yfrckh2nk3v",
+   "expedited": false,
+   "failed_reason": "proposal did not get enough votes to pass"
+  }
+ }
+}

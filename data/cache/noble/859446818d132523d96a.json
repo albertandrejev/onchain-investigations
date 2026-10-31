@@ -1,0 +1,371 @@
+{
+ "key": "noble|/cosmos/tx/v1beta1/txs/A54418B0F16DABE449A199AE7083AF2A0DD363FAC7E706912863ED5F7F733A6E|",
+ "fetched_at": 1793397554,
+ "response": {
+  "tx": {
+   "body": {
+    "messages": [
+     {
+      "@type": "/circle.cctp.v1.MsgReceiveMessage",
+      "from": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe",
+      "message": "AAAAAAAAAAUAAAAEAAAAAAAK8QemX8lDQZpa1ZAEL9Z8l5H9AVrPU6VMyCPtuP+Bue1yLgAAAAAAAAAAAAAAAFfU6vEJFXemt9EhICr70oCBNPEXAAAAAAAAAAAAAAAAaRz0ZB1WCPCFssGSEXISC7YD0HQAAAAAxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWEAAAAAAAAAAAAAAAAIOjbiJW0ofY6Hmam1ORslanCwtQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACPiUH9CmUyyIIP1lWiXRVfWyCnyNto4lDS2hl2XjQ23uIlM=",
+      "attestation": "QJ2jeJuEYuVTpokWarhSVgE4Jhpch0ipM+7WtWH6gOQEyyr8cWiuk7KgauKN/hV57f2qzR0bVMfTahCb5c2Y/xwMdcK0pRhLp055NF5QSwMjj1vdns7qGi1n74kC5S0xcVNRurspkR1uMgjqyMXx9CH7W2qP4ds5RXKPaQ0+RXJPGw=="
+     }
+    ],
+    "memo": "",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+   },
+   "auth_info": {
+    "signer_infos": [
+     {
+      "public_key": {
+       "@type": "/cosmos.crypto.secp256k1.PubKey",
+       "key": "AzhcrPp+UOual6YvER8eDmTjKNteHogKywUWCpU5TB1j"
+      },
+      "mode_info": {
+       "single": {
+        "mode": "SIGN_MODE_DIRECT"
+       }
+      },
+      "sequence": "160760"
+     }
+    ],
+    "fee": {
+     "amount": [],
+     "gas_limit": "136991",
+     "payer": "",
+     "granter": ""
+    },
+    "tip": null
+   },
+   "signatures": [
+    "SVl8fWIbPBqMFZUmAsQixl830mLJS4Lg1613P6vHaa8zP1GvIlc3gw51VafpEXNqVclulNkPrzGVLj/ZrppimA=="
+   ]
+  },
+  "tx_response": {
+   "height": "52398559",
+   "txhash": "A54418B0F16DABE449A199AE7083AF2A0DD363FAC7E706912863ED5F7F733A6E",
+   "codespace": "",
+   "code": 0,
+   "data": "122F0A292F636972636C652E636374702E76312E4D7367526563656976654D657373616765526573706F6E736512020801",
+   "raw_log": "",
+   "logs": [],
+   "info": "",
+   "gas_wanted": "136991",
+   "gas_used": "91367",
+   "tx": {
+    "@type": "/cosmos.tx.v1beta1.Tx",
+    "body": {
+     "messages": [
+      {
+       "@type": "/circle.cctp.v1.MsgReceiveMessage",
+       "from": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe",
+       "message": "AAAAAAAAAAUAAAAEAAAAAAAK8QemX8lDQZpa1ZAEL9Z8l5H9AVrPU6VMyCPtuP+Bue1yLgAAAAAAAAAAAAAAAFfU6vEJFXemt9EhICr70oCBNPEXAAAAAAAAAAAAAAAAaRz0ZB1WCPCFssGSEXISC7YD0HQAAAAAxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWEAAAAAAAAAAAAAAAAIOjbiJW0ofY6Hmam1ORslanCwtQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACPiUH9CmUyyIIP1lWiXRVfWyCnyNto4lDS2hl2XjQ23uIlM=",
+       "attestation": "QJ2jeJuEYuVTpokWarhSVgE4Jhpch0ipM+7WtWH6gOQEyyr8cWiuk7KgauKN/hV57f2qzR0bVMfTahCb5c2Y/xwMdcK0pRhLp055NF5QSwMjj1vdns7qGi1n74kC5S0xcVNRurspkR1uMgjqyMXx9CH7W2qP4ds5RXKPaQ0+RXJPGw=="
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AzhcrPp+UOual6YvER8eDmTjKNteHogKywUWCpU5TB1j"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_DIRECT"
+        }
+       },
+       "sequence": "160760"
+      }
+     ],
+     "fee": {
+      "amount": [],
+      "gas_limit": "136991",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "SVl8fWIbPBqMFZUmAsQixl830mLJS4Lg1613P6vHaa8zP1GvIlc3gw51VafpEXNqVclulNkPrzGVLj/ZrppimA=="
+    ]
+   },
+   "timestamp": "2026-06-08T09:27:41Z",
+   "events": [
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "fee",
+       "value": "",
+       "index": true
+      },
+      {
+       "key": "fee_payer",
+       "value": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "acc_seq",
+       "value": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe/160760",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "signature",
+       "value": "SVl8fWIbPBqMFZUmAsQixl830mLJS4Lg1613P6vHaa8zP1GvIlc3gw51VafpEXNqVclulNkPrzGVLj/ZrppimA==",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "action",
+       "value": "/circle.cctp.v1.MsgReceiveMessage",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe",
+       "index": true
+      },
+      {
+       "key": "module",
+       "value": "cctp",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "587924uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coinbase",
+     "attributes": [
+      {
+       "key": "minter",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "587924uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "587924uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "587924uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "587924uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "circle.fiattokenfactory.v1.MsgMint",
+     "attributes": [
+      {
+       "key": "address",
+       "value": "\"noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za\"",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "{\"denom\":\"uusdc\",\"amount\":\"587924\"}",
+       "index": true
+      },
+      {
+       "key": "from",
+       "value": "\"noble12l2w4ugfz4m6dd73yysz477jszqnfughxvkss5\"",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "circle.cctp.v1.MintAndWithdraw",
+     "attributes": [
+      {
+       "key": "amount",
+       "value": "\"587924\"",
+       "index": true
+      },
+      {
+       "key": "mint_recipient",
+       "value": "\"AAAAAAAAAAAAAAAACDo24iVtKH2Oh5mptTkbJWpwsLU=\"",
+       "index": true
+      },
+      {
+       "key": "mint_token",
+       "value": "\"uusdc\"",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "circle.cctp.v1.MessageReceived",
+     "attributes": [
+      {
+       "key": "caller",
+       "value": "\"noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe\"",
+       "index": true
+      },
+      {
+       "key": "message_body",
+       "value": "\"AAAAAMb6evO+2606PWXzaqvJdDGxu+TC0vbg5HymAgNFL11hAAAAAAAAAAAAAAAACDo24iVtKH2Oh5mptTkbJWpwsLUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAj4lB/QplMsiCD9ZVol0VX1sgp8jbaOJQ0toZdl40Nt7iJT\"",
+       "index": true
+      },
+      {
+       "key": "nonce",
+       "value": "\"717063\"",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "\"pl/JQ0GaWtWQBC/WfJeR/QFaz1OlTMgj7bj/gbntci4=\"",
+       "index": true
+      },
+      {
+       "key": "source_domain",
+       "value": "5",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

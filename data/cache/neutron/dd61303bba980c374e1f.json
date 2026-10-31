@@ -1,0 +1,551 @@
+{
+ "key": "neutron|/cosmos/tx/v1beta1/txs/71FB94AE30C7CEC1F0D9B2B8BC74961DD1F3053A0BA2B4B2F0CF6E4C6C55C266|",
+ "fetched_at": 1793398029,
+ "response": {
+  "tx": {
+   "body": {
+    "messages": [
+     {
+      "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+      "delegator_address": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+      "validator_address": "neutronvaloper1md0k6m8y58w8u98x82kjah7r5zcajw7c5v5ypa",
+      "amount": {
+       "denom": "untrn",
+       "amount": "31620000000000"
+      }
+     }
+    ],
+    "memo": "",
+    "timeout_height": "0",
+    "unordered": false,
+    "timeout_timestamp": null,
+    "extension_options": [],
+    "non_critical_extension_options": []
+   },
+   "auth_info": {
+    "signer_infos": [
+     {
+      "public_key": {
+       "@type": "/cosmos.crypto.secp256k1.PubKey",
+       "key": "AneTZcHN0AvdSTYEUOibvjLIp3eCzbQCgiDogBRu62UE"
+      },
+      "mode_info": {
+       "single": {
+        "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+       }
+      },
+      "sequence": "12"
+     }
+    ],
+    "fee": {
+     "amount": [
+      {
+       "denom": "untrn",
+       "amount": "7490"
+      }
+     ],
+     "gas_limit": "1086994",
+     "payer": "",
+     "granter": ""
+    },
+    "tip": null
+   },
+   "signatures": [
+    "UwzRQEOsNpAGumxfLuIDrZ42U3zR/OJJCrCPKcvivQYiOYOWA3IU+leRLwqDDGRYHo+2FiqX2ae67UlZngrs0Q=="
+   ]
+  },
+  "tx_response": {
+   "height": "61632912",
+   "txhash": "71FB94AE30C7CEC1F0D9B2B8BC74961DD1F3053A0BA2B4B2F0CF6E4C6C55C266",
+   "codespace": "",
+   "code": 0,
+   "data": "122D0A2B2F636F736D6F732E7374616B696E672E763162657461312E4D736744656C6567617465526573706F6E7365",
+   "raw_log": "",
+   "logs": [],
+   "info": "",
+   "gas_wanted": "1086994",
+   "gas_used": "588591",
+   "tx": {
+    "@type": "/cosmos.tx.v1beta1.Tx",
+    "body": {
+     "messages": [
+      {
+       "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+       "delegator_address": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "validator_address": "neutronvaloper1md0k6m8y58w8u98x82kjah7r5zcajw7c5v5ypa",
+       "amount": {
+        "denom": "untrn",
+        "amount": "31620000000000"
+       }
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "unordered": false,
+     "timeout_timestamp": null,
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AneTZcHN0AvdSTYEUOibvjLIp3eCzbQCgiDogBRu62UE"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+        }
+       },
+       "sequence": "12"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "untrn",
+        "amount": "7490"
+       }
+      ],
+      "gas_limit": "1086994",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "UwzRQEOsNpAGumxfLuIDrZ42U3zR/OJJCrCPKcvivQYiOYOWA3IU+leRLwqDDGRYHo+2FiqX2ae67UlZngrs0Q=="
+    ]
+   },
+   "timestamp": "2026-09-22T02:13:10Z",
+   "events": [
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "7490untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "7490untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "7490untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "acc_seq",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm/12",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "signature",
+       "value": "UwzRQEOsNpAGumxfLuIDrZ42U3zR/OJJCrCPKcvivQYiOYOWA3IU+leRLwqDDGRYHo+2FiqX2ae67UlZngrs0Q==",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "action",
+       "value": "/cosmos.staking.v1beta1.MsgDelegate",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      },
+      {
+       "key": "module",
+       "value": "staking",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8rqd7nc",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "181361untrn",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "181361untrn",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8rqd7nc",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "181361untrn",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8rqd7nc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "withdraw_rewards",
+     "attributes": [
+      {
+       "key": "amount",
+       "value": "181361untrn",
+       "index": true
+      },
+      {
+       "key": "validator",
+       "value": "neutronvaloper1md0k6m8y58w8u98x82kjah7r5zcajw7c5v5ypa",
+       "index": true
+      },
+      {
+       "key": "delegator",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "31620000000000untrn",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron1fl48vsnmsdzcv85q5d2q4z5ajdha8yu33yqdrs",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "31620000000000untrn",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "delegate",
+     "attributes": [
+      {
+       "key": "validator",
+       "value": "neutronvaloper1md0k6m8y58w8u98x82kjah7r5zcajw7c5v5ypa",
+       "index": true
+      },
+      {
+       "key": "delegator",
+       "value": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "31620000000000untrn",
+       "index": true
+      },
+      {
+       "key": "new_shares",
+       "value": "31623162316023.478350620289205577",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "2879untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron17xpfvakm2amg962yls6f84z3kell8c5l5x2z36",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "2879untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "neutron17xpfvakm2amg962yls6f84z3kell8c5l5x2z36",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "2879untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "4611untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron1tvdtqvecr45l6k9qn4qtt245qxd8png65lgcu0",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "4611untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "neutron1tvdtqvecr45l6k9qn4qtt245qxd8png65lgcu0",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "4611untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "fee_pay",
+     "attributes": [
+      {
+       "key": "fee",
+       "value": "2879untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tip_pay",
+     "attributes": [
+      {
+       "key": "tip",
+       "value": "4611untrn",
+       "index": true
+      },
+      {
+       "key": "tip_payee",
+       "value": "neutron1tvdtqvecr45l6k9qn4qtt245qxd8png65lgcu0",
+       "index": true
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

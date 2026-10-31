@@ -1,0 +1,654 @@
+{
+ "key": "noble|/cosmos/tx/v1beta1/txs/9BFBA27347715A122FF338E8CB29680F9B8F2EF5AA6A746B5307ADC7AE73DCAF|",
+ "fetched_at": 1793397555,
+ "response": {
+  "tx": {
+   "body": {
+    "messages": [
+     {
+      "@type": "/circle.cctp.v1.MsgDepositForBurnWithCaller",
+      "from": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+      "amount": "3115769",
+      "destination_domain": 5,
+      "mint_recipient": "Anv2vC3EMcIaGG3yDh4W47XlGb9dAQNCvhIsIKOGKlc=",
+      "burn_token": "uusdc",
+      "destination_caller": "T6iiTX0dDAj20/FvjjtLKCjtLcy5XQ4dTO6NFHPaG1U="
+     },
+     {
+      "@type": "/cosmos.bank.v1beta1.MsgSend",
+      "from_address": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+      "to_address": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe",
+      "amount": [
+       {
+        "denom": "uusdc",
+        "amount": "150451"
+       }
+      ]
+     }
+    ],
+    "memo": "",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+   },
+   "auth_info": {
+    "signer_infos": [
+     {
+      "public_key": {
+       "@type": "/cosmos.crypto.secp256k1.PubKey",
+       "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+      },
+      "mode_info": {
+       "single": {
+        "mode": "SIGN_MODE_DIRECT"
+       }
+      },
+      "sequence": "0"
+     }
+    ],
+    "fee": {
+     "amount": [
+      {
+       "denom": "uusdc",
+       "amount": "20000"
+      }
+     ],
+     "gas_limit": "200000",
+     "payer": "",
+     "granter": ""
+    },
+    "tip": null
+   },
+   "signatures": [
+    "WKNt7jDDKma6CYvsFui3H9gOlPvPmpag/Z3f74Z7s2E3KYGig6Sv5gAO7G8bwRyGN/wX1J9jw1MFOnpoOuRJ4A=="
+   ]
+  },
+  "tx_response": {
+   "height": "52396549",
+   "txhash": "9BFBA27347715A122FF338E8CB29680F9B8F2EF5AA6A746B5307ADC7AE73DCAF",
+   "codespace": "",
+   "code": 0,
+   "data": "123B0A332F636972636C652E636374702E76312E4D73674465706F736974466F724275726E5769746843616C6C6572526573706F6E7365120408D6821512260A242F636F736D6F732E62616E6B2E763162657461312E4D736753656E64526573706F6E7365",
+   "raw_log": "",
+   "logs": [],
+   "info": "",
+   "gas_wanted": "200000",
+   "gas_used": "166379",
+   "tx": {
+    "@type": "/cosmos.tx.v1beta1.Tx",
+    "body": {
+     "messages": [
+      {
+       "@type": "/circle.cctp.v1.MsgDepositForBurnWithCaller",
+       "from": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "amount": "3115769",
+       "destination_domain": 5,
+       "mint_recipient": "Anv2vC3EMcIaGG3yDh4W47XlGb9dAQNCvhIsIKOGKlc=",
+       "burn_token": "uusdc",
+       "destination_caller": "T6iiTX0dDAj20/FvjjtLKCjtLcy5XQ4dTO6NFHPaG1U="
+      },
+      {
+       "@type": "/cosmos.bank.v1beta1.MsgSend",
+       "from_address": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "to_address": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe",
+       "amount": [
+        {
+         "denom": "uusdc",
+         "amount": "150451"
+        }
+       ]
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_DIRECT"
+        }
+       },
+       "sequence": "0"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "uusdc",
+        "amount": "20000"
+       }
+      ],
+      "gas_limit": "200000",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "WKNt7jDDKma6CYvsFui3H9gOlPvPmpag/Z3f74Z7s2E3KYGig6Sv5gAO7G8bwRyGN/wX1J9jw1MFOnpoOuRJ4A=="
+    ]
+   },
+   "timestamp": "2026-06-08T08:40:48Z",
+   "events": [
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "20000uusdc",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "noble17xpfvakm2amg962yls6f84z3kell8c5lc6kgnn",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "20000uusdc",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "noble17xpfvakm2amg962yls6f84z3kell8c5lc6kgnn",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "20000uusdc",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "fee",
+       "value": "20000uusdc",
+       "index": true
+      },
+      {
+       "key": "fee_payer",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "acc_seq",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za/0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "signature",
+       "value": "WKNt7jDDKma6CYvsFui3H9gOlPvPmpag/Z3f74Z7s2E3KYGig6Sv5gAO7G8bwRyGN/wX1J9jw1MFOnpoOuRJ4A==",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "action",
+       "value": "/circle.cctp.v1.MsgDepositForBurnWithCaller",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "module",
+       "value": "cctp",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3115769uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "noble12l2w4ugfz4m6dd73yysz477jszqnfughxvkss5",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3115769uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "noble12l2w4ugfz4m6dd73yysz477jszqnfughxvkss5",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3115769uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "noble12l2w4ugfz4m6dd73yysz477jszqnfughxvkss5",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3115769uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3115769uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "noble12l2w4ugfz4m6dd73yysz477jszqnfughxvkss5",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3115769uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "noble12l2w4ugfz4m6dd73yysz477jszqnfughxvkss5",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3115769uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "burn",
+     "attributes": [
+      {
+       "key": "burner",
+       "value": "noble1x74lhe0pqqv7rcg4pc4svtxhm9hnf79pxpfqfv",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3115769uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "circle.fiattokenfactory.v1.MsgBurn",
+     "attributes": [
+      {
+       "key": "amount",
+       "value": "{\"denom\":\"uusdc\",\"amount\":\"3115769\"}",
+       "index": true
+      },
+      {
+       "key": "from",
+       "value": "\"noble12l2w4ugfz4m6dd73yysz477jszqnfughxvkss5\"",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "circle.cctp.v1.MessageSent",
+     "attributes": [
+      {
+       "key": "message",
+       "value": "\"AAAAAAAAAAQAAAAFAAAAAAAFQVYAAAAAAAAAAAAAAABX1OrxCRV3prfRISAq+9KAgTTxF6ZfyUNBmlrVkAQv1nyXkf0BWs9TpUzII+24/4G57XIuT6iiTX0dDAj20/FvjjtLKCjtLcy5XQ4dTO6NFHPaG1UAAAAASHA53r7b8y0mATewpvZrkJYr7HdyUJENJTeB3jJqcW0Ce/a8LcQxwhoYbfIOHhbjteUZv10BA0K+Eiwgo4YqVwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL4r5AAAAAAAAAAAAAAAACDo24iVtKH2Oh5mptTkbJWpwsLU=\"",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "circle.cctp.v1.DepositForBurn",
+     "attributes": [
+      {
+       "key": "amount",
+       "value": "\"3115769\"",
+       "index": true
+      },
+      {
+       "key": "burn_token",
+       "value": "\"487039debedbf32d260137b0a6f66b90962bec777250910d253781de326a716d\"",
+       "index": true
+      },
+      {
+       "key": "depositor",
+       "value": "\"noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za\"",
+       "index": true
+      },
+      {
+       "key": "destination_caller",
+       "value": "\"T6iiTX0dDAj20/FvjjtLKCjtLcy5XQ4dTO6NFHPaG1U=\"",
+       "index": true
+      },
+      {
+       "key": "destination_domain",
+       "value": "5",
+       "index": true
+      },
+      {
+       "key": "destination_token_messenger",
+       "value": "\"pl/JQ0GaWtWQBC/WfJeR/QFaz1OlTMgj7bj/gbntci4=\"",
+       "index": true
+      },
+      {
+       "key": "mint_recipient",
+       "value": "\"Anv2vC3EMcIaGG3yDh4W47XlGb9dAQNCvhIsIKOGKlc=\"",
+       "index": true
+      },
+      {
+       "key": "nonce",
+       "value": "\"344406\"",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "action",
+       "value": "/cosmos.bank.v1beta1.MsgSend",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "module",
+       "value": "bank",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "1",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "150451uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "1",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "150451uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "1",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "150451uusdc",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "1",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "noble1pqardc39d558mr58nx5m2wgmy448pv948xm2za",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "1",
+       "index": true
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

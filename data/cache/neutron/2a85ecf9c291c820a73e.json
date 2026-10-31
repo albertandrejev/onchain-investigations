@@ -1,0 +1,37 @@
+{
+ "key": "neutron|/cosmos/staking/v1beta1/validators/neutronvaloper1kfqxeuqx2rxp0q6yh299737676r274398twxz8|61633000",
+ "fetched_at": 1793398025,
+ "response": {
+  "validator": {
+   "operator_address": "neutronvaloper1kfqxeuqx2rxp0q6yh299737676r274398twxz8",
+   "consensus_pubkey": {
+    "@type": "/cosmos.crypto.ed25519.PubKey",
+    "key": "PG6qnBAUmxeIQUU9OevlBMZzfcSMIpWWcnnXGhp2hDQ="
+   },
+   "jailed": false,
+   "status": "BOND_STATUS_BONDED",
+   "tokens": "8082935660898",
+   "delegator_shares": "8082935660898.000000000000000000",
+   "description": {
+    "moniker": "\ud83d\udc39 Quokka Stake",
+    "identity": "",
+    "website": "https://quokkastake.io",
+    "security_contact": "",
+    "details": ""
+   },
+   "unbonding_height": "0",
+   "unbonding_time": "1970-01-01T00:00:00Z",
+   "commission": {
+    "commission_rates": {
+     "rate": "0.100000000000000000",
+     "max_rate": "0.100000000000000000",
+     "max_change_rate": "0.100000000000000000"
+    },
+    "update_time": "2025-04-10T11:23:35.970046687Z"
+   },
+   "min_self_delegation": "1000000",
+   "unbonding_on_hold_ref_count": "0",
+   "unbonding_ids": []
+  }
+ }
+}

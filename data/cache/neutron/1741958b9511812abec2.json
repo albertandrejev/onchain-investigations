@@ -1,0 +1,784 @@
+{
+ "key": "neutron|/cosmos/tx/v1beta1/txs/31889BE94AB0B27E56BEF8BD5828B3C026362A9CAEBDC749D8BD926B470F4062|",
+ "fetched_at": 1793397834,
+ "response": {
+  "tx": {
+   "body": {
+    "messages": [
+     {
+      "@type": "/ibc.applications.transfer.v1.MsgTransfer",
+      "source_port": "transfer",
+      "source_channel": "channel-30",
+      "token": {
+       "denom": "ibc/B559A80D62249C8AA07A380E2A2BEA6E5CA9A6F079C912C3A9E9B494105E4F81",
+       "amount": "3546992876"
+      },
+      "sender": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+      "receiver": "noble15xt7kx5mles58vkkfxvf0lq78sw04jajvfgd4d",
+      "timeout_height": {
+       "revision_number": "0",
+       "revision_height": "0"
+      },
+      "timeout_timestamp": "1782111352076952000",
+      "memo": "{\"orbiter\":{\"pre_actions\":[{\"id\":\"ACTION_FEE\",\"attributes\":{\"@type\":\"/noble.orbiter.controller.action.v2.FeeAttributes\",\"fees_info\":[{\"recipient\":\"noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe\",\"amount\":{\"value\":\"168582\"}}]}}],\"forwarding\":{\"protocol_id\":\"PROTOCOL_CCTP\",\"attributes\":{\"@type\":\"/noble.orbiter.controller.forwarding.v1.CCTPAttributes\",\"destination_domain\":5,\"mint_recipient\":\"Omv+Em2IHyeQsSw0RwaqV9H3QSFbbCXl8+3MUmmRQ+A=\",\"destination_caller\":\"T6iiTX0dDAj20/FvjjtLKCjtLcy5XQ4dTO6NFHPaG1U=\"},\"passthrough_payload\":\"\"}}}",
+      "encoding": ""
+     }
+    ],
+    "memo": "",
+    "timeout_height": "0",
+    "unordered": false,
+    "timeout_timestamp": null,
+    "extension_options": [],
+    "non_critical_extension_options": []
+   },
+   "auth_info": {
+    "signer_infos": [
+     {
+      "public_key": {
+       "@type": "/cosmos.crypto.secp256k1.PubKey",
+       "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+      },
+      "mode_info": {
+       "single": {
+        "mode": "SIGN_MODE_DIRECT"
+       }
+      },
+      "sequence": "4"
+     }
+    ],
+    "fee": {
+     "amount": [
+      {
+       "denom": "untrn",
+       "amount": "2074"
+      }
+     ],
+     "gas_limit": "391187",
+     "payer": "",
+     "granter": ""
+    },
+    "tip": null
+   },
+   "signatures": [
+    "oPmvQxj1H8ho6MvpZ8hjRSuztWADLhmjYCKI7kkc+jhUtBJor1xnZWzjeOVBeqp+fM5kM4UB+a2KF4mK8hnBig=="
+   ]
+  },
+  "tx_response": {
+   "height": "59762044",
+   "txhash": "31889BE94AB0B27E56BEF8BD5828B3C026362A9CAEBDC749D8BD926B470F4062",
+   "codespace": "",
+   "code": 0,
+   "data": "12390A252F6E657574726F6E2E7472616E736665722E4D73675472616E73666572526573706F6E736512100897E80A120A6368616E6E656C2D3330",
+   "raw_log": "",
+   "logs": [],
+   "info": "",
+   "gas_wanted": "391187",
+   "gas_used": "302883",
+   "tx": {
+    "@type": "/cosmos.tx.v1beta1.Tx",
+    "body": {
+     "messages": [
+      {
+       "@type": "/ibc.applications.transfer.v1.MsgTransfer",
+       "source_port": "transfer",
+       "source_channel": "channel-30",
+       "token": {
+        "denom": "ibc/B559A80D62249C8AA07A380E2A2BEA6E5CA9A6F079C912C3A9E9B494105E4F81",
+        "amount": "3546992876"
+       },
+       "sender": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "receiver": "noble15xt7kx5mles58vkkfxvf0lq78sw04jajvfgd4d",
+       "timeout_height": {
+        "revision_number": "0",
+        "revision_height": "0"
+       },
+       "timeout_timestamp": "1782111352076952000",
+       "memo": "{\"orbiter\":{\"pre_actions\":[{\"id\":\"ACTION_FEE\",\"attributes\":{\"@type\":\"/noble.orbiter.controller.action.v2.FeeAttributes\",\"fees_info\":[{\"recipient\":\"noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe\",\"amount\":{\"value\":\"168582\"}}]}}],\"forwarding\":{\"protocol_id\":\"PROTOCOL_CCTP\",\"attributes\":{\"@type\":\"/noble.orbiter.controller.forwarding.v1.CCTPAttributes\",\"destination_domain\":5,\"mint_recipient\":\"Omv+Em2IHyeQsSw0RwaqV9H3QSFbbCXl8+3MUmmRQ+A=\",\"destination_caller\":\"T6iiTX0dDAj20/FvjjtLKCjtLcy5XQ4dTO6NFHPaG1U=\"},\"passthrough_payload\":\"\"}}}",
+       "encoding": ""
+      }
+     ],
+     "memo": "",
+     "timeout_height": "0",
+     "unordered": false,
+     "timeout_timestamp": null,
+     "extension_options": [],
+     "non_critical_extension_options": []
+    },
+    "auth_info": {
+     "signer_infos": [
+      {
+       "public_key": {
+        "@type": "/cosmos.crypto.secp256k1.PubKey",
+        "key": "AwyOJVEfj1QBAGC8amB3oF9OdX5hhcdssRBKuy5tHhG5"
+       },
+       "mode_info": {
+        "single": {
+         "mode": "SIGN_MODE_DIRECT"
+        }
+       },
+       "sequence": "4"
+      }
+     ],
+     "fee": {
+      "amount": [
+       {
+        "denom": "untrn",
+        "amount": "2074"
+       }
+      ],
+      "gas_limit": "391187",
+      "payer": "",
+      "granter": ""
+     },
+     "tip": null
+    },
+    "signatures": [
+     "oPmvQxj1H8ho6MvpZ8hjRSuztWADLhmjYCKI7kkc+jhUtBJor1xnZWzjeOVBeqp+fM5kM4UB+a2KF4mK8hnBig=="
+    ]
+   },
+   "timestamp": "2026-06-22T06:50:58Z",
+   "events": [
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "2074untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "2074untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "2074untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "acc_seq",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5/4",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tx",
+     "attributes": [
+      {
+       "key": "signature",
+       "value": "oPmvQxj1H8ho6MvpZ8hjRSuztWADLhmjYCKI7kkc+jhUtBJor1xnZWzjeOVBeqp+fM5kM4UB+a2KF4mK8hnBig==",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "action",
+       "value": "/ibc.applications.transfer.v1.MsgTransfer",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3546992876ibc/B559A80D62249C8AA07A380E2A2BEA6E5CA9A6F079C912C3A9E9B494105E4F81",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron1yl6hdjhmkf37639730gffanpzndzdpmh2qltdy",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3546992876ibc/B559A80D62249C8AA07A380E2A2BEA6E5CA9A6F079C912C3A9E9B494105E4F81",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "neutron1yl6hdjhmkf37639730gffanpzndzdpmh2qltdy",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3546992876ibc/B559A80D62249C8AA07A380E2A2BEA6E5CA9A6F079C912C3A9E9B494105E4F81",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron1yl6hdjhmkf37639730gffanpzndzdpmh2qltdy",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3546992876ibc/B559A80D62249C8AA07A380E2A2BEA6E5CA9A6F079C912C3A9E9B494105E4F81",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "burn",
+     "attributes": [
+      {
+       "key": "burner",
+       "value": "neutron1yl6hdjhmkf37639730gffanpzndzdpmh2qltdy",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3546992876ibc/B559A80D62249C8AA07A380E2A2BEA6E5CA9A6F079C912C3A9E9B494105E4F81",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "sudo",
+     "attributes": [
+      {
+       "key": "_contract_address",
+       "value": "neutron15aqgplxcavqhurr0g5wwtdw6025dknkqwkfh0n46gp2qjl6236cs2yd3nl",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "wasm",
+     "attributes": [
+      {
+       "key": "_contract_address",
+       "value": "neutron15aqgplxcavqhurr0g5wwtdw6025dknkqwkfh0n46gp2qjl6236cs2yd3nl",
+       "index": true
+      },
+      {
+       "key": "method",
+       "value": "try_transfer",
+       "index": true
+      },
+      {
+       "key": "channel_id",
+       "value": "channel-30",
+       "index": true
+      },
+      {
+       "key": "denom",
+       "value": "ibc/B559A80D62249C8AA07A380E2A2BEA6E5CA9A6F079C912C3A9E9B494105E4F81",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-1_used_in",
+       "value": "0",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-1_used_out",
+       "value": "3670659679",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-1_max_in",
+       "value": "929898527223",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-1_max_out",
+       "value": "1301857938112",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-1_period_end",
+       "value": "1782197255.110576117",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-2_used_in",
+       "value": "0",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-2_used_out",
+       "value": "32912767574",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-2_max_in",
+       "value": "937209054289",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-2_max_out",
+       "value": "1312092676004",
+       "index": true
+      },
+      {
+       "key": "USDC-DAY-2_period_end",
+       "value": "1782162049.339441994",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-1_used_in",
+       "value": "0",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-1_used_out",
+       "value": "41637059758",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-1_max_in",
+       "value": "1878780254670",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-1_max_out",
+       "value": "2630292356538",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-1_period_end",
+       "value": "1782347315.781736461",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-2_used_in",
+       "value": "0",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-2_used_out",
+       "value": "78870455163",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-2_max_in",
+       "value": "1897396952372",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-2_max_out",
+       "value": "2656355733321",
+       "index": true
+      },
+      {
+       "key": "USDC-WEEK-2_period_end",
+       "value": "1782336182.927760685",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "send_packet",
+     "attributes": [
+      {
+       "key": "packet_data_hex",
+       "value": "7b2264656e6f6d223a227472616e736665722f6368616e6e656c2d33302f7575736463222c22616d6f756e74223a2233353436393932383736222c2273656e646572223a226e657574726f6e317071617264633339643535386d7235386e78356d3277676d7934343870763934743638717135222c227265636569766572223a226e6f626c6531357874376b78356d6c65733538766b6b66787666306c713738737730346a616a766667643464222c226d656d6f223a227b5c226f7262697465725c223a7b5c227072655f616374696f6e735c223a5b7b5c2269645c223a5c22414354494f4e5f4645455c222c5c22617474726962757465735c223a7b5c2240747970655c223a5c222f6e6f626c652e6f7262697465722e636f6e74726f6c6c65722e616374696f6e2e76322e466565417474726962757465735c222c5c22666565735f696e666f5c223a5b7b5c22726563697069656e745c223a5c226e6f626c65316479773067657161326379307070646a637866707a75736a70776d71383572356133356871655c222c5c22616d6f756e745c223a7b5c2276616c75655c223a5c223136383538325c227d7d5d7d7d5d2c5c22666f7277617264696e675c223a7b5c2270726f746f636f6c5f69645c223a5c2250524f544f434f4c5f434354505c222c5c22617474726962757465735c223a7b5c2240747970655c223a5c222f6e6f626c652e6f7262697465722e636f6e74726f6c6c65722e666f7277617264696e672e76312e43435450417474726962757465735c222c5c2264657374696e6174696f6e5f646f6d61696e5c223a352c5c226d696e745f726563697069656e745c223a5c224f6d762b456d324948796551735377305277617156394833515346626243586c382b334d556d6d52512b413d5c222c5c2264657374696e6174696f6e5f63616c6c65725c223a5c22543669695458306444416a32302f46766a6a744c4b436a744c63793558513464544f364e464850614731553d5c227d2c5c22706173737468726f7567685f7061796c6f61645c223a5c225c227d7d7d227d",
+       "index": true
+      },
+      {
+       "key": "packet_timeout_height",
+       "value": "0-0",
+       "index": true
+      },
+      {
+       "key": "packet_timeout_timestamp",
+       "value": "1782111352076952000",
+       "index": true
+      },
+      {
+       "key": "packet_sequence",
+       "value": "177175",
+       "index": true
+      },
+      {
+       "key": "packet_src_port",
+       "value": "transfer",
+       "index": true
+      },
+      {
+       "key": "packet_src_channel",
+       "value": "channel-30",
+       "index": true
+      },
+      {
+       "key": "packet_dst_port",
+       "value": "transfer",
+       "index": true
+      },
+      {
+       "key": "packet_dst_channel",
+       "value": "channel-18",
+       "index": true
+      },
+      {
+       "key": "packet_channel_ordering",
+       "value": "ORDER_UNORDERED",
+       "index": true
+      },
+      {
+       "key": "packet_connection",
+       "value": "connection-31",
+       "index": true
+      },
+      {
+       "key": "connection_id",
+       "value": "connection-31",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "module",
+       "value": "ibc_channel",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "ibc_transfer",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron1pqardc39d558mr58nx5m2wgmy448pv94t68qq5",
+       "index": true
+      },
+      {
+       "key": "receiver",
+       "value": "noble15xt7kx5mles58vkkfxvf0lq78sw04jajvfgd4d",
+       "index": true
+      },
+      {
+       "key": "denom",
+       "value": "transfer/channel-30/uusdc",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "3546992876",
+       "index": true
+      },
+      {
+       "key": "memo",
+       "value": "{\"orbiter\":{\"pre_actions\":[{\"id\":\"ACTION_FEE\",\"attributes\":{\"@type\":\"/noble.orbiter.controller.action.v2.FeeAttributes\",\"fees_info\":[{\"recipient\":\"noble1dyw0geqa2cy0ppdjcxfpzusjpwmq85r5a35hqe\",\"amount\":{\"value\":\"168582\"}}]}}],\"forwarding\":{\"protocol_id\":\"PROTOCOL_CCTP\",\"attributes\":{\"@type\":\"/noble.orbiter.controller.forwarding.v1.CCTPAttributes\",\"destination_domain\":5,\"mint_recipient\":\"Omv+Em2IHyeQsSw0RwaqV9H3QSFbbCXl8+3MUmmRQ+A=\",\"destination_caller\":\"T6iiTX0dDAj20/FvjjtLKCjtLcy5XQ4dTO6NFHPaG1U=\"},\"passthrough_payload\":\"\"}}}",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "module",
+       "value": "transfer",
+       "index": true
+      },
+      {
+       "key": "msg_index",
+       "value": "0",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "1366untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron17xpfvakm2amg962yls6f84z3kell8c5l5x2z36",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "1366untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "neutron17xpfvakm2amg962yls6f84z3kell8c5l5x2z36",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "1366untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_spent",
+     "attributes": [
+      {
+       "key": "spender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "708untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "coin_received",
+     "attributes": [
+      {
+       "key": "receiver",
+       "value": "neutron15jdg43v06a7vwhqvxduaf6vefsq3ejy3m7ku6l",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "708untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "transfer",
+     "attributes": [
+      {
+       "key": "recipient",
+       "value": "neutron15jdg43v06a7vwhqvxduaf6vefsq3ejy3m7ku6l",
+       "index": true
+      },
+      {
+       "key": "sender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      },
+      {
+       "key": "amount",
+       "value": "708untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "message",
+     "attributes": [
+      {
+       "key": "sender",
+       "value": "neutron13pxn9n3qw79e03844rdadagmg0nshmwf6l9777",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "fee_pay",
+     "attributes": [
+      {
+       "key": "fee",
+       "value": "1366untrn",
+       "index": true
+      }
+     ]
+    },
+    {
+     "type": "tip_pay",
+     "attributes": [
+      {
+       "key": "tip",
+       "value": "708untrn",
+       "index": true
+      },
+      {
+       "key": "tip_payee",
+       "value": "neutron15jdg43v06a7vwhqvxduaf6vefsq3ejy3m7ku6l",
+       "index": true
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

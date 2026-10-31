@@ -1,0 +1,23 @@
+{
+ "key": "neutron|/cosmos/staking/v1beta1/delegations/neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm|61633000",
+ "fetched_at": 1793398029,
+ "response": {
+  "delegation_responses": [
+   {
+    "delegation": {
+     "delegator_address": "neutron1ekgfga6vv4zdrrjn3dux6f62fuzektfndgaehm",
+     "validator_address": "neutronvaloper1md0k6m8y58w8u98x82kjah7r5zcajw7c5v5ypa",
+     "shares": "31623562356027.476129322872700503"
+    },
+    "balance": {
+     "denom": "untrn",
+     "amount": "31620400000000"
+    }
+   }
+  ],
+  "pagination": {
+   "next_key": null,
+   "total": "1"
+  }
+ }
+}

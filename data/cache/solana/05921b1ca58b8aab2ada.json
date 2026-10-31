@@ -1,0 +1,36 @@
+{
+ "key": "getAccountInfo|[\"4w4A2J2CDaVxa6X9RExY3Ty2rFL6CiaETT4KJVNna1hy\", {\"encoding\": \"jsonParsed\"}]",
+ "fetched_at": 1793397834,
+ "response": {
+  "context": {
+   "apiVersion": "4.3.2",
+   "slot": 463446397
+  },
+  "value": {
+   "data": {
+    "parsed": {
+     "info": {
+      "isNative": false,
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "owner": "2n7v9L79nVun7LXVMnvzBF54zktw36BjRD4qbeWfDkJg",
+      "state": "initialized",
+      "tokenAmount": {
+       "amount": "211222",
+       "decimals": 6,
+       "uiAmount": 0.211222,
+       "uiAmountString": "0.211222"
+      }
+     },
+     "type": "account"
+    },
+    "program": "spl-token",
+    "space": 165
+   },
+   "executable": false,
+   "lamports": 2039280,
+   "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+   "rentEpoch": 18446744073709551615,
+   "space": 165
+  }
+ }
+}
