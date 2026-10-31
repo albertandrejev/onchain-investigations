@@ -11,6 +11,7 @@ On 22 Sep 2026 an attacker passed Neutron governance proposal 9. It transferred 
 - No bug was exploited. Neutron's `x/gov` module was authorized to change the admin of *any* contract, and the proposal used that authority exactly as designed.
 - The vote was bought. A second, linked wallet spent 20,199 USDC on 31.6M NTRN and staked it 11 minutes before voting closed. That stake was 84.7 % of the Yes vote.
 - Validators halted Neutron and then the Cosmos Hub. An IBC rate limiter, the halts and a recovery release secured about $4.01M (64 %). The net loss was about $2.23M.
+- I took part in the response as a Neutron contributor, found where the purchased stake had gone and that a single No vote had carried the proposal over quorum. This write-up re-derives every figure of the official post-mortem from chain data and adds what it leaves out: the single No vote that lifted the proposal over quorum, the exchange deposit tags on the dYdX exit, the attacker's own Hub proposal after the clawback, and a risk score for every address (see [What this analysis adds](#what-this-analysis-adds-to-the-post-mortem)).
 
 ## Case card
 
@@ -21,8 +22,35 @@ On 22 Sep 2026 an attacker passed Neutron governance proposal 9. It transferred 
 | Assets | CosmWasm admin rights over 11 Neutron contracts; drained USDC, ATOM, dATOM, DYDX, wstETH, axlWETH, NTRN, ASTRO |
 | Loss | About $6.24M withdrawn from 10 contracts (C2-10) |
 | Outcome | About $4.01M (64 %) contained or recovered; net loss about $2.23M (post-mortem figures) |
-| My role | Community investigator: found the last-minute delegation and the malicious proposal |
+| My role | Neutron contributor in the incident response: found where the attacker's purchased stake was delegated and that a single No vote had lifted the proposal over quorum; reported both to the former Neutron team at 08:09 UTC on 22 Sep. Afterwards: independent re-verification and the additions listed below |
 | Checks | 37 passed, see [reports/verification.md](reports/verification.md) |
+
+## What this analysis adds to the post-mortem
+
+The official post-mortem is the primary source for the figures in this write-up, and every one of its numbers that can be read from chain data is recomputed here, with a check ID:
+
+| Post-mortem statement | Recomputed from chain | Check |
+|---|---|---|
+| proposal 9 handed the admin of 11 contracts to the proposer | 11 `MsgUpdateAdmin` messages in the proposal, all naming the attacker wallet | C2-01, C2-01b |
+| 31.62M NTRN staked 11 minutes before voting closed, 84.7 % of Yes | delegation at 02:13:10, close at 02:24:49, 31.62M of 37.31M Yes | C2-06, C2-06b, C2-06c |
+| turnout 45.57M against a quorum of about 41.05M | tally and bonded stake read at the closing height | C2-03, C2-03b, C2-03c |
+| ten contracts migrated to code 5399 and drained in 26 minutes | the migrations and the `withdraw_all` calls, with amounts | C2-10, C2-10b |
+| 1,180,010 USDC through CCTP, 1,723,180 ATOM to the Hub, 803,955 DYDX to dYdX | the IBC transfers and the four Noble burns | C2-11 to C2-15 |
+| the rate limiter kept 1,671,302 USDC on Neutron | the balance left behind and the eight rejected transfers | C2-11b, C2-11d |
+| 1,227,121.37 ATOM moved to the Hub recovery multisig at height 33,086,741 | the account balance before the halt and the block events | C2-16, C2-16b |
+| the collection wallet holds 794.05 ETH and has never sent a transaction | balance and nonce re-read on 30 Oct 2026, five weeks after publication | C2-21b, C2-21c |
+
+The following is not in the post-mortem:
+
+- The single No vote that made the difference, which I found during the response. The post-mortem says the proposal would have failed without the purchased stake. It would also have failed without one validator's 8.08M NTRN No vote, which lifted turnout over quorum (C2-04, C2-04b). A lone No vote can be the thing that lets a malicious proposal pass; coordinated No votes would have blocked it. Both are now in Lessons learned.
+- The exchange deposit tags on the dYdX exit. The post-mortem says the DYDX was split across five addresses. Four of the seven transfers carry numeric memos of the kind exchanges assign to deposit addresses, which makes two of the five addresses a KYC lead (C2-20, C2-20b).
+- The price the attacker paid. Across the five Astroport swaps the NTRN price roughly doubled, from about $0.00052 to about $0.00102 per NTRN, which bounds how much more stake the same budget could have bought (C2-07, C2-07b).
+- Cosmos Hub proposal 1056. The fresh key that sold the THORChain refund then asked the Hub community pool for 1,721,120 ATOM, including a bounty for Yes voters. It was rejected with 89.7 % No with veto (C2-22, C2-22b).
+- The halt windows as block timestamps, not announcements (C2-18, C2-18b, C2-19, C2-19b), and the two smaller THORChain refunds beside the large one.
+- A rule-based risk score for every address on the graph, including the exchange hot wallet, the dYdX deposit addresses and the resolved 1,000 USDC lead (Risk scoring).
+- An off-chain lesson from the refund: a containment checklist has to include the outbound queues of bridges and DEXes, as the Hub team's own account of the refund shows.
+
+The same-key links the post-mortem asserts between the Neutron, Noble, Cosmos Hub, Osmosis, Axelar and dYdX addresses are verified here by decoding the bech32 payloads (`tools/bech32.py`).
 
 ## Addresses
 
@@ -43,9 +71,9 @@ On 22 Sep 2026 an attacker passed Neutron governance proposal 9. It transferred 
 
 ## My role
 
-I was one of the community investigators. I identified the attacker's last-minute delegation transaction and the malicious proposal itself, and took part in the wider investigation. Several others reached the same conclusions independently; the formal response was carried out by the protocol teams, security firms and validators.
+I took part in the incident response as one of the Neutron contributors, the group credited collectively in the [Cosmos Hub recovery update](https://forum.cosmos.network/t/neutron-governance-attack-cosmos-hub-response-and-recovery-update/17369); before that I had been part of Hadron Labs, the former Neutron team. During the response I established that the attacker's purchased stake had been delegated to the POSTHUMAN validator, and that one validator's No vote was what had lifted the proposal over quorum. I reported both, together with the proposal that carried the admin transfers, directly to the former CEO of Hadron Labs in a private Telegram channel at 08:09 UTC on 22 Sep: 26 minutes after the Neutron halt, while the response teams were still mapping the attacker's addresses, and about three hours before the Cosmos Hub halt. There is no public record of those messages. Others reached the same conclusions independently, and the formal response was carried out by Solva, Hadron, the affected protocols, the security firms and the validators.
 
-The re-verification, the extra analysis in this write-up and the toolkit in this repository (`tools/`, `risk/` and each case's `checks.py`) are my own follow-up work on public data.
+The re-verification, the additions listed above and the toolkit in this repository (`tools/`, `risk/` and each case's `checks.py`) are my own follow-up work on public data, done after the post-mortem was published.
 
 ## Background: why this was possible
 
@@ -139,7 +167,7 @@ timeline
   - `7F7096AC0360B629BC6B7EE9E1474AFA47F2FDA6EBAD1FC1F12E01D52FF5C747`
   - `229ED79B64894232A9B2F9CA3346ADD887A86F4B98331375AD2A72BD1374C8CF`
   - `2F54E41F88E075412F0BE3748DAAAA4B4E80688407024EBF1446DB71D2D02584`
-- **Purchase:** five swaps on Astroport turned 20,199 USDC into 31,627,304 NTRN, about a quarter of all staked NTRN (C2-07, C2-07b). During the buying the price per NTRN roughly doubled (about $0.00052 → $0.00102 per swap). Swap txs:
+- **Purchase:** five swaps on Astroport turned 20,199 USDC into 31,627,304 NTRN, about a quarter of all staked NTRN (C2-07, C2-07b). During the buying the price per NTRN roughly doubled, from about $0.00052 to about $0.00102 per swap (my own observation; the post-mortem does not give the price path). Swap txs:
   - `99DCA5879E75171EA4D7690CCB43DD72BF915B71A368A35BE1E5B8DD17B2313F`
   - `39B33116AF1FC16434F851467A2FDB9AD5BD640CCCA4AB7DE4175B3A3832565F`
   - `87D198D3A8E136E5F29F81030C9D8DA5954C4C5146C6B81B926F527FDDA04BDA`
@@ -160,7 +188,7 @@ timeline
 | Turnout | 45.57M (33.3 %; C2-03, C2-03b) |
 
 - **Without the purchased stake** turnout would have been about 13.95M, far short of quorum.
-- **The quorum paradox (my own analysis).** About 8.08M of the No votes came from a single validator (vote tx `B4F668D57CBEAC3F5EBCBC788D4FC2540C1569FFB3110D43CF0B591C09E0C1B1`). Without that No, turnout would have been 37.49M (27.4 %), *below quorum*, and the proposal would have failed despite the purchased stake (C2-04, C2-04b). Most other validators did not vote. The one that voted No, with good intent, helped the attack reach quorum.
+- **The quorum paradox (my own finding, made during the response).** About 8.08M of the No votes came from a single validator (vote tx `B4F668D57CBEAC3F5EBCBC788D4FC2540C1569FFB3110D43CF0B591C09E0C1B1`). Without that No, turnout would have been 37.49M (27.4 %), *below quorum*, and the proposal would have failed despite the purchased stake (C2-04, C2-04b). Most other validators did not vote. The one that voted No, with good intent, helped the attack reach quorum.
 - **The post-mortem's counter-view.** Coordinated No votes from most validators, which also count for their non-voting delegators, would most likely have stopped this attempt. Liquidity in the routes the attacker used (about 43.85M NTRN) could not outweigh them. Both observations hold: a lone No vote helped the attack, a coordinated No would have defeated it. Either way, validator voting raises the cost of an attack but does not make it impossible.
 
 ### 6. Drain (02:38-03:04 UTC)
@@ -188,7 +216,7 @@ The matching `MsgMigrateContract` txs are listed in [reports/verification.md](re
 |---|---|---|
 | USDC 1,180,010 (C2-11) | IBC → `noble1dd25c4sshelrpfs0433apg24c5phrhk8nx0sda` → Circle CCTP → Ethereum `0xe149310eb8b1b3d9c471ccd81819d393621fba5c` (C2-14, C2-14b) → about 430 ETH | Lost. The ICS20 rate limiter rejected 8 further transfers ("USDC-DAY-1 quota exceeded", C2-11b), keeping 1,671,302 USDC on Neutron (C2-11d). |
 | ATOM 1,723,180.290498 (C2-12) | IBC → `cosmos1dd25c4sshelrpfs0433apg24c5phrhk8m96c4n` → THORChain streaming swaps to ETH (100k / 200k / 200k ATOM, C2-15, C2-15b) | About 496k ATOM lost. 1,227,121 ATOM recovered (below). |
-| DYDX 803,955.137 (C2-13) | IBC → `dydx1dd25c4sshelrpfs0433apg24c5phrhk8ju5u4y` → five addresses (C2-20) | Lost. Four of the seven transfers carry numeric memos that look like exchange deposit tags, a KYC lead (C2-20b). |
+| DYDX 803,955.137 (C2-13) | IBC → `dydx1dd25c4sshelrpfs0433apg24c5phrhk8ju5u4y` → five addresses (C2-20) | Lost. Four of the seven transfers carry numeric memos that look like exchange deposit tags, a KYC lead the post-mortem does not mention (C2-20b). |
 | wstETH 15.99, axlWETH 6 | Lido Satellite / Axelar / Osmosis / Squid → Ethereum | Lost. The rate limiter blocked the remaining 14.09 axlWETH. |
 | NTRN, ASTRO | Not enough liquidity to sell or bridge | Contained |
 
@@ -253,7 +281,7 @@ pie showData
   - 12:07, 7 minutes after the restart: the refund lands on the attacker's address (tx `8E61D1F85FD9A8BE36A2EF00EE4FD5FB92616DB88C67B091D4A608695B855202`).
   - 17:54: the attacker moves it to Osmosis (C2-17; tx `95BF481B9556389EA05340C47EADFA28CAA547F7E019D30B9D9A50C70D036285`) and sells it for about 266.8k USDC, partly through the fresh key `osmo1erq7tre6nk0jfx203z8ey75g4m7yfrckl3qx87`.
   - The proceeds are bridged to Ethereum (CCTP, and Axelar → Uniswap into `0x9bfcca13b4ac907433ac68766e96309ac867f819`), and the ETH is consolidated into the same collection wallet.
-  - The same fresh key, as `cosmos1erq7tre6nk0jfx203z8ey75g4m7yfrckh2nk3v`, then submitted Cosmos Hub proposal 1056, "ATOM Refund & Justice Bounty" (C2-22b). It asked for 1,721,120 ATOM from the community pool, including 500,000 ATOM to be paid to Yes voters. It was rejected with 89.7 % No-with-veto (C2-22).
+  - The same fresh key, as `cosmos1erq7tre6nk0jfx203z8ey75g4m7yfrckh2nk3v`, then submitted Cosmos Hub proposal 1056 (not covered by the post-mortem), "ATOM Refund & Justice Bounty" (C2-22b). It asked for 1,721,120 ATOM from the community pool, including 500,000 ATOM to be paid to Yes voters. It was rejected with 89.7 % No-with-veto (C2-22).
 - **25 Sep, Neutron recovery release** (tied to fixed block heights, since a halted chain cannot run an upgrade plan):
   - all 11 contracts restored to their original code IDs, cw2 records and admins;
   - the purchased 31.62M NTRN delegation removed without unbonding;
@@ -330,7 +358,7 @@ pie showData
   - a large delegation from that same voter minutes before close;
   - drainer code uploaded before the vote ended.
 - The ICS20 rate limiter alone kept about $1.7M on-chain.
-- The Hub clawback missed a THORChain refund that was queued off-chain and arrived seven minutes after the restart. A containment checklist should include the outbound queues of bridges and DEXes, not only account balances.
+- The Hub clawback missed a THORChain refund that was queued off-chain and arrived seven minutes after the restart. A containment checklist should include the outbound queues of bridges and DEXes, not only account balances (my own conclusion from the refund timeline).
 
 ## Appendix: key references
 
