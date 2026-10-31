@@ -1,7 +1,7 @@
-"""CLI: score a case graph and write reports/risk-<case>.md
+"""CLI: score case graphs and write cases/NN-slug/reports/risk.md
 
-    python -m risk.score case01
-    python -m risk.score case02
+    python -m risk.score                                   # every case that has a graph.json
+    python -m risk.score cases/02-neutron-governance-attack
 """
 import sys
 from pathlib import Path
@@ -11,10 +11,11 @@ from risk.model import load, score_graph, render_markdown
 ROOT = Path(__file__).resolve().parent.parent
 
 if __name__ == "__main__":
-    for case in sys.argv[1:] or ["case01", "case02"]:
-        g = load(case)
+    dirs = [Path(a) for a in sys.argv[1:]] or sorted(p.parent for p in (ROOT / "cases").glob("*/graph.json"))
+    for d in dirs:
+        g = load(d)
         res = score_graph(g)
-        out = ROOT / "reports" / f"risk-{case}.md"
+        out = d.resolve() / "reports" / "risk.md"
         out.parent.mkdir(exist_ok=True)
         out.write_text(render_markdown(g, res))
         print(f"== {g['title']}")

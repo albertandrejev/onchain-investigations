@@ -21,4 +21,4 @@ jobs:
       - name: Unit tests, case checks, risk scoring (from the committed cache)
         run: python verify.py
       - name: Reports must match the committed ones
-        run: git diff --exit-code -- reports/
+        run: git diff --exit-code -- "cases/*/reports/"

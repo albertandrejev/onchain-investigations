@@ -1,0 +1,110 @@
+{
+ "key": "GET|/v1/accounts/TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+ "fetched_at": 1793456430,
+ "response": {
+  "data": [
+   {
+    "owner_permission": {
+     "keys": [
+      {
+       "address": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+       "weight": 1
+      }
+     ],
+     "threshold": 1,
+     "permission_name": "owner"
+    },
+    "account_resource": {
+     "energy_window_optimized": true,
+     "latest_consume_time_for_energy": 1789211613000,
+     "energy_window_size": 28800000
+    },
+    "active_permission": [
+     {
+      "operations": "7fff1fc0033ec30f000000000000000000000000000000000000000000000000",
+      "keys": [
+       {
+        "address": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+        "weight": 1
+       }
+      ],
+      "threshold": 1,
+      "id": 2,
+      "type": "Active",
+      "permission_name": "active"
+     }
+    ],
+    "address": "41e092bce6dc52c38fbf7441edc8ea5b89b48a8a5a",
+    "create_time": 1789174506000,
+    "latest_opration_time": 1789211613000,
+    "free_asset_net_usageV2": [
+     {
+      "value": 0,
+      "key": "1005182"
+     },
+     {
+      "value": 0,
+      "key": "1005193"
+     },
+     {
+      "value": 0,
+      "key": "1005157"
+     },
+     {
+      "value": 0,
+      "key": "1005114"
+     },
+     {
+      "value": 0,
+      "key": "1005125"
+     }
+    ],
+    "assetV2": [
+     {
+      "value": 880680,
+      "key": "1005182"
+     },
+     {
+      "value": 4444444444,
+      "key": "1005193"
+     },
+     {
+      "value": 8888,
+      "key": "1005114"
+     },
+     {
+      "value": 2000,
+      "key": "1005125"
+     },
+     {
+      "value": 8888888,
+      "key": "1005157"
+     }
+    ],
+    "frozenV2": [
+     {},
+     {
+      "type": "ENERGY"
+     },
+     {
+      "type": "TRON_POWER"
+     }
+    ],
+    "balance": 961909998,
+    "trc20": [
+     {
+      "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t": "1861670"
+     }
+    ],
+    "latest_consume_free_time": 1789177464000,
+    "net_window_size": 28800000,
+    "net_window_optimized": true
+   }
+  ],
+  "success": true,
+  "meta": {
+   "at": 1793456430628,
+   "page_size": 1
+  }
+ }
+}

@@ -1,6 +1,6 @@
 # License for the written content
 
-The case write-ups (`cases/`), the generated reports (`reports/`) and `README.md`
+The case write-ups (`cases/*/README.md`), the generated reports (`cases/*/reports/`) and `README.md`
 are licensed under the **Creative Commons Attribution 4.0 International
 License (CC BY 4.0)**.
 

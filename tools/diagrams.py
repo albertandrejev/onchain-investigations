@@ -1,0 +1,159 @@
+"""Generate cases/NN-slug/reports/graph.md: the whole incident graph as a Mermaid diagram.
+
+    python -m tools.diagrams                                 # every case that has a graph.json
+    python -m tools.diagrams cases/02-neutron-governance-attack
+
+The input is the same graph.json the risk model scores, and the node colours are
+the bands from risk/model.py, so the picture cannot drift from the scores.
+Addresses that share a 20-byte account key are drawn in one box. Edges that touch
+infrastructure are dashed. The hand-drawn diagrams in each README are a curated
+summary; this one shows every node and every cited edge.
+"""
+import sys
+from datetime import datetime
+from pathlib import Path
+
+from risk.model import load, score_graph, _payload
+
+ROOT = Path(__file__).resolve().parent.parent
+
+# fill, stroke; text colour is fixed dark so the boxes read on GitHub's light and dark themes
+STYLES = {
+    "severe": ("#f8d0cc", "#b42318"),
+    "high": ("#fde3c4", "#c4570c"),
+    "medium": ("#fdf1b8", "#a37a00"),
+    "low": ("#eef0f2", "#6b7280"),
+    "service": ("#d6e6fb", "#1d5fbf"),
+    "infra": ("#ffffff", "#9aa1ab"),
+    "resolved": ("#d5f0dc", "#1e7a3c"),
+}
+LEGEND = [
+    ("severe", "SEVERE (80-100): seed or same key as a seed"),
+    ("high", "HIGH (60-79)"),
+    ("medium", "MEDIUM (30-59)"),
+    ("low", "LOW (0-29)"),
+    ("service", "service (exchange, deposit address): exposure band, action is a freeze or KYC request"),
+    ("infra", "infrastructure (vault, adapter, mixer pool, module): never scored as owner"),
+    ("resolved", "resolved: victim or false lead"),
+]
+MAX_EDGE_LABEL = 38
+
+
+def short(addr: str) -> str:
+    """Prefix that still tells keys apart, then the last 4 characters.
+
+    bech32 keeps the chain prefix plus 5 data characters (neutron1dd25c…n605), hex keeps
+    0x plus 4 (0xe149…ba5c), base58 (Tron, Solana) keeps 6 (TWSe9Z…o2BZ)."""
+    if len(addr) <= 16:
+        return addr
+    sep = addr.rfind("1", 0, 16)
+    if addr.startswith("0x"):
+        head = addr[:6]
+    elif addr == addr.lower() and sep > 0:
+        head = addr[:sep + 6]
+    else:
+        head = addr[:6]
+    return f"{head}…{addr[-4:]}"
+
+
+def esc(text: str) -> str:
+    """Make text safe inside a quoted Mermaid label."""
+    return text.replace("#", "#35;").replace('"', "#quot;").replace("<", "#lt;").replace(">", "#gt;")
+
+
+def when(ts: str | None) -> str:
+    if not ts:
+        return ""
+    t = datetime.strptime(ts, "%Y-%m-%dT%H:%M:%SZ")
+    return f"{t.day} {t:%b %H:%M}"
+
+
+def css_class(entity: str, band: str) -> str:
+    if entity == "infrastructure":
+        return "infra"
+    if band == "RESOLVED":
+        return "resolved"
+    if entity == "service":
+        return "service"
+    return band.lower() if band.lower() in STYLES else "low"
+
+
+def render(graph: dict) -> str:
+    results = {r.address: r for r in score_graph(graph)}
+    nodes = graph["nodes"]
+    ids = {n["address"]: f"n{i}" for i, n in enumerate(nodes)}
+
+    out = ["flowchart LR"]
+    for name, (fill, stroke) in STYLES.items():
+        dash = ",stroke-dasharray:4 3" if name == "infra" else ""
+        out.append(f"  classDef {name} fill:{fill},stroke:{stroke},color:#111{dash}")
+
+    def node_line(n, indent="  "):
+        r = results[n["address"]]
+        score = "" if r.entity == "infrastructure" else f"<br/>{r.score} {r.band}"
+        label = f"{esc(n.get('label', ''))}<br/>{esc(short(n['address']))}{score}"
+        return f'{indent}{ids[n["address"]]}["{label}"]:::{css_class(r.entity, r.band)}'
+
+    # same-key clusters (two or more Cosmos addresses with one 20-byte payload) become a subgraph
+    by_key: dict[str, list[dict]] = {}
+    for n in nodes:
+        p = _payload(n["address"])
+        if p and n.get("entity", "wallet") == "wallet":
+            by_key.setdefault(p, []).append(n)
+    clustered = set()
+    for k, (payload, members) in enumerate((p, m) for p, m in by_key.items() if len(m) > 1):
+        out.append(f'  subgraph k{k}["same account key {payload[:6]}…"]')
+        for n in members:
+            out.append(node_line(n, "    "))
+            clustered.add(n["address"])
+        out.append("  end")
+    for n in nodes:
+        if n["address"] not in clustered:
+            out.append(node_line(n))
+
+    infra = {n["address"] for n in nodes if n.get("entity") == "infrastructure"}
+    for e in sorted(graph["edges"], key=lambda e: e.get("time") or ""):
+        if e["from"] not in ids or e["to"] not in ids:
+            continue
+        asset = e.get("asset", "")
+        if len(asset) > MAX_EDGE_LABEL:
+            asset = asset[:MAX_EDGE_LABEL - 1] + "…"
+        label = esc(" · ".join(x for x in (asset, when(e.get("time"))) if x))
+        arrow = "-.->" if e["from"] in infra or e["to"] in infra else "-->"
+        out.append(f'  {ids[e["from"]]} {arrow}|"{label}"| {ids[e["to"]]}')
+    return "\n".join(out)
+
+
+def render_markdown(graph: dict) -> str:
+    lines = [
+        f"# Incident graph — {graph['title']}", "",
+        f"Generated by `python -m tools.diagrams cases/{graph['dir']}` from `graph.json`. "
+        "Colours are the risk bands from `risk/model.py` (scores and reasons: [risk.md](risk.md)). "
+        "Addresses that share an account key sit in one box; dashed edges touch infrastructure. "
+        "Every edge cites a transaction listed in [risk.md](risk.md#edges-used).", "",
+        f"{len(graph['nodes'])} nodes, {len(graph['edges'])} edges. This is the reference picture; "
+        "on GitHub use the diagram's zoom and full-screen controls. The curated summary is at the top of "
+        "\"How it unfolded\" in the [write-up](../README.md#how-it-unfolded).", "",
+        "```mermaid", render(graph), "```", "",
+        "| Colour | Meaning |", "|---|---|",
+    ]
+    for name, meaning in LEGEND:
+        fill, stroke = STYLES[name]
+        lines.append(f"| `{name}` (fill {fill}, border {stroke}) | {meaning} |")
+    if graph.get("note"):
+        lines += ["", f"Graph note: {graph['note']}"]
+    return "\n".join(lines) + "\n"
+
+
+def write(case_dir: Path) -> Path:
+    g = load(case_dir)
+    out = Path(case_dir).resolve() / "reports" / "graph.md"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(render_markdown(g))
+    return out
+
+
+if __name__ == "__main__":
+    dirs = [Path(a) for a in sys.argv[1:]] or sorted(p.parent for p in (ROOT / "cases").glob("*/graph.json"))
+    for d in dirs:
+        print(f"-> {write(d).relative_to(ROOT)}")

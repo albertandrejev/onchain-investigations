@@ -1,10 +1,11 @@
 This repository contains two kinds of material under two licenses.
 
-1. Code (tools/, checks/, risk/, tests/, verify.py, graphs/*.json): MIT License, below.
-2. Case write-ups and reports (cases/, reports/, README.md): Creative Commons
-   Attribution 4.0 International (CC BY 4.0), see LICENSE-CONTENT.md.
+1. Code (tools/, risk/, tests/, verify.py, cases/*/checks.py, cases/*/graph.json):
+   MIT License, below.
+2. Case write-ups and reports (cases/*/README.md, cases/*/reports/, README.md):
+   Creative Commons Attribution 4.0 International (CC BY 4.0), see LICENSE-CONTENT.md.
 
-Raw blockchain data in data/cache/ is public ledger data and is not claimed
+Raw blockchain data in cases/*/data/cache/ is public ledger data and is not claimed
 under either license.
 
 -------------------------------------------------------------------------------

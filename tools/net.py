@@ -3,7 +3,8 @@
 Design goals
 ------------
 * Standard library only.
-* Every raw response is cached under ``data/cache/`` keyed by *what* was asked
+* Every raw response is cached under ``$CIP_CACHE`` (each case points it at its own
+  ``cases/NN-slug/data/cache/``; ad-hoc CLI use goes to ``.cache/``) keyed by *what* was asked
   (chain + path + height), not *where* it was asked. Re-running the checks
   offline reproduces exactly the same numbers; deleting the cache re-fetches
   everything from public nodes.
@@ -24,9 +25,9 @@ from pathlib import Path
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
-CACHE = Path(os.environ.get("CIP_CACHE", ROOT / "data" / "cache"))
+CACHE = Path(os.environ.get("CIP_CACHE") or ROOT / ".cache")
 OFFLINE = os.environ.get("CIP_OFFLINE") == "1"
-UA = "crypto-investigations-portfolio/1.0 (verification scripts)"
+UA = "onchain-investigations/1.0 (verification scripts)"
 
 # Archive-capable REST endpoints that served historical data during the
 # investigation. Registry endpoints are appended automatically as fallback.

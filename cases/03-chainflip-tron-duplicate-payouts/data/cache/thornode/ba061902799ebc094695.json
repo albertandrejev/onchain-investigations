@@ -1,0 +1,82 @@
+{
+ "key": "tx/status/AE4F26EC5CDA9D4D5711D80AA64DBBCD395442787A0C3E1F8001B290EAC2326C",
+ "fetched_at": 1793456429,
+ "response": {
+  "tx": {
+   "id": "AE4F26EC5CDA9D4D5711D80AA64DBBCD395442787A0C3E1F8001B290EAC2326C",
+   "chain": "ETH",
+   "from_address": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "to_address": "0x70Ea3187A45E83d540C4f54158c3dcAcFD03f677",
+   "coins": [
+    {
+     "asset": "ETH.ETH",
+     "amount": "530000000"
+    }
+   ],
+   "gas": [
+    {
+     "asset": "ETH.ETH",
+     "amount": "200"
+    }
+   ],
+   "memo": "=:TRON.USDT:TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ:1304041765531/1/0"
+  },
+  "planned_out_txs": [
+   {
+    "chain": "TRON",
+    "to_address": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+    "coin": {
+     "asset": "TRON.USDT-TR7NHQJEKQXGTCI8Q8ZY4PL8OTSZGJLJ6T",
+     "amount": "1326079895500"
+    },
+    "refund": false
+   }
+  ],
+  "out_txs": [
+   {
+    "id": "4D6EF5350DBDD4AC550761634BD584E3EE9B51856A426C09A7F99B34967F4BC8",
+    "chain": "TRON",
+    "from_address": "TDGbEeTP6QQ1iCJ6twP5FNCDrbHTBme44f",
+    "to_address": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+    "coins": [
+     {
+      "asset": "TRON.USDT-TR7NHQJEKQXGTCI8Q8ZY4PL8OTSZGJLJ6T",
+      "amount": "1326079895500",
+      "decimals": 6
+     }
+    ],
+    "gas": [
+     {
+      "asset": "TRON.TRX",
+      "amount": "1444350000",
+      "decimals": 6
+     }
+    ],
+    "memo": "OUT:AE4F26EC5CDA9D4D5711D80AA64DBBCD395442787A0C3E1F8001B290EAC2326C"
+   }
+  ],
+  "stages": {
+   "inbound_observed": {
+    "pre_confirmation_count": 87,
+    "final_count": 87,
+    "completed": true
+   },
+   "inbound_confirmation_counted": {
+    "remaining_confirmation_seconds": 0,
+    "completed": true
+   },
+   "inbound_finalised": {
+    "completed": true
+   },
+   "swap_status": {
+    "pending": false
+   },
+   "swap_finalised": {
+    "completed": true
+   },
+   "outbound_signed": {
+    "completed": true
+   }
+  }
+ }
+}

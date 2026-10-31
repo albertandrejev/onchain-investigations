@@ -77,6 +77,17 @@ class RiskTests(unittest.TestCase):
         self.assertGreaterEqual(r["W2"].score, 60)                                         # taint propagates
         self.assertEqual(r["W3"].band, "RESOLVED")
 
+    def test_taint_follows_a_long_chain(self):
+        """Propagation runs until stable, so a 6-hop pass-through chain still reaches the service at the end."""
+        hops = [f"H{i}" for i in range(6)]
+        g = {"id": "t", "title": "t",
+             "nodes": [{"address": "S", "flags": ["seed"]}] + [{"address": h, "flags": ["pass_through"]} for h in hops]
+                      + [{"address": "X", "entity": "service"}],
+             "edges": [{"from": a, "to": b, "usd": 1000} for a, b in zip(["S"] + hops, hops + ["X"])]}
+        r = {x.address: x for x in score_graph(g)}
+        self.assertTrue(all(r[h].band == "HIGH" for h in hops))
+        self.assertEqual(r["X"].band, "EXPOSURE-MEDIUM")
+
 
 if __name__ == "__main__":
     unittest.main()

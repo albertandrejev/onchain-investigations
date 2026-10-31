@@ -1,0 +1,41 @@
+{
+ "key": "GET|/v1/accounts/TKDcouiTiqwV7uEkuvwm3Y1PdBBW8AUQVB/transactions/trc20?limit=200&order_by=block_timestamp,asc&contract_address=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t&min_timestamp=1789171200000&max_timestamp=1789214400000",
+ "fetched_at": 1793456436,
+ "response": {
+  "data": [
+   {
+    "transaction_id": "fc518670df471f73d235aa67f450e118d8537ef6428ad5956c259197da5b9d01",
+    "token_info": {
+     "symbol": "USDT",
+     "address": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+     "decimals": 6,
+     "name": "Tether USD"
+    },
+    "block_timestamp": 1789181499000,
+    "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+    "to": "TKDcouiTiqwV7uEkuvwm3Y1PdBBW8AUQVB",
+    "type": "Transfer",
+    "value": "375563327997"
+   },
+   {
+    "transaction_id": "b387ff1b3033b73ad2863235c191ef1793381a7feb6810d0ef7e6467ee8b8207",
+    "token_info": {
+     "symbol": "USDT",
+     "address": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+     "decimals": 6,
+     "name": "Tether USD"
+    },
+    "block_timestamp": 1789181685000,
+    "from": "TKDcouiTiqwV7uEkuvwm3Y1PdBBW8AUQVB",
+    "to": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+    "type": "Transfer",
+    "value": "375563327997"
+   }
+  ],
+  "success": true,
+  "meta": {
+   "at": 1793456436649,
+   "page_size": 2
+  }
+ }
+}

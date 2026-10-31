@@ -1,0 +1,41 @@
+{
+ "key": "POST|/wallet/triggerconstantcontract|{\"contract_address\": \"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\", \"function_selector\": \"isBlackListed(address)\", \"owner_address\": \"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\", \"parameter\": \"00000000000000000000000070ea3187a45e83d540c4f54158c3dcacfd03f677\", \"visible\": true}",
+ "fetched_at": 1793456461,
+ "response": {
+  "transaction": {
+   "raw_data": {
+    "ref_block_bytes": "9557",
+    "ref_block_hash": "96b7fefdfadfc483",
+    "expiration": 1793456520000,
+    "contract": [
+     {
+      "parameter": {
+       "value": {
+        "owner_address": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+        "contract_address": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+        "data": "e47d606000000000000000000000000070ea3187a45e83d540c4f54158c3dcacfd03f677"
+       },
+       "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+      },
+      "type": "TriggerSmartContract"
+     }
+    ],
+    "timestamp": 1793456461618
+   },
+   "ret": [
+    {}
+   ],
+   "raw_data_hex": "0a029557220896b7fefdfadfc48340c0f6da9299345a8e01081f1289010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412540a15410000000000000000000000000000000000000000121541a614f803b6fd780986a42c78ec9c7f77e6ded13c2224e47d606000000000000000000000000070ea3187a45e83d540c4f54158c3dcacfd03f67770b2aed7929934",
+   "txID": "6865534aa94e6e970b4a5434e9c8760649a1b64a0853858a5727cd29f4ebab9c",
+   "visible": true
+  },
+  "constant_result": [
+   "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "result": {
+   "result": true
+  },
+  "energy_used": 4658,
+  "energy_penalty": 3587
+ }
+}

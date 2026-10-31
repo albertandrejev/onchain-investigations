@@ -1,0 +1,41 @@
+{
+ "key": "GET|/v1/accounts/TBuFHA6cxBKRuE7QcdkzqYyWhtSM6gXnCZ/transactions/trc20?limit=200&order_by=block_timestamp,asc&contract_address=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t&min_timestamp=1789171200000&max_timestamp=1789214400000",
+ "fetched_at": 1793456434,
+ "response": {
+  "data": [
+   {
+    "transaction_id": "49e59121a60a3e78286363f1f82c72ffa3d104cccdbe58e6f9c15b8f71d84ed3",
+    "token_info": {
+     "symbol": "USDT",
+     "address": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+     "decimals": 6,
+     "name": "Tether USD"
+    },
+    "block_timestamp": 1789177467000,
+    "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+    "to": "TBuFHA6cxBKRuE7QcdkzqYyWhtSM6gXnCZ",
+    "type": "Transfer",
+    "value": "13000000000"
+   },
+   {
+    "transaction_id": "47d3f0759e267655eb1a2df5a9c1e3a3631272d1b6f72a4adcb177c84cfda275",
+    "token_info": {
+     "symbol": "USDT",
+     "address": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+     "decimals": 6,
+     "name": "Tether USD"
+    },
+    "block_timestamp": 1789177656000,
+    "from": "TBuFHA6cxBKRuE7QcdkzqYyWhtSM6gXnCZ",
+    "to": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+    "type": "Transfer",
+    "value": "13000000000"
+   }
+  ],
+  "success": true,
+  "meta": {
+   "at": 1793456434118,
+   "page_size": 2
+  }
+ }
+}

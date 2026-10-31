@@ -1,13 +1,15 @@
 """Integrity manifest for the raw-data cache.
 
-The checks run offline from ``data/cache``. The manifest pins the cache: a
-reader can confirm that the JSON files the checks read are byte-for-byte the
-ones that were fetched, and ``verify.py`` refuses to run against a cache that
-has been edited after the manifest was written.
+Each case runs offline from its own ``cases/NN-slug/data/cache``. The manifest
+pins that cache: a reader can confirm that the JSON files the checks read are
+byte-for-byte the ones that were fetched, and ``verify.py`` refuses to run
+against a cache that has been edited after the manifest was written.
 
-    python -m tools.manifest write     # (re)write data/cache/MANIFEST.sha256
-    python -m tools.manifest verify    # exit 1 on any mismatch
-    python -m tools.manifest snapshot  # print the newest fetched_at in the cache
+    python -m tools.manifest write    cases/03-chainflip-tron-duplicate-payouts/data/cache
+    python -m tools.manifest verify   cases/03-chainflip-tron-duplicate-payouts/data/cache   # exit 1 on mismatch
+    python -m tools.manifest snapshot cases/03-chainflip-tron-duplicate-payouts/data/cache   # newest fetched_at
+
+Without a path the commands use ``$CIP_CACHE``.
 """
 from __future__ import annotations
 
@@ -72,17 +74,18 @@ def snapshot_time(cache: Path = CACHE) -> dt.datetime | None:
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
+    cache = Path(sys.argv[2]) if len(sys.argv) > 2 else CACHE
     if cmd == "write":
-        out = write()
-        print(f"wrote {out} ({len(_files(CACHE))} files)")
+        out = write(cache)
+        print(f"wrote {out} ({len(_files(cache))} files)")
     elif cmd == "verify":
-        problems = verify()
+        problems = verify(cache)
         for x in problems:
             print(x)
         print("cache matches manifest" if not problems else f"{len(problems)} problem(s)")
         sys.exit(1 if problems else 0)
     elif cmd == "snapshot":
-        t = snapshot_time()
+        t = snapshot_time(cache)
         print(t.strftime("%Y-%m-%d %H:%M UTC") if t else "no cache")
     else:
         print(__doc__)

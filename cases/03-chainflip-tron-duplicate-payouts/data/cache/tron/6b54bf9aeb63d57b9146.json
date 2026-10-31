@@ -1,0 +1,41 @@
+{
+ "key": "GET|/v1/accounts/TRQ88sGrerfrPgHiQQgWqBUSjsqb11gdxm/transactions/trc20?limit=200&order_by=block_timestamp,asc&contract_address=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t&min_timestamp=1789171200000&max_timestamp=1789214400000",
+ "fetched_at": 1793456434,
+ "response": {
+  "data": [
+   {
+    "transaction_id": "59690c422b59c7475b2b7d52991992eb11962506ca55384cd1cb2e2650213e1e",
+    "token_info": {
+     "symbol": "USDT",
+     "address": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+     "decimals": 6,
+     "name": "Tether USD"
+    },
+    "block_timestamp": 1789178193000,
+    "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+    "to": "TRQ88sGrerfrPgHiQQgWqBUSjsqb11gdxm",
+    "type": "Transfer",
+    "value": "13000000000"
+   },
+   {
+    "transaction_id": "cefb680d89954ec143ad27b55231e3537bf460efd72eb41657c8c0df372e71b0",
+    "token_info": {
+     "symbol": "USDT",
+     "address": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+     "decimals": 6,
+     "name": "Tether USD"
+    },
+    "block_timestamp": 1789178379000,
+    "from": "TRQ88sGrerfrPgHiQQgWqBUSjsqb11gdxm",
+    "to": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+    "type": "Transfer",
+    "value": "13000000000"
+   }
+  ],
+  "success": true,
+  "meta": {
+   "at": 1793456434522,
+   "page_size": 2
+  }
+ }
+}

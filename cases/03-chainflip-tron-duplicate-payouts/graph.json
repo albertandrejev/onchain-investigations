@@ -1,0 +1,644 @@
+{
+ "id": "case03",
+ "title": "Case 03 — Chainflip Tron duplicate payouts",
+ "incident_time": "2026-09-12T01:59:39Z",
+ "note": "Every edge cites a transaction verified by checks.py. THORChain vault hops are collapsed into one edge (sender → memo destination), like adapter hops in case 01. USDT at face value; BTC at the implied exit-swap rate $77,668/BTC; ETH at the rate implied by the funding swap (5.3 ETH → 13,260.80 USDT), $2,502/ETH.",
+ "nodes": [
+  {
+   "address": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "label": "attacker (B)",
+   "flags": [
+    "seed",
+    "fresh"
+   ],
+   "seed_reason": "signed 6 Vault fetch calls carrying a note with its own address; received the 6 duplicate payouts (C3-12..C3-16)"
+  },
+  {
+   "address": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "label": "Chainflip Tron Vault (victim)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TBuFHA6cxBKRuE7QcdkzqYyWhtSM6gXnCZ",
+   "label": "Chainflip deposit channel TBuFHA (probe)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TRQ88sGrerfrPgHiQQgWqBUSjsqb11gdxm",
+   "label": "Chainflip deposit channel TRQ88",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TLQ3YSviESxx3nim9dhcvFrs6Gyn8zKfu2",
+   "label": "Chainflip deposit channel C TLQ3",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TPMHrJf1qiXVAnWZpa3FeDaFYg7uSmrySv",
+   "label": "Chainflip deposit channel D TPMH",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TWDWWXZv74W33PYXPiZqkjYcKdwj3aKPSU",
+   "label": "Chainflip deposit channel E TWDW",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TCKv1KpizuUfrQFr8pzwPtQRtrQBaBEVF3",
+   "label": "Chainflip deposit channel F TCKv",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TKDcouiTiqwV7uEkuvwm3Y1PdBBW8AUQVB",
+   "label": "Chainflip deposit channel G TKDc",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TT2fLntae72J9Kkw24je7VLSecFwFT4U3P",
+   "label": "Chainflip deposit channel TT2f",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TLGFEbHhDS1wHYX4SQwHhdukPKZYtJ4xzt",
+   "label": "THORChain Tron vault (exit inbound, H)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TDGbEeTP6QQ1iCJ6twP5FNCDrbHTBme44f",
+   "label": "THORChain Tron vault (paid funding USDT)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "TMKfq5gixvpSavgqXhe4yfAbnAzW1a1UeL",
+   "label": "THORChain Tron vault (paid funding TRX)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "label": "Ethereum operator: registered the Chainflip LP account, funded B",
+   "flags": [
+    "seed",
+    "fresh",
+    "privacy_funded"
+   ],
+   "seed_reason": "registered Chainflip LP account cFMKZx5… whose Tron refund address is B, 19 min before the first deposit (C3-32, C3-33); paid B's capital and gas through THORChain (C3-04, C3-05)"
+  },
+  {
+   "address": "bc1qjqda2hp3yajkkm74t8j9rz7ljghfp8akyyqv55",
+   "label": "BTC destination of the exit swap"
+  },
+  {
+   "address": "bc1quufu2t6pzgzg66wqsat4vjsh9llddda96hweys",
+   "label": "BTC loop address (0.6 BTC round trip)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "bc1q6lmjljevzrtjrpjjn9y2p4laegpr26zvztdegd",
+   "label": "BTC next hop (7.5450169 BTC)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "bc1q8w445lug39qj4fd9n84cmu8nccl8jthfmvuve6",
+   "label": "BTC next hop (2.1 BTC)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "TMxnc434PYthRnaBxEA494xrk7iyufrAZP",
+   "label": "I — exchange deposit address (sweeps to Tronscan 'Binance-Hot 7')",
+   "entity": "service",
+   "resolution": "false lead: received THORChain outbounds for other users' swaps, not attacker funds (C3-26)",
+   "action": "none (resolved false lead)"
+  },
+  {
+   "address": "TCrb6pVQ4BSBhZtNLYuba5RSJjudpptTiE",
+   "label": "J — exchange deposit address (sweeps to Tronscan 'Binance-Hot 7')",
+   "entity": "service",
+   "resolution": "false lead: received THORChain outbounds for other users' swaps, not attacker funds (C3-26)",
+   "action": "none (resolved false lead)"
+  },
+  {
+   "address": "0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936",
+   "label": "Tornado Cash 1 ETH pool (privacy layer)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "0x9732b5296711e24bdbd1f7538c6561617478d8da",
+   "label": "Tornado withdrawal address that forwarded 0.99 ETH to the operator",
+   "flags": [
+    "privacy_funded"
+   ]
+  },
+  {
+   "address": "0x6985ef5b59f80107cd5ed94e58e299d0dd47d1d9",
+   "label": "Second Ethereum wallet: bought the FLIP for the LP account"
+  },
+  {
+   "address": "bc1qj4y8adm3h2jxfzzyxldcr05num3spkap9g5vve",
+   "label": "BTC hop (7.54 BTC)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "bc1q06a6qk8s3px4smw6vzp0x36y99yx956p75hyyd5xjqc2kc9p7rjq3pxk2e",
+   "label": "BTC hop (6.0 BTC)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "bc1qvl9nz6yl6kjcyukq9cc92h8wsmmq6v9y6guk87",
+   "label": "BTC hop (1.53999 BTC)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "bc1q9xuu0dkjzgr2mnpe30nap9qtutg7fr6jvapvxfe3wzklzula29xq97erf7",
+   "label": "BTC hop (1.53998 BTC)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "bc1qv8crcwcjgmmc5t5anz32a5tl9v6p54ayrzxhuj",
+   "label": "BTC wallet (6.0 sub-branch, co-spent 27 Oct)"
+  },
+  {
+   "address": "bc1qz9fr9nvqrkjs5gg22tms6hfzw4w5ckg8k0wjn9",
+   "label": "BTC wallet (1.54 sub-branch, co-spent 27 Oct)"
+  },
+  {
+   "address": "bc1qnglu5q7gjm4z62fj333k5qjgcduqfep4p85q3rf59ckvqx7r6xasatqmdk",
+   "label": "BTC hop (2.09999 BTC)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "bc1qnzl7q4vqe5vl9d2xsgna9dwtw4me6pm9n6wsm2",
+   "label": "BTC hop (2.09998 BTC)",
+   "flags": [
+    "single_use"
+   ]
+  },
+  {
+   "address": "bc1qxg00706w5xmv7v73uxjm9wgpqn3znnk6fu5ggf",
+   "label": "BTC hop (2.0999767 BTC)",
+   "flags": [
+    "pass_through"
+   ]
+  },
+  {
+   "address": "bc1qferte8zyhltagg6u0k47kp0sagck3d24glq2ne",
+   "label": "BTC hop (2.0999756 BTC)",
+   "flags": [
+    "pass_through"
+   ]
+  },
+  {
+   "address": "bc1q3taf77uw57eaarephnxzryelc0dslz3tpdky25",
+   "label": "bc1q3taf77… service-like hot wallet (289 txs, 8,062 BTC received; WalletExplorer cluster 261e3a69b35caf2e, unlabeled)",
+   "entity": "service",
+   "action": "identify the operator, then freeze + KYC request for the 2.09996828 BTC deposit of 15 Sep 01:11 (tx f8012f3c…)"
+  }
+ ],
+ "edges": [
+  {
+   "from": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "5.3 ETH → 13,260.798955 USDT",
+   "usd": 13260.8,
+   "time": "2026-09-12T00:49:42Z",
+   "tx": "4d6ef5350dbdd4ac550761634bd584e3ee9b51856a426c09a7f99b34967f4bc8",
+   "note": "THORChain swap, vault hop collapsed (inbound AE4F26EC…)"
+  },
+  {
+   "from": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "0.15 ETH → 1,105.34675 TRX",
+   "usd": 0,
+   "time": "2026-09-12T00:55:09Z",
+   "tx": "f558f1ed8c7f90029058776cadfb875158e171ebf6ea10d0fbdb5f1549422e7e",
+   "note": "THORChain swap for gas, vault hop collapsed (inbound 0559FDBA…)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "TBuFHA6cxBKRuE7QcdkzqYyWhtSM6gXnCZ",
+   "asset": "13000 USDT",
+   "usd": 13000.0,
+   "time": "2026-09-12T01:44:27Z",
+   "tx": "49e59121a60a3e78286363f1f82c72ffa3d104cccdbe58e6f9c15b8f71d84ed3",
+   "note": "deposit into Chainflip channel (returns to the Vault)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "TRQ88sGrerfrPgHiQQgWqBUSjsqb11gdxm",
+   "asset": "13000 USDT",
+   "usd": 13000.0,
+   "time": "2026-09-12T01:56:33Z",
+   "tx": "59690c422b59c7475b2b7d52991992eb11962506ca55384cd1cb2e2650213e1e",
+   "note": "deposit into Chainflip channel (returns to the Vault)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "TLQ3YSviESxx3nim9dhcvFrs6Gyn8zKfu2",
+   "asset": "26240.18962 USDT",
+   "usd": 26240.18962,
+   "time": "2026-09-12T02:08:00Z",
+   "tx": "f8001af17ae73b54825f8468f361ebe4d0bba9fa9a8e256060e3696a524182b4",
+   "note": "deposit into Chainflip channel (returns to the Vault)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "TPMHrJf1qiXVAnWZpa3FeDaFYg7uSmrySv",
+   "asset": "52467.901204 USDT",
+   "usd": 52467.901204,
+   "time": "2026-09-12T02:18:09Z",
+   "tx": "a37e54a3fedbb32579a9f25e37aa4ab5b8a72e77d51b0bc3d287ac816794c40a",
+   "note": "deposit into Chainflip channel (returns to the Vault)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "TWDWWXZv74W33PYXPiZqkjYcKdwj3aKPSU",
+   "asset": "104923.841453 USDT",
+   "usd": 104923.841453,
+   "time": "2026-09-12T02:29:51Z",
+   "tx": "03e0a406b6452527370c464e198b6ab2879b69ebf0c842d09d3c9ed5bcf6e6f3",
+   "note": "deposit into Chainflip channel (returns to the Vault)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "TCKv1KpizuUfrQFr8pzwPtQRtrQBaBEVF3",
+   "asset": "209835.650339 USDT",
+   "usd": 209835.650339,
+   "time": "2026-09-12T02:40:09Z",
+   "tx": "78343bd3955fde23b333476fc2e193cf916a825c46034ea8c02d89e379ce0ead",
+   "note": "deposit into Chainflip channel (returns to the Vault)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "TKDcouiTiqwV7uEkuvwm3Y1PdBBW8AUQVB",
+   "asset": "375563.327997 USDT",
+   "usd": 375563.327997,
+   "time": "2026-09-12T02:51:39Z",
+   "tx": "fc518670df471f73d235aa67f450e118d8537ef6428ad5956c259197da5b9d01",
+   "note": "deposit into Chainflip channel (returns to the Vault)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "TT2fLntae72J9Kkw24je7VLSecFwFT4U3P",
+   "asset": "330000 USDT",
+   "usd": 330000.0,
+   "time": "2026-09-12T03:00:15Z",
+   "tx": "d94d8864a0d10e72117416dfe09d7a34428f3ca45842cf945e9530ca632284b7",
+   "note": "deposit into Chainflip channel (returns to the Vault)"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "12991.8564 USDT",
+   "usd": 12991.8564,
+   "time": "2026-09-12T01:53:36Z",
+   "tx": "6550eedfb5a185bb050a88d11fdd39c61fdb3108492bbec3b054b7c1696402f9",
+   "note": "regular payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "12995.68431 USDT",
+   "usd": 12995.68431,
+   "time": "2026-09-12T02:02:48Z",
+   "tx": "ab613704c82a0c4fdd50a9e58765e20b368b4070cc61fc8b2ff0860fb3157d0e",
+   "note": "duplicate payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "12991.849955 USDT",
+   "usd": 12991.849955,
+   "time": "2026-09-12T02:06:18Z",
+   "tx": "5a7e7bc5dd918098be31cd4519962ce37c6f1802ad3086c088667c40b05e3433",
+   "note": "regular payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "26235.867402 USDT",
+   "usd": 26235.867402,
+   "time": "2026-09-12T02:12:48Z",
+   "tx": "919112aa03792bd54f5c06c2fd8864a7ebac53cbc9fbb6e1e3213386e63d57b2",
+   "note": "duplicate payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "26232.033802 USDT",
+   "usd": 26232.033802,
+   "time": "2026-09-12T02:16:18Z",
+   "tx": "0e427256015a2cecb08a48d658a844bd4e1399faf8bf6658db4d3cc225107b02",
+   "note": "regular payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "52463.579094 USDT",
+   "usd": 52463.579094,
+   "time": "2026-09-12T02:24:30Z",
+   "tx": "e5ba9b32e0b385f831b12d9d85e8be075996e5100d28048526f81ec33fb20c8c",
+   "note": "duplicate payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "52460.262359 USDT",
+   "usd": 52460.262359,
+   "time": "2026-09-12T02:27:57Z",
+   "tx": "d433e25bb086953d02a560f63f9743e01a5d1a243fe258596f8ffd582e7e4fb9",
+   "note": "regular payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "104919.512812 USDT",
+   "usd": 104919.512812,
+   "time": "2026-09-12T02:35:00Z",
+   "tx": "6f0c10379795f916bbcfaea38041662b55c3276a578ab58309a50d431d9fe435",
+   "note": "duplicate payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "104916.137527 USDT",
+   "usd": 104916.137527,
+   "time": "2026-09-12T02:38:27Z",
+   "tx": "547ec7c7366d6472632dfede906341a76f9d70bce614b6391d9e938f604f8c11",
+   "note": "regular payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "209831.328128 USDT",
+   "usd": 209831.328128,
+   "time": "2026-09-12T02:46:21Z",
+   "tx": "cbb5bfe713e3107cfda617949c5ec2d8d2294227f20a31db356b727e624302e7",
+   "note": "duplicate payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "209827.494582 USDT",
+   "usd": 209827.494582,
+   "time": "2026-09-12T02:49:51Z",
+   "tx": "2c78782557c8ae60f75af1aca2602c8886acbde079bd3190351bcc0027be3142",
+   "note": "regular payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "375555.172173 USDT",
+   "usd": 375555.172173,
+   "time": "2026-09-12T02:58:12Z",
+   "tx": "efaada2412e86ccced4c969e79085da28d1474bde00ef9e170bfd098f0d9f363",
+   "note": "regular payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "329996.19464 USDT",
+   "usd": 329996.19464,
+   "time": "2026-09-12T03:06:27Z",
+   "tx": "440b3a0551a4384328610ce20cd68cf136df50dd8f751b19c7e02cdcb16cc005",
+   "note": "duplicate payout"
+  },
+  {
+   "from": "TEcDijvKSXcfWT7S6rd44H5vNgufm7Y4XC",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "329992.36115 USDT",
+   "usd": 329992.36115,
+   "time": "2026-09-12T03:09:48Z",
+   "tx": "dc0fb2ef9845d7c8ede4d78bf2d8eeb487943bb8c2dea457c970624f9cada056",
+   "note": "regular payout"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "bc1qjqda2hp3yajkkm74t8j9rz7ljghfp8akyyqv55",
+   "asset": "749,000 USDT → 9.64358613 BTC",
+   "usd": 749000,
+   "time": "2026-09-12T03:13:39Z",
+   "tx": "1060f5bbdc3ef776d156e0b18e46bc5ea31a1907e7b4e16dd8c89073db7be52a",
+   "note": "THORChain swap, memo =:b:bc1qjqda…, vault hop collapsed; BTC out CA397227…"
+  },
+  {
+   "from": "bc1qjqda2hp3yajkkm74t8j9rz7ljghfp8akyyqv55",
+   "to": "bc1quufu2t6pzgzg66wqsat4vjsh9llddda96hweys",
+   "asset": "0.6 BTC",
+   "usd": 46601,
+   "time": "2026-09-12T10:45:07Z",
+   "tx": "84a884899f09e7b63e26d79f2d5c0f4edfe713cb5d6689de2690fda5b9f65b32",
+   "note": "USD at implied exit rate $77,668/BTC"
+  },
+  {
+   "from": "bc1quufu2t6pzgzg66wqsat4vjsh9llddda96hweys",
+   "to": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "asset": "0.599 BTC → 46,102.64 USDT",
+   "usd": 46102.64,
+   "time": "2026-09-12T11:05:00Z",
+   "tx": "019f5e4694fb52fdf01e4fd76a140ef3c9391a49d97ecb94b1cf5cf38cedecdc",
+   "note": "THORChain swap back to Tron, vault hop collapsed (inbound 91C74AF8…)"
+  },
+  {
+   "from": "TWSe9ZFc26fQo5vgramdwMCUWi2oKwo2BZ",
+   "to": "bc1qjqda2hp3yajkkm74t8j9rz7ljghfp8akyyqv55",
+   "asset": "46,740 USDT → 0.60153218 BTC",
+   "usd": 46740,
+   "time": "2026-09-12T11:13:36Z",
+   "tx": "2740a19dff0193d94d78686a262211576a4940895bf8c74e482265a3306b8b10",
+   "note": "THORChain swap, vault hop collapsed; BTC out 345AA2C0…"
+  },
+  {
+   "from": "bc1qjqda2hp3yajkkm74t8j9rz7ljghfp8akyyqv55",
+   "to": "bc1q6lmjljevzrtjrpjjn9y2p4laegpr26zvztdegd",
+   "asset": "7.5450169 BTC",
+   "usd": 586006,
+   "time": "2026-09-14T14:17:55Z",
+   "tx": "e473cc08d6b722603211e9efe86260a63878cfdbd80986dbc366dacc2998d5c1",
+   "note": "consolidation + split"
+  },
+  {
+   "from": "bc1qjqda2hp3yajkkm74t8j9rz7ljghfp8akyyqv55",
+   "to": "bc1q8w445lug39qj4fd9n84cmu8nccl8jthfmvuve6",
+   "asset": "2.1 BTC",
+   "usd": 163103,
+   "time": "2026-09-14T14:17:55Z",
+   "tx": "e473cc08d6b722603211e9efe86260a63878cfdbd80986dbc366dacc2998d5c1",
+   "note": "consolidation + split"
+  },
+  {
+   "from": "0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936",
+   "to": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "asset": "0.99477296 ETH",
+   "usd": 2488.92,
+   "time": "2026-09-12T00:26:35Z",
+   "tx": "0x7318bdacbea1360a6ac07d2e58384a6756a040e5581a8cff995c44f079491b25",
+   "note": "Tornado Cash withdrawal (C3-35)"
+  },
+  {
+   "from": "0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936",
+   "to": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "asset": "0.99531056 ETH",
+   "usd": 2490.27,
+   "time": "2026-09-12T00:28:35Z",
+   "tx": "0x4b42078e1d255cf97cf7dcf3d9eff83751affd4c46a1e211330dc1a34040395e",
+   "note": "Tornado Cash withdrawal (C3-35)"
+  },
+  {
+   "from": "0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936",
+   "to": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "asset": "0.99476605 ETH",
+   "usd": 2488.9,
+   "time": "2026-09-12T00:30:59Z",
+   "tx": "0x85bd273c2e891b82c4b4edf19d5581b1b9f402bce450995390e81de0f16393e9",
+   "note": "Tornado Cash withdrawal (C3-35)"
+  },
+  {
+   "from": "0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936",
+   "to": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "asset": "0.99477131 ETH",
+   "usd": 2488.92,
+   "time": "2026-09-12T00:33:59Z",
+   "tx": "0x3bf8dc53a02f45605831b3286e1e943ee6a1edc6457ae74c608dd3ec71d826ec",
+   "note": "Tornado Cash withdrawal (C3-35)"
+  },
+  {
+   "from": "0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936",
+   "to": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "asset": "0.99531216 ETH",
+   "usd": 2490.27,
+   "time": "2026-09-12T00:36:35Z",
+   "tx": "0xf4a9282ae8a710118deb8352a17f1c2572dc934d5702f5317383e19073c68367",
+   "note": "Tornado Cash withdrawal (C3-35)"
+  },
+  {
+   "from": "0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936",
+   "to": "0x9732b5296711e24bdbd1f7538c6561617478d8da",
+   "asset": "0.99470815 ETH",
+   "usd": 2488.74,
+   "time": "2026-09-11T19:44:59Z",
+   "tx": "0x60a4786f33839565be42c7a6b4cffc59650f16ea264c58c77c22c9d894fec548",
+   "note": "Tornado Cash withdrawal (C3-36)"
+  },
+  {
+   "from": "0x9732b5296711e24bdbd1f7538c6561617478d8da",
+   "to": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "asset": "0.99464287 ETH",
+   "usd": 2488.59,
+   "time": "2026-09-12T00:31:35Z",
+   "tx": "0xd7b474e05424a8909aaf967e463ca08a142e275203fe883ced0dacf8cb50c29f",
+   "note": "C3-36"
+  },
+  {
+   "from": "0x6985ef5b59f80107cd5ed94e58e299d0dd47d1d9",
+   "to": "0x9c7a63fadc892df1236f959f76cd0f686de14697",
+   "asset": "675.5556 FLIP (bought for 0.1 ETH)",
+   "usd": 250.2,
+   "time": "2026-09-12T00:58:47Z",
+   "tx": "0xc3cec64d8af4c6621c402606afb0e7f98e985a236428759e9cb7acbe27c9ea5f",
+   "note": "FLIP used to fund the LP account (C3-34)"
+  },
+  {
+   "from": "bc1q6lmjljevzrtjrpjjn9y2p4laegpr26zvztdegd",
+   "to": "bc1qj4y8adm3h2jxfzzyxldcr05num3spkap9g5vve",
+   "asset": "7.54 BTC",
+   "usd": 585616.72,
+   "time": "2026-09-14T14:52:41Z",
+   "tx": "064382c539db69106bd3f80bf9115c8e94a07c1feea51417773baddb3782ac83"
+  },
+  {
+   "from": "bc1qj4y8adm3h2jxfzzyxldcr05num3spkap9g5vve",
+   "to": "bc1q06a6qk8s3px4smw6vzp0x36y99yx956p75hyyd5xjqc2kc9p7rjq3pxk2e",
+   "asset": "6.0 BTC",
+   "usd": 466008.0,
+   "time": "2026-09-14T15:02:25Z",
+   "tx": "4230f0b91a30e0b2c792c554abd255b39c3f8fe69d4f5f7a944e5bc612a17056"
+  },
+  {
+   "from": "bc1qj4y8adm3h2jxfzzyxldcr05num3spkap9g5vve",
+   "to": "bc1qvl9nz6yl6kjcyukq9cc92h8wsmmq6v9y6guk87",
+   "asset": "1.53999 BTC",
+   "usd": 119607.94,
+   "time": "2026-09-14T15:02:25Z",
+   "tx": "4230f0b91a30e0b2c792c554abd255b39c3f8fe69d4f5f7a944e5bc612a17056"
+  },
+  {
+   "from": "bc1q06a6qk8s3px4smw6vzp0x36y99yx956p75hyyd5xjqc2kc9p7rjq3pxk2e",
+   "to": "bc1qv8crcwcjgmmc5t5anz32a5tl9v6p54ayrzxhuj",
+   "asset": "5.99999 BTC",
+   "usd": 466007.22,
+   "time": "2026-09-14T15:47:23Z",
+   "tx": "e7a8b4f283f8efba45d7ec822c8a7aedd4423c42c2857f2c2b6cba9fa2b0b215"
+  },
+  {
+   "from": "bc1qvl9nz6yl6kjcyukq9cc92h8wsmmq6v9y6guk87",
+   "to": "bc1q9xuu0dkjzgr2mnpe30nap9qtutg7fr6jvapvxfe3wzklzula29xq97erf7",
+   "asset": "1.53998 BTC",
+   "usd": 119607.17,
+   "time": "2026-09-14T15:47:23Z",
+   "tx": "02886db3831fec3cbcda831190736fcef8b0302683a5ff70e0c23a4336cac450"
+  },
+  {
+   "from": "bc1q9xuu0dkjzgr2mnpe30nap9qtutg7fr6jvapvxfe3wzklzula29xq97erf7",
+   "to": "bc1qz9fr9nvqrkjs5gg22tms6hfzw4w5ckg8k0wjn9",
+   "asset": "1.53997 BTC",
+   "usd": 119606.39,
+   "time": "2026-09-14T16:09:09Z",
+   "tx": "e481aae4bc34b175ffd70ad06b4d700eb7b6397afb516ccab9cc221921784de2"
+  },
+  {
+   "from": "bc1q8w445lug39qj4fd9n84cmu8nccl8jthfmvuve6",
+   "to": "bc1qnglu5q7gjm4z62fj333k5qjgcduqfep4p85q3rf59ckvqx7r6xasatqmdk",
+   "asset": "2.09999 BTC",
+   "usd": 163102.02,
+   "time": "2026-09-14T14:17:55Z",
+   "tx": "61da18cc9e17ad1e35571f92ce7802cd4e26aceed1fc823a43a29881c3cfc897"
+  },
+  {
+   "from": "bc1qnglu5q7gjm4z62fj333k5qjgcduqfep4p85q3rf59ckvqx7r6xasatqmdk",
+   "to": "bc1qnzl7q4vqe5vl9d2xsgna9dwtw4me6pm9n6wsm2",
+   "asset": "2.09998 BTC",
+   "usd": 163101.25,
+   "time": "2026-09-14T14:52:41Z",
+   "tx": "f7189b0d89dcf7099b0e0dd079b49dbe6c1c4d7d443a03559c8e387d0185bd80"
+  },
+  {
+   "from": "bc1qnzl7q4vqe5vl9d2xsgna9dwtw4me6pm9n6wsm2",
+   "to": "bc1qxg00706w5xmv7v73uxjm9wgpqn3znnk6fu5ggf",
+   "asset": "2.0999767 BTC",
+   "usd": 163100.99,
+   "time": "2026-09-14T15:02:25Z",
+   "tx": "fe3290bba67d83f756f434793ea7e39ad5a497c31c7fdc6da16fdb818698003f"
+  },
+  {
+   "from": "bc1qxg00706w5xmv7v73uxjm9wgpqn3znnk6fu5ggf",
+   "to": "bc1qferte8zyhltagg6u0k47kp0sagck3d24glq2ne",
+   "asset": "2.0999756 BTC",
+   "usd": 163100.9,
+   "time": "2026-09-14T17:47:10Z",
+   "tx": "20c15e4fde26bf28bb79e3f7d68e6ef3fd14ff03963b77747edef060f91faa20"
+  },
+  {
+   "from": "bc1qferte8zyhltagg6u0k47kp0sagck3d24glq2ne",
+   "to": "bc1q3taf77uw57eaarephnxzryelc0dslz3tpdky25",
+   "asset": "2.09996828 BTC",
+   "usd": 163100.34,
+   "time": "2026-09-15T01:11:36Z",
+   "tx": "f8012f3c42a4027d4087e04847e9f46c6d308f7d2b0629c568b62678d88e5dbf"
+  }
+ ]
+}
