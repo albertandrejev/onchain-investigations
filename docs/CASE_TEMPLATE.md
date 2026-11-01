@@ -3,6 +3,7 @@
 <!--
 Copy this file to cases/NN-slug/README.md and replace every <placeholder>.
 Rules for wording, dates, amounts, addresses and diagrams: docs/REPORT_STYLE.md.
+While the case is in progress, title it '# [DRAFT] Case NN: ...' and mark its row in the root README the same way.
 Structure is checked by `python -m tools.casedoc lint` (part of `python verify.py`):
 section names and order, the fixed tables, the two diagrams at the top of
 "How it unfolded", links to the generated reports, and every cited check ID.

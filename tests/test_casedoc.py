@@ -90,6 +90,27 @@ class RulesTest(unittest.TestCase):
         c = t.index("| **Suspicion** |")
         self.assertFlags(t[:a] + t[b:c] + t[a:b] + t[c:], "confidence levels must be in the order")
 
+    def test_draft_title(self):
+        t = case_text().replace("# Case 07:", "# [DRAFT] Case 07:")
+        self.assertEqual(self.lint(t), [])
+        self.assertTrue(casedoc.is_draft(t))
+        self.assertFalse(casedoc.is_draft(case_text()))
+
+    def test_draft_title_number_must_match_folder(self):
+        self.assertFlags(case_text(no="08").replace("# Case 08:", "# [DRAFT] Case 08:"), "does not match the folder")
+
+    def test_draft_label_only_as_prefix(self):
+        self.assertFlags(case_text().replace("# Case 07:", "# DRAFT Case 07:"), "title must be")
+
+    def test_index_label_matches_draft(self):
+        index = ("| [[DRAFT] Case 07: X](cases/07-x/) | a |\n"
+                 "| [Case 08: Y](cases/08-y/) | b |\n")
+        self.assertEqual(casedoc.lint_index("07-x", True, index), [])
+        self.assertEqual(casedoc.lint_index("08-y", False, index), [])
+        self.assertTrue(casedoc.lint_index("07-x", False, index))
+        self.assertTrue(casedoc.lint_index("08-y", True, index))
+        self.assertIn("no row", casedoc.lint_index("09-z", False, index)[0])
+
     def test_heading_inside_code_is_ignored(self):
         t = case_text().replace("## Lessons learned", "```\n## Not a heading\n```\n\n## Lessons learned")
         self.assertEqual(self.lint(t), [])

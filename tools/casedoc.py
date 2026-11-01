@@ -7,7 +7,8 @@
 The rules are the ones in docs/REPORT_STYLE.md that a machine can check:
 section set and order, the fixed tables (case card, addresses, confidence),
 the diagrams at the top of "How it unfolded", links to the generated reports,
-and that every check ID cited in the text exists in reports/verification.md.
+that every check ID cited in the text exists in reports/verification.md, and that
+a case marked "[DRAFT]" in its title is marked the same way in the root README.
 Prose is not checked. A failing lint fails `python verify.py`, like a failing check.
 """
 import re
@@ -49,6 +50,13 @@ CASE_CARD_ROWS = ["Dates", "Chains", "Assets", "Loss", "Outcome", "My role", "Ch
 CONFIDENCE_LEVELS = ["Proven", "Strong", "Moderate", "Suspicion", "Not established"]
 MERMAID_TYPES = ("flowchart", "graph", "sequenceDiagram", "timeline", "gantt", "pie", "xychart-beta")
 CHECK_ID = re.compile(r"\bC(\d+)-(\d+[A-Za-z]?)\b")
+DRAFT = "[DRAFT] "  # title prefix for a case still being written: "# [DRAFT] Case NN: ..."
+
+
+def is_draft(text: str) -> bool:
+    """True when the write-up's title carries the DRAFT label."""
+    h1 = next((l for l in text.splitlines() if l.startswith("# ")), "")
+    return h1.startswith("# " + DRAFT)
 
 
 def _section_of(heading: str) -> Section | None:
@@ -109,9 +117,11 @@ def lint_text(text: str, case_no: str | None = None, verified_ids: set[str] | No
 
     # Title and header note
     h1 = next((l for l in pre if l.startswith("# ")), None)
+    if h1 and h1.startswith("# " + DRAFT):
+        h1 = "# " + h1[2 + len(DRAFT):]
     number = r"\d{2}" if case_no else r"(\d{2}|NN)"  # the template keeps the NN placeholder
     if not h1 or not re.match(rf"# Case {number}: \S", h1):
-        errors.append("title must be '# Case NN: <what happened>'")
+        errors.append("title must be '# Case NN: <what happened>' or '# [DRAFT] Case NN: <what happened>'")
     elif case_no and not h1.startswith(f"# Case {case_no}:"):
         errors.append(f"title number does not match the folder: expected 'Case {case_no}'")
     note = "\n".join(l for l in pre if l.startswith(">"))
@@ -227,6 +237,24 @@ def lint_text(text: str, case_no: str | None = None, verified_ids: set[str] | No
     return errors
 
 
+def lint_index(case_name: str, draft: bool, index: str | None = None) -> list[str]:
+    """The case's row in the root README's Cases table carries the same DRAFT label as its title."""
+    if index is None:
+        path = ROOT / "README.md"
+        if not path.exists():
+            return []
+        index = path.read_text()
+    m = re.search(rf"^\| \[([^\]]*(?:\][^\]]*)?)\]\(cases/{re.escape(case_name)}/?\)", index, flags=re.M)
+    if not m:
+        return [f"root README.md has no row in the Cases table linking cases/{case_name}/"]
+    label = m.group(1)
+    if draft and not label.startswith(DRAFT):
+        return [f"case is a draft: its row in root README.md must start with '{DRAFT}Case {case_name[:2]}'"]
+    if not draft and re.match(r"\[?DRAFT\b", label):
+        return ["case is not a draft: remove the DRAFT label from its row in root README.md"]
+    return []
+
+
 def lint_case(case_dir: Path) -> list[str]:
     case_dir = Path(case_dir)
     readme = case_dir / "README.md"
@@ -240,7 +268,9 @@ def lint_case(case_dir: Path) -> list[str]:
         ids = set(re.findall(r"^\| (C\d+-\d+[A-Za-z]?) \|", vtext, flags=re.M))
         m = re.search(r"Result: \*\*(\d+) passed", vtext)
         passed = int(m.group(1)) if m else None
-    errors = lint_text(readme.read_text(), case_no, ids, passed)
+    text = readme.read_text()
+    errors = lint_text(text, case_no, ids, passed)
+    errors += lint_index(case_dir.name, is_draft(text))
     if (case_dir / "graph.json").exists() and not (case_dir / "reports" / "graph.md").exists():
         errors.append("reports/graph.md missing: run `python -m tools.diagrams` (verify.py does)")
     return errors
