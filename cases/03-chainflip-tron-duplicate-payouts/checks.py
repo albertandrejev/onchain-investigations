@@ -259,7 +259,23 @@ def c_false_lead(r: Report):
            f"{len(h_in)} / {len({x['from'] for x in h_in})}")
 
 
+BLACKLIST_SCAN = ("2026-09-11T00:00", "2026-11-06T00:00")   # day before the attack .. fixed end, for reproducibility
+
+
 def c_status(r: Report):
+    # Was the stolen USDT ever frozen? Three angles: the transfers out of B executed (the USDT
+    # contract reverts a transfer from a blacklisted sender), no freeze-list event names B or H
+    # in the two months after the attack, and neither is on the list at fetch time.
+    outs = {TX_EXIT: "exit 03:13:39", TX_LOOP_OUT: "second swap 11:13:36"}
+    r.claim("C3-28T", "Both USDT transfers out of B executed (a transfer from a blacklisted sender reverts): no freeze before 11:13 on 12 Sep",
+            ["SUCCESS"] * 2, [tron.tx(t)["ret"][0]["contractRet"] for t in outs], evidence=list(outs))
+    ev = tron.usdt_blacklist_events(*BLACKLIST_SCAN)
+    hits = [(e["event"], e["user"], e["time"]) for e in ev if e["user"] in (ATTACKER, TC_VAULT)]
+    r.claim("C3-28E", f"No AddedBlackList / RemovedBlackList / DestroyedBlackFunds event on the USDT contract names B or H, {BLACKLIST_SCAN[0][:10]} .. {BLACKLIST_SCAN[1][:10]}",
+            [], hits, evidence=[ATTACKER, TC_VAULT])
+    counts = {n: sum(e["event"] == n for e in ev) for n in tron.BLACKLIST_EVENTS}
+    r.note("C3-28N", "Tether freeze-list events on the USDT contract in that window (Tether was freezing other addresses)",
+           ", ".join(f"{k} {v}" for k, v in counts.items()))
     for label, a in [("B", ATTACKER), ("H", TC_VAULT)]:
         r.note(f"C3-28{label}", f"Tether freeze list: USDT.isBlackListed({label}) at fetch time",
                tron.usdt_blacklisted(a), evidence=[a])

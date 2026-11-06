@@ -32,11 +32,32 @@ Off-chain identifiers from the client engagement (IP addresses, key fingerprints
 
 ## Quick start
 
-Requires Python 3.10+. Standard library only, no `pip install`.
+Requires Python 3.10+. The code uses the standard library only, so there is nothing to install to run it:
 
 ```bash
 python verify.py
 ```
+
+### Virtual environment
+
+To keep everything isolated, create a venv and install `requirements.txt` (currently empty; any future dependency goes there):
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+python verify.py
+```
+
+One command that does all of it (creates `.venv` if missing, installs `requirements.txt`, runs `verify.py` with your arguments):
+
+```bash
+./start_venv.sh            # everything
+./start_venv.sh 03         # one case
+./start_venv.sh --refresh  # any verify.py flags
+```
+
+Without activating it, call the venv's interpreter directly: `.venv/bin/python verify.py 03`. `verify.py` re-runs its subprocesses with the interpreter it was started with, so the venv is used throughout. `.venv/` is git-ignored.
 
 That runs, offline, from the committed raw-data snapshots:
 
