@@ -2,7 +2,7 @@
 
 > **Sources.** Chainflip's own account is the [incident report of 13 Sep 2026](https://chainflip.io/blog/tron-usdt-exploit-what-happened-and-what-happens-next), the [restart plan of 15 Sep](https://chainflip.io/blog/getting-chainflip-back-up-and-running) and the fix in [chainflip-backend release 2.2.13](https://github.com/chainflip-io/chainflip-backend/releases/tag/2.2.13). Contract addresses come from [Chainflip's mainnet address list](https://docs.chainflip.io/protocol/supported-chains-assets/mainnet-addresses), the memo format from the [Tron vault-swap docs](https://docs.chainflip.io/brokers/vault-swaps-api/tron), and the broadcast model from [Egress: broadcasting funds](https://docs.chainflip.io/protocol/egress-broadcasting-funds). Press coverage repeats Chainflip's statements: [crypto.news](https://crypto.news/chainflip-loses-736442-usdt-in-tron-exploit/), [CryptoSlate](https://cryptoslate.com/chainflip-to-reset-tron-usdt-provider-balances-to-zero-following-736000-exploit/), [Unchained](https://unchainedcrypto.com/chainflip-plans-to-restart-with-tron-paused-and-provider-balances-reset/). As of 31 Oct 2026 I found no public fund-flow analysis with addresses or hashes.
 >
-> **Reproducibility.** Every number is recomputed from raw data (TronGrid, THORNode, mempool.space, Ethereum RPC, a Chainflip State Chain node) by `python cases/03-chainflip-tron-duplicate-payouts/checks.py`: 35 checks plus 9 informational readings, IDs `C3-xx` cited inline. Raw responses are in `data/cache/`, pinned by `data/cache/MANIFEST.sha256`, so the checks run offline. Full table: [reports/verification.md](reports/verification.md). Address scoring: [reports/risk.md](reports/risk.md). USD: USDT at face value, BTC at the rate implied by the exit swap (about $77,668), ETH at the rate implied by the funding swap (about $2,502).
+> **Reproducibility.** Every number is recomputed from raw data (TronGrid, THORNode, mempool.space, Ethereum RPC, a Chainflip State Chain node) by `python cases/03-chainflip-tron-duplicate-payouts/checks.py`: 37 checks plus 10 informational readings, IDs `C3-xx` cited inline. Raw responses are in `data/cache/`, pinned by `data/cache/MANIFEST.sha256`, so the checks run offline. Full table: [reports/verification.md](reports/verification.md). Address scoring: [reports/risk.md](reports/risk.md). USD: USDT at face value, BTC at the rate implied by the exit swap (about $77,668), ETH at the rate implied by the funding swap (about $2,502).
 
 ## TL;DR
 
@@ -10,7 +10,7 @@ On 12 Sep 2026, between 01:44 and 03:10 UTC, one fresh Tron address took 736,442
 
 - The attacker was a registered Chainflip liquidity provider. It deposited USDT through its own LP deposit channels, then submitted the Vault's signed `allBatch` fetch call itself, before Chainflip's broadcaster did, with a Tron memo attached. The memo was a vault swap that could not succeed (USDT on Tron to USDT on Tron), so Chainflip refunded it on top of the normal LP withdrawal. Six memos produced six extra refunds, which add up exactly to the reported loss (C3-12 to C3-16, C3-30, C3-31).
 - Each round re-deposited the whole balance, so the stake doubled every ten minutes: 13k, 26k, 52k, 105k, 210k (C3-09b).
-- Ten minutes after the last payout the attacker sent 749,000 USDT into THORChain and received 9.64358613 BTC. The stolen USDT sat on a freezable Tron address for about 71 minutes (C3-18, C3-19).
+- Ten minutes after the last payout the attacker sent 749,000 USDT into THORChain and received 9.64358613 BTC. The stolen USDT sat on a freezable Tron address for about 71 minutes; nobody froze it (C3-18, C3-19, C3-28E).
 - The operator is one Ethereum address, `0x9c7a…4697`. Tornado Cash paid it about 5.97 ETH in the hours before the attack. It bought the attacker's working capital and gas through THORChain and registered the LP account whose Tron refund address is the attacker's address (C3-32 to C3-36).
 - On Bitcoin, one branch of the proceeds ends in a service-like hot wallet on 15 Sep, and both sub-branches of the other were spent together on 27 Oct (C3-38, C3-40).
 - An apparent "service wallet cashing out at Binance" is a THORChain vault paying other people's swaps (C3-26).
@@ -23,9 +23,9 @@ On 12 Sep 2026, between 01:44 and 03:10 UTC, one fresh Tron address took 736,442
 | Chains | Ethereum → THORChain → Tron → THORChain → Bitcoin; Chainflip State Chain |
 | Assets | USDT (TRC-20) in Chainflip's Tron Vault; ETH and FLIP for the setup; BTC on exit |
 | Loss | 736,442.17 USDT in six duplicate payouts (C3-02, C3-16) |
-| Outcome | Nothing frozen: the USDT left Tron for Bitcoin 71 minutes after the first duplicate payout (C3-18, C3-19). Chainflip fixed the witnesser in release 2.2.13 |
+| Outcome | Nothing frozen: the USDT left Tron for Bitcoin 71 minutes after the first duplicate payout (C3-18, C3-19), and Tether's freeze list never named the attacker's address (C3-28T, C3-28E). Chainflip fixed the witnesser in release 2.2.13 |
 | My role | Independent analysis of public data, done blind before reading Chainflip's posts |
-| Checks | 35 passed plus 9 informational readings, see [reports/verification.md](reports/verification.md) |
+| Checks | 37 passed plus 10 informational readings, see [reports/verification.md](reports/verification.md) |
 
 ## What this analysis adds to Chainflip's report
 
@@ -271,7 +271,7 @@ Funds entering a THORChain vault leave as a swap to the memo destination; the va
 
 ## Containment and recovery
 
-- **Freeze window, missed.** The stolen USDT sat on B from the first duplicate payout (02:02:48) to the exit into THORChain (03:13:39). A Tether blacklisting of B within those 71 minutes would have stopped it; afterwards the value was in Bitcoin. At the snapshot neither B nor the THORChain vault is on Tether's list (C3-28B, C3-28H).
+- **Freeze window, missed.** The stolen USDT sat on B from the first duplicate payout (02:02:48) to the exit into THORChain (03:13:39). A Tether blacklisting of B within those 71 minutes would have stopped it; afterwards the value was in Bitcoin. It did not happen, and the chain shows this three ways. Both transfers out of B executed, and the USDT contract reverts a transfer from a blacklisted sender, so B was not frozen at 03:13 or at 11:13 (C3-28T). From 11 Sep to 6 Nov the USDT contract logged 895 AddedBlackList and 107 DestroyedBlackFunds events, none for B or the THORChain vault, so Tether was freezing other addresses in that period but not these (C3-28E, C3-28N). And at the snapshot neither address is on the list (C3-28B, C3-28H).
 - **Chainflip's response, from its posts.** The incident report of 13 Sep says Chainflip "flagged the exploited funds"; with whom is not public. The restart plan of 15 Sep, as covered by the press, restarts the network with Tron paused and Tron USDT provider balances reset to zero. Release 2.2.13 accepts vault-swap memos only on direct transfers to the Vault, which closes the path the attacker used.
 - **Recovery.** No funds have come back on chain in the addresses traced here, as of the 31 Oct 2026 snapshot. The best remaining lever is the service-like wallet `bc1q3taf77…` (Open leads).
 
@@ -304,7 +304,7 @@ From [reports/risk.md](reports/risk.md) (rules in `risk/model.py`). The whole gr
 
 ## Limitations
 
-- The trace was done from raw data about seven weeks after the incident. Current-state checks (Tether blacklist, balances) are as of the 31 Oct 2026 snapshot.
+- The trace was done from raw data about seven weeks after the incident. Current-state checks (Tether blacklist status, balances) are as of the 31 Oct 2026 snapshot; the scan of Tether freeze-list events covers 11 Sep to 6 Nov 2026.
 - How the attacker obtained each signed payload before broadcast is not visible in Tron or Ethereum data.
 - On Bitcoin, the checks cover the first split of the 7.545 BTC branch (C3-37) and the 27 Oct co-spend (C3-40). The peel chains between them were followed by hand.
 - Attribution of `bc1q3taf77…` needs a commercial cluster database; WalletExplorer groups it in a cluster without a label.

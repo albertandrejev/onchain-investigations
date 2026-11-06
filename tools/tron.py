@@ -77,7 +77,14 @@ def _tron_http(url: str, body: dict | None = None):
     data = json.dumps(body).encode() if body is not None else None
     for attempt in range(7):
         try:
-            return _http(url, data=data, headers=headers, timeout=60)
+            r = _http(url, data=data, headers=headers, timeout=60)
+            # Without a key TronGrid answers HTTP 200 with {"Error": "request rate exceeded ..."}.
+            if isinstance(r, dict) and "Error" in r:
+                if "exceeded" in str(r["Error"]):          # rate limit: wait out the 5 s suspension
+                    time.sleep(6 + 1.5 * attempt)
+                    continue
+                raise FetchError(f"tron: {r['Error']} for {url}")   # never cache an error body
+            return r
         except urllib.error.HTTPError as e:
             if e.code in (429, 503):
                 time.sleep(1.5 * (attempt + 1))
@@ -191,6 +198,33 @@ def usdt_blacklisted(address: str) -> bool:
         "contract_address": USDT, "function_selector": "isBlackListed(address)",
         "parameter": param, "visible": True})
     return int(r["constant_result"][0], 16) == 1
+
+
+BLACKLIST_EVENTS = ("AddedBlackList", "RemovedBlackList", "DestroyedBlackFunds")
+
+
+def usdt_blacklist_events(start: str, end: str, names: tuple[str, ...] = BLACKLIST_EVENTS) -> list[dict]:
+    """Every Tether freeze-list event on the USDT contract between ``start`` and ``end`` (UTC ISO).
+
+    Returns rows ``{"event", "user", "time", "txid"}`` with ``user`` in base58, oldest first.
+    ``isBlackListed`` only says whether an address is frozen *now*; this says whether it ever
+    was in the window. A fixed ``end`` keeps the cached pages, and so the check, reproducible.
+    """
+    rows = []
+    for name in names:
+        path = (f"/v1/contracts/{USDT}/events?event_name={name}&limit=200&order_by=block_timestamp,asc"
+                f"&min_block_timestamp={ms(start)}&max_block_timestamp={ms(end)}")
+        while path:
+            page = get(path)
+            time.sleep(1.1)      # keyless TronGrid allows 1 request/s on the events endpoint
+            for e in page.get("data", []):
+                user = str(e.get("result", {}).get("_user", "")).lower().removeprefix("0x")
+                rows.append({"event": name, "user": to_base58(user) if len(user) == 40 else user,
+                             "time": iso(e["block_timestamp"]), "txid": e["transaction_id"]})
+            nxt = page.get("meta", {}).get("links", {}).get("next")
+            path = nxt.replace(TRONGRID, "") if nxt else None
+    rows.sort(key=lambda r: r["time"])
+    return rows
 
 
 # --------------------------------------------------------------------------- THORChain / Bitcoin
