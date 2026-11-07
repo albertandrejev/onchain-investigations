@@ -1,0 +1,100 @@
+{
+ "key": "getTransaction|[\"3LpmyHmSCPsWpMmGg3S3NgHb6uu33ysACL84EUr6MkRGpJUZJVxTwVuEah7jhdxdUfGLp96Tw7kYQ7VPQDBv8bAJ\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794005562,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "3LpmyHmSCPsWpMmGg3S3NgHb6uu33ysACL84EUr6MkRGpJUZJVxTwVuEah7jhdxdUfGLp96Tw7kYQ7VPQDBv8bAJ"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "MEtk8aEo67idVzBLhdZPRgfuLnQvnyfJg26zsb9xJpw",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "D6BriGzNUxPrmHUWRknEY9fBUgXkqprdS3rhBHgWwQrs",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+        "lamports": 3176,
+        "source": "MEtk8aEo67idVzBLhdZPRgfuLnQvnyfJg26zsb9xJpw"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     },
+     {
+      "program": "spl-memo",
+      "programId": "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
+      "parsed": "\ud83d\udea8 [On-Chain Audit Nov 02 08:08 UTC] $31,768 SOL swap by BHRa on Jupiter v6 Aggregator (SOL) (Tx ..MdgX): -$508 (1.6%) extracted by Solana-Jito-Sandwich-Bot [FHPC] (FHpcNS...7wCT). Proof: https://t.me/mg_core_link_004_06_bot?start=MEV_4A346413_m | tg://resolve?domain=mg_core_link_004_06_bot&start=MEV_4A346413_d",
+      "stackHeight": 1
+     }
+    ],
+    "addressTableLookups": []
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    518060385,
+    8908363015399,
+    1,
+    523015235
+   ],
+   "postBalances": [
+    518052209,
+    8908363018575,
+    1,
+    523015235
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success",
+    "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr invoke [1]",
+    "Program log: Signed by MEtk8aEo67idVzBLhdZPRgfuLnQvnyfJg26zsb9xJpw",
+    "Program log: Memo (len 314): \"\ud83d\udea8 [On-Chain Audit Nov 02 08:08 UTC] $31,768 SOL swap by BHRa on Jupiter v6 Aggregator (SOL) (Tx ..MdgX): -$508 (1.6%) extracted by Solana-Jito-Sandwich-Bot [FHPC] (FHpcNS...7wCT). Proof: https://t.me/mg_core_link_004_06_bot?start=MEV_4A346413_m | tg://resolve?domain=mg_core_link_004_06_bot&start=MEV_4A346413_d\"",
+    "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr consumed 140944 of 202850 compute units",
+    "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 141094,
+   "costUnits": 142519
+  },
+  "version": 0,
+  "slot": 464422568,
+  "transactionIndex": 66,
+  "blockTime": 1793606917
+ }
+}

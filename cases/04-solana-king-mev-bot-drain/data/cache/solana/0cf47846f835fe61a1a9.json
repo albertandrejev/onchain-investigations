@@ -1,0 +1,141 @@
+{
+ "key": "getTransaction|[\"42PkXzNmrTRw9aSLUzRv31q4YkX39CCV6meJe6hBN6xjZWQNrP5RsoPhrmSfeEZruoaHEt1dJNAWPtQWTJ7NQSGp\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794005593,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "42PkXzNmrTRw9aSLUzRv31q4YkX39CCV6meJe6hBN6xjZWQNrP5RsoPhrmSfeEZruoaHEt1dJNAWPtQWTJ7NQSGp"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "6XQTpahMTFf1Rq1MtzayMSCi2dr6ZE5YJdJpCZ5DuFTG",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "FKUsAosTkeThnUmYVSXVUyTwwHqHjBtwcmXwmi8UEGns",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "GFRP4yXUjvcQemf2zRJN8w9sPNaDk5PyBUQdPHD1AzLp",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "EHp2MwmKPaz5YnZ5eM2CZicgctFacouHmWZAnkyEYxtY",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "Edbk565zZkxZmLSzQdXikNpzbQ8DfRhopDBrizps1BDr",
+    "instructions": [
+     {
+      "programId": "GFRP4yXUjvcQemf2zRJN8w9sPNaDk5PyBUQdPHD1AzLp",
+      "accounts": [
+       "6XQTpahMTFf1Rq1MtzayMSCi2dr6ZE5YJdJpCZ5DuFTG",
+       "EHp2MwmKPaz5YnZ5eM2CZicgctFacouHmWZAnkyEYxtY",
+       "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+       "FKUsAosTkeThnUmYVSXVUyTwwHqHjBtwcmXwmi8UEGns",
+       "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      ],
+      "data": "6rouz4zJLFtAuZje3cQDRFpQVpaHZFEV9Pjko7pM81B7fu2G9XdV3y9xpHJqQyuivqwXSo29uhyjAtfdoCQL7h6t1oSpUcj8eAQccUYBKK4hX6WCb2ScUZZno4Q9n7Kg2C8wV",
+      "stackHeight": 1
+     }
+    ],
+    "addressTableLookups": []
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    1212848425,
+    1488440,
+    1141440,
+    0,
+    557413303855,
+    230130698
+   ],
+   "postBalances": [
+    1214331865,
+    0,
+    1141440,
+    0,
+    557413303855,
+    230130698
+   ],
+   "innerInstructions": [
+    {
+     "index": 0,
+     "instructions": [
+      {
+       "program": "spl-token",
+       "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+       "parsed": {
+        "info": {
+         "account": "FKUsAosTkeThnUmYVSXVUyTwwHqHjBtwcmXwmi8UEGns",
+         "destination": "6XQTpahMTFf1Rq1MtzayMSCi2dr6ZE5YJdJpCZ5DuFTG",
+         "owner": "EHp2MwmKPaz5YnZ5eM2CZicgctFacouHmWZAnkyEYxtY"
+        },
+        "type": "closeAccount"
+       },
+       "stackHeight": 2
+      }
+     ]
+    }
+   ],
+   "logMessages": [
+    "Program GFRP4yXUjvcQemf2zRJN8w9sPNaDk5PyBUQdPHD1AzLp invoke [1]",
+    "Program log: Instruction: ExecCloseAta",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 118 of 191823 compute units",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+    "Program GFRP4yXUjvcQemf2zRJN8w9sPNaDk5PyBUQdPHD1AzLp consumed 8581 of 200000 compute units",
+    "Program GFRP4yXUjvcQemf2zRJN8w9sPNaDk5PyBUQdPHD1AzLp success"
+   ],
+   "preTokenBalances": [
+    {
+     "accountIndex": 1,
+     "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "uiTokenAmount": {
+      "uiAmount": null,
+      "decimals": 6,
+      "amount": "0",
+      "uiAmountString": "0"
+     },
+     "owner": "EHp2MwmKPaz5YnZ5eM2CZicgctFacouHmWZAnkyEYxtY",
+     "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+    }
+   ],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 8581,
+   "costUnits": 10069
+  },
+  "version": 0,
+  "slot": 463282784,
+  "transactionIndex": 156,
+  "blockTime": 1793362795
+ }
+}

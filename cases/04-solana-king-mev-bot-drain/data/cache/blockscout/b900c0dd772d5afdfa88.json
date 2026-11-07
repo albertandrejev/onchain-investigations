@@ -1,0 +1,145 @@
+{
+ "key": "https://eth.blockscout.com/api/v2/transactions/0x348e78e6bd87e939f255fa983902f73b03b9bc3bd2e0e052aea5058f6c1a67ed",
+ "fetched_at": 1794043214,
+ "response": {
+  "priority_fee": "85264000000",
+  "raw_input": "0x843bb559e04463425e7bc354eca981cbc115ddb3d1a072d29ef20643094a615cddef424b0000000000000000000000000000000000000000000000000000000000000001bbb7ff1c7cb0206e584d6b48130c962330e16a291606bdfdfb98deed8a310f16000000000000000000000000f2fbf0292215a597f85409e753a4fe4f191663c100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000739495ed00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000038d9000000000000000000000000000000000000000000000000000000000000050db000000000000000000000000000000000000000000000000000000006ae89eeb0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000250677d9315808a5bb3648b386f3fe22d656b91624df3d07eaf28a68fc573e08e0000000000000000000000000000000000000000000000000000000000000001c6fa7af3bedbad3a3d65f36aabc97431b1bbe4c2d2f6e0e47ca60203452f5d6100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d65debb84f11ae6ddb9d4185151a7b317a26dd96e1c7afec18effdec70669993",
+  "is_pending_update": false,
+  "result": "success",
+  "hash": "0x348e78e6bd87e939f255fa983902f73b03b9bc3bd2e0e052aea5058f6c1a67ed",
+  "max_fee_per_gas": "1880512238",
+  "revert_reason": null,
+  "confirmation_duration": [
+   0,
+   12000.0
+  ],
+  "transaction_burnt_fee": "16905493394608",
+  "type": 2,
+  "token_transfers_overflow": false,
+  "confirmations": 34324,
+  "position": 5,
+  "max_priority_fee_per_gas": "1000000",
+  "transaction_tag": null,
+  "created_contract": null,
+  "value": "0",
+  "from": {
+   "ens_domain_name": null,
+   "hash": "0x04d9634DF20aa66b23f114D37c45FA6C6Ab76D56",
+   "implementations": [],
+   "is_contract": false,
+   "is_scam": false,
+   "is_verified": false,
+   "metadata": null,
+   "name": null,
+   "private_tags": [],
+   "proxy_type": null,
+   "public_tags": [],
+   "reputation": "ok",
+   "watchlist_names": []
+  },
+  "gas_used": "85264",
+  "status": "ok",
+  "to": {
+   "ens_domain_name": null,
+   "hash": "0xD78D199f8C402e7B5Cc2abE278dF0412400a3BAe",
+   "implementations": [],
+   "is_contract": true,
+   "is_scam": false,
+   "is_verified": true,
+   "metadata": {
+    "tags": [
+     {
+      "meta": {
+       "tooltipUrl": "https://mayan.finance/"
+      },
+      "name": "Mayan: Swift v2 Destination",
+      "ordinal": 10,
+      "slug": "mayan-swift-v2-destination",
+      "tagType": "name"
+     },
+     {
+      "meta": {
+       "appID": "mayan-swap"
+      },
+      "name": "Mayan",
+      "ordinal": 0,
+      "slug": "mayan",
+      "tagType": "protocol"
+     }
+    ]
+   },
+   "name": "SwiftDest",
+   "private_tags": [],
+   "proxy_type": null,
+   "public_tags": [],
+   "reputation": "ok",
+   "watchlist_names": []
+  },
+  "authorization_list": [],
+  "method": "cancelOrder",
+  "fee": {
+   "type": "actual",
+   "value": "16990757394608"
+  },
+  "gas_limit": "90981",
+  "gas_price": "199272347",
+  "decoded_input": {
+   "method_call": "cancelOrder(bytes32 orderHash, (uint8,bytes32,bytes32,uint16,bytes32,bytes32,uint64,uint64,uint64,uint64,uint64,uint8,uint8,bytes32) params, (uint16,bytes32,uint8,bytes32) extraParams, bytes32 canceler)",
+   "method_id": "843bb559",
+   "parameters": [
+    {
+     "name": "orderHash",
+     "type": "bytes32",
+     "value": "0xe04463425e7bc354eca981cbc115ddb3d1a072d29ef20643094a615cddef424b"
+    },
+    {
+     "name": "params",
+     "type": "(uint8,bytes32,bytes32,uint16,bytes32,bytes32,uint64,uint64,uint64,uint64,uint64,uint8,uint8,bytes32)",
+     "value": [
+      "1",
+      "0xbbb7ff1c7cb0206e584d6b48130c962330e16a291606bdfdfb98deed8a310f16",
+      "0x000000000000000000000000f2fbf0292215a597f85409e753a4fe4f191663c1",
+      "2",
+      "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "1939117549",
+      "0",
+      "232848",
+      "20699",
+      "1793629931",
+      "0",
+      "2",
+      "0x50677d9315808a5bb3648b386f3fe22d656b91624df3d07eaf28a68fc573e08e"
+     ]
+    },
+    {
+     "name": "extraParams",
+     "type": "(uint16,bytes32,uint8,bytes32)",
+     "value": [
+      "1",
+      "0xc6fa7af3bedbad3a3d65f36aabc97431b1bbe4c2d2f6e0e47ca60203452f5d61",
+      "0",
+      "0x0000000000000000000000000000000000000000000000000000000000000000"
+     ]
+    },
+    {
+     "name": "canceler",
+     "type": "bytes32",
+     "value": "0xd65debb84f11ae6ddb9d4185151a7b317a26dd96e1c7afec18effdec70669993"
+    }
+   ]
+  },
+  "fhe_operations_count": 0,
+  "token_transfers": [],
+  "base_fee_per_gas": "198272347",
+  "timestamp": "2026-11-02T14:33:11.000000Z",
+  "nonce": 51130,
+  "historic_exchange_rate": "2250.7387134094824",
+  "transaction_types": [
+   "contract_call"
+  ],
+  "exchange_rate": "2245.81",
+  "block_number": 26327717,
+  "has_error_in_internal_transactions": false
+ }
+}

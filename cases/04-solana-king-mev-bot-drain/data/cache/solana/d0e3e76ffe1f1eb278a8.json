@@ -1,0 +1,104 @@
+{
+ "key": "getTransaction|[\"4kW9S9GkWPhLzypYKyomucy4cvhP8fbcrj5ZNMzBCFR8duRGd3AgJSvxkvbnv5pWkNVRrAyY6wR6PYrauVeV7sdC\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009399,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "4kW9S9GkWPhLzypYKyomucy4cvhP8fbcrj5ZNMzBCFR8duRGd3AgJSvxkvbnv5pWkNVRrAyY6wR6PYrauVeV7sdC"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "UFEAUjB3HSXUrTsCRrDErcC21T4k8ry8D2Wp7U44dnu",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "ComputeBudget111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "DzjShuSPLuzcgzpbnkUfbNxPveKuw4VPs6GKL5xm2eXA",
+    "instructions": [
+     {
+      "programId": "ComputeBudget111111111111111111111111111111",
+      "accounts": [],
+      "data": "JC3gyu",
+      "stackHeight": 1
+     },
+     {
+      "programId": "ComputeBudget111111111111111111111111111111",
+      "accounts": [],
+      "data": "3vGhvZn9zGuM",
+      "stackHeight": 1
+     },
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+        "lamports": 1000,
+        "source": "UFEAUjB3HSXUrTsCRrDErcC21T4k8ry8D2Wp7U44dnu"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ]
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5050,
+   "preBalances": [
+    1294950,
+    993782963,
+    1,
+    1
+   ],
+   "postBalances": [
+    1288900,
+    993783963,
+    1,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+    "Program ComputeBudget111111111111111111111111111111 success",
+    "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+    "Program ComputeBudget111111111111111111111111111111 success",
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 450,
+   "costUnits": 1784
+  },
+  "version": "legacy",
+  "slot": 445322380,
+  "transactionIndex": 790,
+  "blockTime": 1788865437
+ }
+}

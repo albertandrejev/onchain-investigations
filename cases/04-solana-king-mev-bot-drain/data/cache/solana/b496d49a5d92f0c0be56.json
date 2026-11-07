@@ -1,0 +1,143 @@
+{
+ "key": "getTransaction|[\"3ZrRrWF97p6g6GihHzVz51H1ud9Gm2RNWPTZmWnzuDSAYQPJASMPaUToDxt5H19VAKZMLwmSo8DFP5MvxMXm4vmf\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009379,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "3ZrRrWF97p6g6GihHzVz51H1ud9Gm2RNWPTZmWnzuDSAYQPJASMPaUToDxt5H19VAKZMLwmSo8DFP5MvxMXm4vmf"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "GQEZDiygN1Ric4po2zCSs42kfr6SeBL6Pz1G4DENVWyA",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "BVDe9fdcpohajHHrSKeUtMTbWiPF9QVj4ueqgZLS4t19",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "GS4CU59F31iL7aR2Q8zVS8DRrcRnXX1yjQ66TqNVQnaR",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "6AHr53ynY3d6ipG9ATQ3C1v2n324N7N38hpMCWVt3oUG",
+    "instructions": [
+     {
+      "programId": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+      "accounts": [
+       "GQEZDiygN1Ric4po2zCSs42kfr6SeBL6Pz1G4DENVWyA",
+       "BVDe9fdcpohajHHrSKeUtMTbWiPF9QVj4ueqgZLS4t19",
+       "GS4CU59F31iL7aR2Q8zVS8DRrcRnXX1yjQ66TqNVQnaR",
+       "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA"
+      ],
+      "data": "ihFZiQrP7CM",
+      "stackHeight": 1
+     },
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+        "lamports": 13576444,
+        "source": "GQEZDiygN1Ric4po2zCSs42kfr6SeBL6Pz1G4DENVWyA"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ],
+    "transactionConfig": {
+     "priorityFee": null,
+     "computeUnitLimit": 17871,
+     "loadedAccountsDataSizeLimit": 67108864,
+     "heapSize": null
+    }
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    11690042,
+    32553363096,
+    1891402,
+    1,
+    1260746836,
+    4641093
+   ],
+   "postBalances": [
+    0,
+    32566939540,
+    0,
+    1,
+    1260746836,
+    4641093
+   ],
+   "innerInstructions": [
+    {
+     "index": 0,
+     "instructions": [
+      {
+       "programId": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+       "accounts": [
+        "GS4CU59F31iL7aR2Q8zVS8DRrcRnXX1yjQ66TqNVQnaR"
+       ],
+       "data": "2qWhKzSZDTHiG5o2YQAAcRaZE9fGiKhZad58SrtEczSdWxrKTzFb2Sgh7ySjW2mZeVeSo14UmUXZWb5MdziYjQ6noWejoT7Sn7DUVcSyf6erKV84RsE6HAkAb",
+       "stackHeight": 2
+      }
+     ]
+    }
+   ],
+   "logMessages": [
+    "Program pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA invoke [1]",
+    "Program log: Instruction: CloseUserVolumeAccumulator",
+    "Program data: kp+9rJJYOPTk0v1hLP9r9tJTkgHQnHFVJ3qxC1Uzpn7lJCVOjHkvHcsP6moAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+    "Program pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA invoke [2]",
+    "Program pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA consumed 2116 of 5622 compute units",
+    "Program pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA success",
+    "Program pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA consumed 14743 of 17871 compute units",
+    "Program pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA success",
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 14893,
+   "costUnits": 19086
+  },
+  "version": 1,
+  "slot": 464970889,
+  "transactionIndex": 698,
+  "blockTime": 1793724363
+ }
+}

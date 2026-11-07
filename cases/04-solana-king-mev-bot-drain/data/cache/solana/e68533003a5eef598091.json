@@ -1,0 +1,80 @@
+{
+ "key": "getTransaction|[\"t9tMJpmSyVZKJrnLXB3kxRpV6uuSvWxoJktPAZ1Pvh62uG71HJgYdnDTPMMPxrp1j5vdBUZydTwbQfbjFDEe8Bq\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009400,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "t9tMJpmSyVZKJrnLXB3kxRpV6uuSvWxoJktPAZ1Pvh62uG71HJgYdnDTPMMPxrp1j5vdBUZydTwbQfbjFDEe8Bq"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "UFEFHTJKH2Yc16SnvrbUwcopFbDaBYwY78wEXXCrdnu",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "ApT7GDW8ySTTiwGuWLNeL8PDybsKQdZNypuauTRLjM9h",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "UFEFHTJKH2Yc16SnvrbUwcopFbDaBYwY78wEXXCrdnu",
+        "lamports": 12900800000,
+        "source": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ]
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    13894581963,
+    68720725,
+    1
+   ],
+   "postBalances": [
+    993776963,
+    12969520725,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 150,
+   "costUnits": 1481
+  },
+  "version": "legacy",
+  "slot": 443630062,
+  "transactionIndex": 876,
+  "blockTime": 1788331110
+ }
+}

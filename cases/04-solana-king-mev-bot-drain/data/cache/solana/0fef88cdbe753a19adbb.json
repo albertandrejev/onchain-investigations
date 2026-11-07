@@ -1,0 +1,80 @@
+{
+ "key": "getTransaction|[\"3ivfF2JmYVqna3dKeby5jhbwvM79Aqw456iaY5JFJuxcSTUS4ahfp59C1XsK9wFtb1HashjDnR5Y6d2aVkiB1Jah\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009377,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "3ivfF2JmYVqna3dKeby5jhbwvM79Aqw456iaY5JFJuxcSTUS4ahfp59C1XsK9wFtb1HashjDnR5Y6d2aVkiB1Jah"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "3QHVvLgMyEPQR3BzoxDA32nXPUZDAkqnRkdhY7Gaz5w8",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "GZEG7MWp8Uje9hFo3fScLBzVPLoctTXPVPoFQsRH87gj",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+        "lamports": 125944834,
+        "source": "3QHVvLgMyEPQR3BzoxDA32nXPUZDAkqnRkdhY7Gaz5w8"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ]
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    193497679479,
+    12563499132,
+    1
+   ],
+   "postBalances": [
+    193371729645,
+    12689443966,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 150,
+   "costUnits": 1481
+  },
+  "version": "legacy",
+  "slot": 466202251,
+  "transactionIndex": 522,
+  "blockTime": 1793988004
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "key": "getTransaction|[\"25aGjh6GD4DrUmueHdDF3CQBehK17rWS8stme3NAomnoi3Zb1GHDdn7ZChD6VKgTKevimYNv4tEtxb1mSXpynxQu\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009408,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "25aGjh6GD4DrUmueHdDF3CQBehK17rWS8stme3NAomnoi3Zb1GHDdn7ZChD6VKgTKevimYNv4tEtxb1mSXpynxQu"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "UFEFHTJKH2Yc16SnvrbUwcopFbDaBYwY78wEXXCrdnu",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "APRbvBhZcoeVePtCAvR7dGHEqFCTXbY3iVVKwvLfkBJ7",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "UFEFHTJKH2Yc16SnvrbUwcopFbDaBYwY78wEXXCrdnu",
+        "lamports": 36610300000,
+        "source": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ]
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    37610291000,
+    58785101331,
+    1
+   ],
+   "postBalances": [
+    999986000,
+    95395401331,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 150,
+   "costUnits": 1481
+  },
+  "version": "legacy",
+  "slot": 431390355,
+  "transactionIndex": 935,
+  "blockTime": 1783433065
+ }
+}

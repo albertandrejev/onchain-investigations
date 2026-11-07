@@ -1,0 +1,444 @@
+{
+ "key": "https://api.relay.link/requests/v2?hash=4GDQEULcjo7oLBcdyvXHwAbgnZRMGsQGZp9mM9ND6ao1XuwU36v4sbSfGHXF75E8kqnvDkGv5n3zRAAkPi8rRCPE",
+ "fetched_at": 1794005576,
+ "response": {
+  "requests": [
+   {
+    "id": "0x17936248581c91ab223d41d6ba5868423f5db2c06f98ee276a2c7a3ad50de37b",
+    "status": "success",
+    "user": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+    "recipient": "0xF2fbf0292215A597f85409E753A4fE4F191663C1",
+    "depositAddress": null,
+    "data": {
+     "slippageTolerance": "200",
+     "failReason": "N/A",
+     "refundFailReason": "N/A",
+     "subsidizedRequest": false,
+     "fees": {
+      "gas": "537682",
+      "fixed": "212971",
+      "price": "1490932",
+      "gateway": "599994"
+     },
+     "feesUsd": {
+      "gas": "0.048447",
+      "fixed": "0.019189",
+      "price": "0.134340",
+      "gateway": "0.054062"
+     },
+     "inTxs": [
+      {
+       "fee": "5000",
+       "data": {
+        "signer": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+        "instructions": [
+         {
+          "data": "GNK2Qf",
+          "keys": [],
+          "programId": "ComputeBudget111111111111111111111111111111"
+         },
+         {
+          "data": "VyPN4WGD269ghgoiH4ZzWUBkWikFf8gseZ883EZBHSoWYMmh1EY5LPM6JRPES9rKV",
+          "keys": [
+           {
+            "pubkey": "Dodg2HifwU8rmaVVyMyUZDGTRbqAJTyVYxXPwcbNpBKc",
+            "isSigner": false,
+            "isWritable": false
+           },
+           {
+            "pubkey": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+            "isSigner": true,
+            "isWritable": true
+           },
+           {
+            "pubkey": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+            "isSigner": true,
+            "isWritable": true
+           },
+           {
+            "pubkey": "7uTT8Xi5RWXzy7h9XL244GRgEycDYDhLjr3ZyNdXi8pZ",
+            "isSigner": false,
+            "isWritable": true
+           },
+           {
+            "pubkey": "11111111111111111111111111111111",
+            "isSigner": false,
+            "isWritable": false
+           }
+          ],
+          "programId": "99vQwtBwYtrqqD9YSXbdum3KBdxPAVxYTaQ3cfnJSrN2"
+         }
+        ]
+       },
+       "stateChanges": [
+        {
+         "change": {
+          "data": {
+           "tokenKind": "ft",
+           "tokenAddress": "11111111111111111111111111111111"
+          },
+          "kind": "token",
+          "balanceDiff": "-1000005000"
+         },
+         "address": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc"
+        },
+        {
+         "change": {
+          "data": {
+           "tokenKind": "ft",
+           "tokenAddress": "11111111111111111111111111111111"
+          },
+          "kind": "token",
+          "balanceDiff": "1000000000"
+         },
+         "address": "7uTT8Xi5RWXzy7h9XL244GRgEycDYDhLjr3ZyNdXi8pZ"
+        }
+       ],
+       "hash": "4GDQEULcjo7oLBcdyvXHwAbgnZRMGsQGZp9mM9ND6ao1XuwU36v4sbSfGHXF75E8kqnvDkGv5n3zRAAkPi8rRCPE",
+       "block": 464506368,
+       "type": "onchain",
+       "chainId": 792703809,
+       "timestamp": 1793624859,
+       "status": "success"
+      }
+     ],
+     "currency": "eth",
+     "currencyObject": {},
+     "feeCurrency": "sol",
+     "feeCurrencyObject": {
+      "chainId": 792703809,
+      "address": "11111111111111111111111111111111",
+      "symbol": "SOL",
+      "name": "Solana",
+      "decimals": 9,
+      "metadata": {
+       "logoURI": "https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png",
+       "verified": true
+      }
+     },
+     "appFeeCurrencyObject": {
+      "chainId": 792703809,
+      "address": "11111111111111111111111111111111",
+      "symbol": "SOL",
+      "name": "Solana",
+      "decimals": 9,
+      "metadata": {
+       "logoURI": "https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png",
+       "verified": true
+      }
+     },
+     "appFees": [],
+     "expandedPriceImpact": {
+      "quoted": {
+       "swap": {
+        "usd": "-0.496241"
+       },
+       "execution": {
+        "usd": "-0.070493"
+       },
+       "relay": {
+        "usd": "-0.056345"
+       },
+       "app": {
+        "usd": "0.000000"
+       },
+       "sponsored": {
+        "usd": "0"
+       }
+      },
+      "actual": {
+       "swap": {
+        "usd": "-0.451024"
+       },
+       "execution": {
+        "usd": "-0.043911"
+       },
+       "relay": {
+        "usd": "-0.056345"
+       },
+       "app": {
+        "usd": "0.000000"
+       },
+       "sponsored": {
+        "usd": "0"
+       }
+      }
+     },
+     "paidAppFees": [],
+     "metadata": {
+      "sender": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+      "recipient": "0xF2fbf0292215A597f85409E753A4fE4F191663C1",
+      "currencyIn": {
+       "currency": {
+        "chainId": 792703809,
+        "address": "11111111111111111111111111111111",
+        "symbol": "SOL",
+        "name": "Solana",
+        "decimals": 9,
+        "metadata": {
+         "logoURI": "https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png",
+         "verified": true
+        }
+       },
+       "amount": "1000000000",
+       "amountFormatted": "1.0",
+       "amountUsd": "93.909150",
+       "amountUsdCurrent": "90.061362",
+       "minimumAmount": "1000000000"
+      },
+      "currencyOut": {
+       "currency": {
+        "chainId": 1,
+        "address": "0x0000000000000000000000000000000000000000",
+        "symbol": "ETH",
+        "name": "Ether",
+        "decimals": 18,
+        "metadata": {
+         "logoURI": "https://assets.relay.link/icons/1/light.png",
+         "verified": true
+        }
+       },
+       "amount": "40953161366304933",
+       "amountFormatted": "0.040953161366304933",
+       "amountUsd": "93.357870",
+       "amountUsdCurrent": "91.590547",
+       "minimumAmount": "40953161366304933"
+      },
+      "rate": "0.04095316136630493",
+      "route": {
+       "origin": {
+        "inputCurrency": {
+         "currency": {
+          "chainId": 792703809,
+          "address": "11111111111111111111111111111111",
+          "symbol": "SOL",
+          "name": "Solana",
+          "decimals": 9,
+          "metadata": {
+           "logoURI": "https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png",
+           "verified": true
+          }
+         },
+         "amount": "1000000000",
+         "amountFormatted": "1.0",
+         "amountUsd": "93.909150",
+         "minimumAmount": "1000000000"
+        },
+        "outputCurrency": {
+         "currency": {
+          "chainId": 792703809,
+          "address": "11111111111111111111111111111111",
+          "symbol": "SOL",
+          "name": "Solana",
+          "decimals": 9,
+          "metadata": {
+           "logoURI": "https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png",
+           "verified": true
+          }
+         },
+         "amount": "1000000000",
+         "amountFormatted": "1.0",
+         "amountUsd": "93.909150",
+         "minimumAmount": "1000000000"
+        },
+        "router": "relay"
+       },
+       "destination": {
+        "inputCurrency": {
+         "currency": {
+          "chainId": 1,
+          "address": "0x0000000000000000000000000000000000000000",
+          "symbol": "ETH",
+          "name": "Ether",
+          "decimals": 18,
+          "metadata": {
+           "logoURI": "https://assets.relay.link/icons/1/light.png",
+           "verified": true
+          }
+         },
+         "amount": "40921665574551256",
+         "amountFormatted": "0.040921665574551256",
+         "amountUsd": "93.286071",
+         "minimumAmount": "40103232263060231"
+        },
+        "outputCurrency": {
+         "currency": {
+          "chainId": 1,
+          "address": "0x0000000000000000000000000000000000000000",
+          "symbol": "ETH",
+          "name": "Ether",
+          "decimals": 18,
+          "metadata": {
+           "logoURI": "https://assets.relay.link/icons/1/light.png",
+           "verified": true
+          }
+         },
+         "amount": "40921665574551256",
+         "amountFormatted": "0.040921665574551256",
+         "amountUsd": "93.286071",
+         "minimumAmount": "40103232263060231"
+        },
+        "router": "relay"
+       }
+      }
+     },
+     "price": "40953161366304933",
+     "usesExternalLiquidity": false,
+     "timeEstimate": 4,
+     "outTxs": [
+      {
+       "fee": "19262693747840",
+       "data": {
+        "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+        "data": "0x93fdd0b342dae158e497a79fd49974637e69f480c3e210aed12fa5d58ab48184",
+        "from": "0xa67d7eb4dc68fa6ce8e34ef8cadaf075b9893fbb",
+        "value": "40953161366304933"
+       },
+       "stateChanges": [
+        {
+         "change": {
+          "data": {
+           "tokenKind": "ft",
+           "tokenAddress": "0x0000000000000000000000000000000000000000"
+          },
+          "kind": "token",
+          "balanceDiff": "-40953161366304933"
+         },
+         "address": "0xa67d7eb4dc68fa6ce8e34ef8cadaf075b9893fbb"
+        },
+        {
+         "change": {
+          "data": {
+           "tokenKind": "ft",
+           "tokenAddress": "0x0000000000000000000000000000000000000000"
+          },
+          "kind": "token",
+          "balanceDiff": "40953161366304933"
+         },
+         "address": "0xf2fbf0292215a597f85409e753a4fe4f191663c1"
+        }
+       ],
+       "hash": "0x32c633f0a03510cd3d31f5ac4d27a18371132b759402df12001f69944a727391",
+       "block": 26327294,
+       "type": "onchain",
+       "chainId": 1,
+       "timestamp": 1793624867,
+       "status": "success"
+      }
+     ]
+    },
+    "protocol": {
+     "orderId": "0x93fdd0b342dae158e497a79fd49974637e69f480c3e210aed12fa5d58ab48184",
+     "hubType": "onchain",
+     "isWithdrawable": false,
+     "solver": {
+      "address": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
+      "protocolChainId": "base",
+      "chainId": 8453
+     },
+     "deposit": {
+      "origin": {
+       "amount": "1000000000",
+       "chainId": 792703809,
+       "currency": "11111111111111111111111111111111",
+       "depositor": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+       "depository": "99vQwtBwYtrqqD9YSXbdum3KBdxPAVxYTaQ3cfnJSrN2",
+       "onchainId": "0x0a7d05ed4c0f4093cf7a82418c848677a3394fed2bb42ed1cd8feb350249b121",
+       "transactionId": "4GDQEULcjo7oLBcdyvXHwAbgnZRMGsQGZp9mM9ND6ao1XuwU36v4sbSfGHXF75E8kqnvDkGv5n3zRAAkPi8rRCPE"
+      },
+      "relay": {
+       "amount": "1000000000",
+       "chainId": 537713,
+       "currency": "41683227290306695616191826679471220370604413411014778506451346235473052273383",
+       "hash": "0x8ab2a42289d994317364cc9117fec7128d4895b3bde280ffb218956310363a53",
+       "operation": "mint",
+       "tokenMetadata": {
+        "decimals": 9,
+        "name": "Solana on Solana",
+        "symbol": "solana-SOL"
+       }
+      },
+      "attestation": {
+       "execution": {
+        "actions": [
+         "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000009ded8eaade44f8184c5ef7d6c0d15782b7d53bb65c27dede7502c8a2617b1fc85b0c20e7169ceda3c24b8992ba6aad64b3578ae7000000000000000000000000000000000000000000000000000000003b9aca00"
+        ],
+        "idempotencyKey": "0x9d5fca60b4e9db8bbcbe324d166895638c9f041968b148c70d80ada208e60088"
+       },
+       "attestations": [
+        {
+         "oracleChainId": "537713",
+         "oracleContract": "0xd180dc3b8cb71b185c563b6e4857592ca93dacaf",
+         "signerAddress": "0x2c598f73a5ab65c0510fd8efb740826d291cab0e",
+         "signature": "0x3e212cfbc8f54b01f5b80024dba82bbdef561a5418a5f599c48a55263731a4cc008ffac04ad25b5c8bb82db43fbff9c8dbc92536d28500b04e5951cf19fc3dcc1b"
+        },
+        {
+         "oracleChainId": "537713",
+         "oracleContract": "0xd180dc3b8cb71b185c563b6e4857592ca93dacaf",
+         "signerAddress": "0xa41716ff5a7d4ad22f83b7cb74d9af9767a96a52",
+         "signature": "0xd58df14752d983148c6db4744019004c9db627b04e803d527ed16d82e45761ec668c2fdaf70aeb171446d7cdd166dda6983fd55962a9737dbe70b0da3f3089911c"
+        }
+       ]
+      }
+     },
+     "settlement": {
+      "destination": {
+       "fills": [
+        {
+         "chainId": 1,
+         "transactionId": "0x32c633f0a03510cd3d31f5ac4d27a18371132b759402df12001f69944a727391"
+        }
+       ],
+       "refunds": []
+      },
+      "relay": {
+       "amount": "1000000000",
+       "chainId": 537713,
+       "currency": "41683227290306695616191826679471220370604413411014778506451346235473052273383",
+       "hash": "0x8ab2a42289d994317364cc9117fec7128d4895b3bde280ffb218956310363a53",
+       "operation": "transfer",
+       "solver": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
+       "tokenMetadata": {
+        "decimals": 9,
+        "name": "Solana on Solana",
+        "symbol": "solana-SOL"
+       }
+      },
+      "attestation": {
+       "execution": {
+        "actions": [
+         "0x00000000000000000000000000000000000000000000000000000000000000020000000000000000000000009ded8eaade44f8184c5ef7d6c0d15782b7d53bb6000000000000000000000000d5fa4f5834722d85d95f45387ed60ce09ba4e36f5c27dede7502c8a2617b1fc85b0c20e7169ceda3c24b8992ba6aad64b3578ae7000000000000000000000000000000000000000000000000000000003b9aca00"
+        ],
+        "idempotencyKey": "0xb00f065ea82cd23b3c4e4f257864a104990002b9dcfa9c5d4ea1181f449a0c56"
+       },
+       "attestations": [
+        {
+         "oracleChainId": "537713",
+         "oracleContract": "0xd180dc3b8cb71b185c563b6e4857592ca93dacaf",
+         "signerAddress": "0x2c598f73a5ab65c0510fd8efb740826d291cab0e",
+         "signature": "0x51e4dbcbf216ce0887e749fc0f23b36775674f5817c89873dca67bc9c0e2ba601866cff2141974f3d9a9c7bea455d00e8fca32d14569fcab455ad66446e043141c"
+        },
+        {
+         "oracleChainId": "537713",
+         "oracleContract": "0xd180dc3b8cb71b185c563b6e4857592ca93dacaf",
+         "signerAddress": "0xa41716ff5a7d4ad22f83b7cb74d9af9767a96a52",
+         "signature": "0x6f8817403f790569a5cca8be2877a2a185aae51608c78d32888fee5dc449092159a25523655fc521e7e6dbfd3179271408a485935b1dc55aa8b804f13f3190081b"
+        }
+       ]
+      }
+     }
+    },
+    "createdAt": "2026-11-02T13:07:39.395Z",
+    "updatedAt": "2026-11-02T13:08:20.695Z"
+   }
+  ],
+  "deprecation": {
+   "message": "GET /requests/v2 is deprecated. Migrate to GET /requests/v3. Relay reduces the v2 rate limit in stages from September 1, 2026. Relay retires v2 on November 24, 2026.",
+   "deprecatedAt": "2026-07-22T00:00:00Z",
+   "migrationGuide": "https://docs.relay.link/references/api/api_guides/migrating-to-requests-v3",
+   "throttledFrom": "2026-09-01T00:00:00Z",
+   "sunsetAt": "2026-11-24T00:00:00Z",
+   "successor": "https://api.relay.link/requests/v3"
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "key": "getAccountInfo|[\"So11111111111111111111111111111111111111112\", {\"encoding\": \"jsonParsed\"}]",
+ "fetched_at": 1794005587,
+ "response": {
+  "context": {
+   "slot": 466284063,
+   "apiVersion": "4.3.0-alpha.2"
+  },
+  "value": {
+   "lamports": 1863895793513,
+   "data": {
+    "program": "spl-token",
+    "parsed": {
+     "info": {
+      "decimals": 9,
+      "freezeAuthority": null,
+      "isInitialized": true,
+      "mintAuthority": null,
+      "supply": "0"
+     },
+     "type": "mint"
+    },
+    "space": 82
+   },
+   "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+   "executable": false,
+   "rentEpoch": 18446744073709551615,
+   "space": 82
+  }
+ }
+}

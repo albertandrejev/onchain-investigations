@@ -15,7 +15,7 @@ This repository shows how I work:
 
 - I trace funds across chains and bridges, from the attacker's first gas payment to exchange deposit addresses, and name the points where funds can be frozen or KYC data requested. Case 01 covers six chains and three bridge types; case 03 follows an exploit from Tornado Cash through Tron and THORChain to Bitcoin.
 - I keep proof levels apart. Each case separates proven facts from strong, moderate and suspicion-level statements, records the false leads and how they were resolved, and never treats infrastructure as an owner.
-- My numbers can be checked. 109 automated checks tie each figure in the write-ups to a transaction hash and recompute it from raw node responses. They have no dependencies and run offline.
+- My numbers can be checked. 176 automated checks tie each figure in the write-ups to a transaction hash and recompute it from raw node responses. They have no dependencies and run offline.
 - My risk scores can be defended. Every point comes from a named rule with a written reason.
 
 Start with [Case 01](cases/01-unauthorized-mint-juno/) (tracing and server forensics for a client), then [Case 02](cases/02-neutron-governance-attack/) (a $6.2M governance attack, public investigation) and [Case 03](cases/03-chainflip-tron-duplicate-payouts/) (an exploit the victim protocol described without a single address), then run `python verify.py`.
@@ -26,7 +26,8 @@ Start with [Case 01](cases/01-unauthorized-mint-juno/) (tracing and server foren
 |---|---|---|---|---|
 | [Case 01: Unauthorized token mint](cases/01-unauthorized-mint-juno/) | Attacker with access to two project servers drains the project's IBC relayer wallet to fund the operation, mints 30,000 tokens with a compromised minter key, sells half, bridges to Solana via CCTP and cashes out through KuCoin deposit addresses (Solscan labels). | Lead investigator: on-chain tracing, server-log correlation, evidence package for law enforcement. | Juno, Osmosis, Neutron, Noble, Secret, Solana | 37 |
 | [Case 02: Neutron governance takeover](cases/02-neutron-governance-attack/) | $20k of NTRN bought 11 minutes before a vote closed passes a proposal that hands 11 DeFi contracts to the attacker; $6.24M drained, 64 % secured by halts and an IBC rate limiter. | Community investigator: found the last-minute delegation and the malicious proposal; quorum analysis, exit-route tracing, re-verification. | Neutron, Cosmos Hub, Noble, Secret, dYdX, THORChain, Ethereum | 37 |
-| [[DRAFT] Case 03: Chainflip on Tron](cases/03-chainflip-tron-duplicate-payouts/) | A registered liquidity provider re-submits Chainflip's signed fetch calls with its own memo; each is refunded on top of the normal withdrawal. 736,442 USDT taken in six doubling rounds, swapped to Bitcoin through THORChain within ten minutes. | Independent investigator: blind trace that reproduces every figure in Chainflip's report and adds what it does not publish: addresses, the mechanism in the payloads, the Tornado-funded operator and the Bitcoin trail. | Tron, Ethereum, THORChain, Bitcoin, Chainflip State Chain | 35 |
+| [Case 03: Chainflip on Tron](cases/03-chainflip-tron-duplicate-payouts/) | A registered liquidity provider re-submits Chainflip's signed fetch calls with its own memo; each is refunded on top of the normal withdrawal. 736,442 USDT taken in six doubling rounds, swapped to Bitcoin through THORChain within ten minutes. | Independent investigator: blind trace that reproduces every figure in Chainflip's report and adds what it does not publish: addresses, the mechanism in the payloads, the Tornado-funded operator and the Bitcoin trail. | Tron, Ethereum, THORChain, Bitcoin, Chainflip State Chain | 37 |
+| [[DRAFT] Case 04: Solana arbitrage bot drained](cases/04-solana-king-mev-bot-drain/) | The wallet of "King", which Onchain Lens calls one of Solana's oldest arbitrage bots, signs away $856k of stablecoins and SOL to a fresh address. The thief starts selling the stablecoins for SOL within 22 minutes and finishes within 36, then pushes $575k to Ethereum through Mayan; $233k of USDC is stuck in Mayan escrow and $47k of SOL at Relay after both bridges stopped serving the thief within hours. The operator offers a bounty on chain, clears out the drained wallet and restarts the bot under new wallets. | Independent investigator: trace from the published alert, checked against Bitquery's parallel report; recomputes the full loss and every exit hash, and adds when Mayan's flag went up, why its refunds lagged, the refunds and re-orders of 3 Nov, the escrow accounts that can still be frozen and the bot's restart. | Solana, Ethereum | 65 |
 
 Off-chain identifiers from the client engagement (IP addresses, key fingerprints, people, companies) are not in this repository. On-chain data is public and given in full.
 
@@ -62,7 +63,7 @@ Without activating it, call the venv's interpreter directly: `.venv/bin/python v
 That runs, offline, from the committed raw-data snapshots:
 
 1. the unit tests (BIP-173 vectors, CCTP, Tron and Chainflip decoding, risk-model invariants, write-up lint and diagrams);
-2. for each case, an integrity check of its `data/cache/` against `data/cache/MANIFEST.sha256`, then its checks, each printing the value stated in the write-up next to the value recomputed from chain data (37 + 37 + 35);
+2. for each case, an integrity check of its `data/cache/` against `data/cache/MANIFEST.sha256`, then its checks, each printing the value stated in the write-up next to the value recomputed from chain data (37 + 37 + 37 + 65);
 3. the risk scoring for every incident graph, and the incident-graph diagram drawn from the same scores;
 4. the structure lint of every write-up against [docs/REPORT_STYLE.md](docs/REPORT_STYLE.md): sections and their order, the fixed tables, the diagrams, and that every cited check ID exists.
 
@@ -122,6 +123,7 @@ cases/
     data/cache/        raw API responses + MANIFEST.sha256 (offline, reproducible)
   02-neutron-governance-attack/
   03-chainflip-tron-duplicate-payouts/
+  04-solana-king-mev-bot-drain/
 docs/        CASE_TEMPLATE.md (start a write-up here), REPORT_STYLE.md (the rules)
 tools/       reusable decoders, data clients, claim framework, diagrams, write-up lint
 risk/        risk-scoring model + CLI

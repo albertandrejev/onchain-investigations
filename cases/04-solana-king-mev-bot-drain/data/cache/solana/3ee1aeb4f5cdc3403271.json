@@ -1,0 +1,81 @@
+{
+ "key": "getTransaction|[\"a3D1tt2Xxv77Lbsm3Ldf3g3pjTcNY2zdquirG4z6W55KjjQB1KcZLtLR9TZUykidWurz6tds7J5Y8VEFF4pWj2L\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009397,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "a3D1tt2Xxv77Lbsm3Ldf3g3pjTcNY2zdquirG4z6W55KjjQB1KcZLtLR9TZUykidWurz6tds7J5Y8VEFF4pWj2L"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "7Mdsqv6M3aS8PwepMCfZXhdXSY5BT5qb3QNKo7yJ5ce4",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "4vSAAYXd46rUg66iUfnfunPKVMPqwuWuDZXF47W5aAdJ",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+        "lamports": 100000,
+        "source": "7Mdsqv6M3aS8PwepMCfZXhdXSY5BT5qb3QNKo7yJ5ce4"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ],
+    "addressTableLookups": []
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    3187000,
+    993644092,
+    1
+   ],
+   "postBalances": [
+    3082000,
+    993744092,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 150,
+   "costUnits": 1481
+  },
+  "version": 0,
+  "slot": 449101536,
+  "transactionIndex": 790,
+  "blockTime": 1790006071
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "key": "getTransaction|[\"3uUU3rTzJ6M7ATP7XjijVL2MBWZggHZ1euV4L3STKJNznMMhpKdZJ4rrYfdJMFKitd64KSAmowewcnTmrjXPRkM\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009399,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "3uUU3rTzJ6M7ATP7XjijVL2MBWZggHZ1euV4L3STKJNznMMhpKdZJ4rrYfdJMFKitd64KSAmowewcnTmrjXPRkM"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "UFEFHTJKH2Yc16SnvrbUwcopFbDaBYwY78wEXXCrdnu",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "Ap38vE2xTSwLQQVCRyDwHsQAXRSdL6YQ5uXJw2NnrQpc",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "UFEFHTJKH2Yc16SnvrbUwcopFbDaBYwY78wEXXCrdnu",
+        "lamports": 23172600000,
+        "source": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ]
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    24166387963,
+    12969521725,
+    1
+   ],
+   "postBalances": [
+    993782963,
+    36142121725,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 150,
+   "costUnits": 1481
+  },
+  "version": "legacy",
+  "slot": 445322132,
+  "transactionIndex": 1163,
+  "blockTime": 1788865358
+ }
+}
