@@ -1,0 +1,81 @@
+{
+ "key": "getTransaction|[\"2E3Ph5VvS17Y3ch5ohXazmz1wE2htXfUiKNUVSGizEasftSu4SR1SdyY4F2nsCxaWoejs25Akpe4B1ERJ82sZMKV\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794005562,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "2E3Ph5VvS17Y3ch5ohXazmz1wE2htXfUiKNUVSGizEasftSu4SR1SdyY4F2nsCxaWoejs25Akpe4B1ERJ82sZMKV"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "8Zvd5d8QrkRpfSPm288FmrXABrsc6sFCNWBLUxXZoyuS",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+        "lamports": 1010000000,
+        "source": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ],
+    "addressTableLookups": []
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    9077660992228,
+    0,
+    1
+   ],
+   "postBalances": [
+    9076650987228,
+    1010000000,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 150,
+   "costUnits": 1481
+  },
+  "version": 0,
+  "slot": 464506352,
+  "transactionIndex": 126,
+  "blockTime": 1793624856
+ }
+}

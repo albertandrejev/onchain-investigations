@@ -1,0 +1,80 @@
+{
+ "key": "getTransaction|[\"2YY26isSbfeppB1S7E4Y6j7xaGef9qGDPo4wykbv4gov2LFCAtp9MEi33SEjbHqiEU2YrGRXBeTtx8mJcm5cKyEu\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009403,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "2YY26isSbfeppB1S7E4Y6j7xaGef9qGDPo4wykbv4gov2LFCAtp9MEi33SEjbHqiEU2YrGRXBeTtx8mJcm5cKyEu"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "UFEFHTJKH2Yc16SnvrbUwcopFbDaBYwY78wEXXCrdnu",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "4xDev2Rdab4nJ5pNBBZNtZx78wWSWkua97JzhjRPVnzx",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "UFEFHTJKH2Yc16SnvrbUwcopFbDaBYwY78wEXXCrdnu",
+        "lamports": 15634700000,
+        "source": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ]
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    16628470962,
+    141773529974,
+    1
+   ],
+   "postBalances": [
+    993765962,
+    157408229974,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 150,
+   "costUnits": 1481
+  },
+  "version": "legacy",
+  "slot": 439846370,
+  "transactionIndex": 838,
+  "blockTime": 1786968364
+ }
+}

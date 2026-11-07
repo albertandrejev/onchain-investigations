@@ -1,0 +1,432 @@
+{
+ "id": "case04",
+ "title": "Case 04 — Solana King bot drain",
+ "incident_time": "2026-11-02T07:32:50Z",
+ "note": "Every edge cites a transaction verified by checks.py. Jupiter swaps inside a wallet are not edges. Mayan and Relay hops are collapsed into one edge (Solana sender → Ethereum destination), like THORChain hops in case 03. Stablecoins at face value; SOL at $94.33 (implied by A's seven 50,000 USDC sales, C4-11); ETH at $2,287.81 (implied by B's USDC orders on Mayan, C4-24).",
+ "nodes": [
+  {
+   "address": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+   "label": "King arbitrage bot wallet (victim)",
+   "resolution": "victim: its own key signed the five transfers (C4-01); the bot's program was never called again (C4-06)"
+  },
+  {
+   "address": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+   "label": "operator's treasury (victim side): paid by the bot since 2 Jul 2026, sent the bounty offer",
+   "resolution": "victim side: received the bot's payouts for four months before the theft (C4-40); offered the thief a bounty by memo (C4-43); received only rent after the theft (C4-06b)"
+  },
+  {
+   "address": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "label": "A: drainer",
+   "flags": [
+    "seed",
+    "fresh"
+   ],
+   "seed_reason": "received all five theft transfers (C4-02), sold every stablecoin for SOL within 36 minutes (C4-09) and handed the SOL to B, C and G (C4-14)"
+  },
+  {
+   "address": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "label": "B: swap-service deposit account used by the thief, program-derived (C4-42)",
+   "flags": [
+    "fresh"
+   ],
+   "entity": "service",
+   "action": "data request to the service operator (program GFRP4y…1AzLp, upgrade authority 5aaHPox…ev6y): session that created and used this deposit account"
+  },
+  {
+   "address": "3UECQUbsLTAfYYtEf3kzvgpw2F5GTu9YFK9dMyokswMy",
+   "label": "C: 500 SOL sent to Relay, blocked (C4-17)",
+   "flags": [
+    "fresh",
+    "single_use",
+    "pass_through"
+   ]
+  },
+  {
+   "address": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+   "label": "G: 1 SOL to Relay, gas for E (C4-16)",
+   "flags": [
+    "fresh",
+    "single_use",
+    "pass_through"
+   ]
+  },
+  {
+   "address": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "label": "E: Ethereum destination, holds 251.19 ETH (C4-30)",
+   "flags": [
+    "seed",
+    "fresh",
+    "dormant_accumulation"
+   ],
+   "seed_reason": "named as destination in all 15 Mayan orders and both Relay orders placed with the stolen funds (C4-16, C4-17, C4-22)"
+  },
+  {
+   "address": "7uTT8Xi5RWXzy7h9XL244GRgEycDYDhLjr3ZyNdXi8pZ",
+   "label": "Relay Solana depository (holds the blocked 499.99 SOL)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "0xD78D199f8C402e7B5Cc2abE278dF0412400a3BAe",
+   "label": "Mayan SwiftDest contract (paid E)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "6XQTpahMTFf1Rq1MtzayMSCi2dr6ZE5YJdJpCZ5DuFTG",
+   "label": "swap-service relayer: sole signer of B's swaps and orders, serves 32 deposit accounts (C4-36)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "Fj2PPeNbkfS1vagKj9XnwVxKRg2bztLmLqoGXVJrG2U6",
+   "label": "Mayan Swift escrow, 93,996.66 USDC (C4-28)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "QLcnnbAjX6Db564MARQHG1yq3XPxHVf3hdDSQQYE9Z1",
+   "label": "Mayan Swift escrow, 94,148.53 USDC (C4-28)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "Ff4uihAPMdPYuF1DgEzEjRaWnGaNpGjVWvcEAGMgBCU8",
+   "label": "Mayan Swift escrow, 44,729.48 USDC (C4-28)",
+   "entity": "infrastructure"
+  },
+  {
+   "address": "BHRaXMvvhobJPpFm9x28M5vzWbcGwRTDjW76XH4fY3jU",
+   "label": "look-alike of A: dust sender (third party)",
+   "resolution": "false lead: poisoning bot that sent dust to the victim after the theft (C4-39)"
+  }
+ ],
+ "edges": [
+  {
+   "from": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+   "to": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "asset": "359,094.73421 USDC",
+   "usd": 359095,
+   "time": "2026-11-02T07:32:50Z",
+   "tx": "2sUAaakTAfQ1J1WdbkafEMemG9m96aHqvo887Ajix2i4Z4QoGtinPTh3QdtwGvzcjmHuChr6Mx7CVs7na7xhG65r",
+   "note": "theft 1 of 5, signed by the victim's key"
+  },
+  {
+   "from": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+   "to": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "asset": "69,868.765015 USDT",
+   "usd": 69869,
+   "time": "2026-11-02T07:34:39Z",
+   "tx": "4AJoXUr3SMVqvXptuZUSPag4bSB8zKfSehL3Bg7bPZqhtGh81SRZ6jXUtbuioWrebXNJYArEM4TveNcYqsKKNDd4",
+   "note": "theft 2 of 5"
+  },
+  {
+   "from": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+   "to": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "asset": "7,173.929438 USD1",
+   "usd": 7174,
+   "time": "2026-11-02T07:34:50Z",
+   "tx": "3FskNQ4qbXSBoHgApgXKMqGDxRVsPxFj4u48kFYtYFDjP2QxzwFYroRCfohsAxbREf8F6unpXLDYVkZ7nNmcGRNP",
+   "note": "theft 3 of 5"
+  },
+  {
+   "from": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+   "to": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "asset": "4,264.570828378 wSOL",
+   "usd": 402277,
+   "time": "2026-11-02T07:35:06Z",
+   "tx": "5qKUfKnMqvs2QxF2vj1pTpJExMfgSd2b65fKnhvF77DmbPfhKgHAPhaGMF5L9nFpJQ61T9kfTrhnZCVJkaK2w78Z",
+   "note": "theft 4 of 5"
+  },
+  {
+   "from": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+   "to": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "asset": "191.242413486 SOL",
+   "usd": 18040,
+   "time": "2026-11-02T07:35:16Z",
+   "tx": "2tYN1nHbmrRqu8NfrGxKba7y9uxSzoCFfqiSs9JWGL1w6rzG2whWudkPdL9Ti15XmqvYn97LwgVRLVJ11kshj1uh",
+   "note": "theft 5 of 5"
+  },
+  {
+   "from": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+   "to": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+   "asset": "7.94 SOL (rent of 2,208 closed token accounts and 2,048 withdrawn nonce accounts)",
+   "usd": 749,
+   "time": "2026-11-02T12:07:25Z",
+   "tx": "3V6BmAPnFMrfLcjj1R6f9mjkzP5qLcTgxkrJovmwhySrRri2MwWrcqf5AGun4eFXFW4fDTEZv41BJy5AvET5M8Cq",
+   "note": "88 transactions from 2 Nov 12:07 to 3 Nov 16:46 collapsed into one edge (C4-06b)"
+  },
+  {
+   "from": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+   "to": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "asset": "1 lamport + memo",
+   "usd": 0,
+   "time": "2026-11-02T13:22:50Z",
+   "tx": "45N4TzDwdkihMMS3d2qU7G29HY8NYyHeQuvLa6rHSmaRqjD2eChQmpFFnieAon1ZXR1rAjYsVT4dKEtK4JFNZG5q",
+   "note": "bounty offer: return 80 % within 48 h, keep 20 % (C4-43); no reply (C4-44)"
+  },
+  {
+   "from": "BHRaXMvvhobJPpFm9x28M5vzWbcGwRTDjW76XH4fY3jU",
+   "to": "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu",
+   "asset": "0.001111 USDC",
+   "usd": 0,
+   "time": "2026-11-02T07:34:54Z",
+   "tx": "5DcAJvZhLVYrX7q2CF8zFLzjuaaq7EP8qrByqc6BHqJBjnh4FPwc7bfcT7qiWLEAio4FVfeUMEaeAUinS7EBsfmg",
+   "note": "poisoning dust after the theft (C4-39)"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+   "asset": "1.01 SOL",
+   "usd": 95,
+   "time": "2026-11-02T13:07:36Z",
+   "tx": "2E3Ph5VvS17Y3ch5ohXazmz1wE2htXfUiKNUVSGizEasftSu4SR1SdyY4F2nsCxaWoejs25Akpe4B1ERJ82sZMKV",
+   "note": "gas money for the Ethereum address"
+  },
+  {
+   "from": "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "1 SOL → 0.040953 ETH",
+   "usd": 94,
+   "time": "2026-11-02T13:07:39Z",
+   "tx": "4GDQEULcjo7oLBcdyvXHwAbgnZRMGsQGZp9mM9ND6ao1XuwU36v4sbSfGHXF75E8kqnvDkGv5n3zRAAkPi8rRCPE",
+   "note": "Relay order 0x17936248…, paid by 0x32c633f0… on Ethereum (C4-16); depository hop collapsed"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "3UECQUbsLTAfYYtEf3kzvgpw2F5GTu9YFK9dMyokswMy",
+   "asset": "500.0001 SOL",
+   "usd": 47165,
+   "time": "2026-11-02T13:14:09Z",
+   "tx": "5KPwkLhN2tdiZtgKJQPDY2oDVLzHRL9kzyUqntFZUToQRqseQx9NYcwqD3KE9DX8pUN37GkoT7ooyh7w117zn4Az",
+   "note": "first attempt to leave Solana"
+  },
+  {
+   "from": "3UECQUbsLTAfYYtEf3kzvgpw2F5GTu9YFK9dMyokswMy",
+   "to": "7uTT8Xi5RWXzy7h9XL244GRgEycDYDhLjr3ZyNdXi8pZ",
+   "asset": "499.99 SOL",
+   "usd": 47164,
+   "time": "2026-11-02T13:16:11Z",
+   "tx": "3ZhURdE35CPyJ5A7gVg46VAG1zA6Znay5yf3n3iPwYCTxwX3yTFaQNbgAeQ19J2aENR8pG86RD2RMBdBuiK4AcmD",
+   "note": "Relay order 0x17936253… for 20.47 ETH to E: BLOCKED_WALLET, never paid, never refunded (C4-17, C4-18)"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "1 SOL",
+   "usd": 94,
+   "time": "2026-11-02T13:49:02Z",
+   "tx": "3X2XNsBEmBk2FrouyxazKJP7J3UE7qNFaFqPgRZL7XRnrR6YYhcb994HMGejFrpsmgUq9mwPgzGSohrB4ujKbw23",
+   "note": "test transfer; swapped and bridged within seconds"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "100 SOL",
+   "usd": 9433,
+   "time": "2026-11-02T13:52:02Z",
+   "tx": "2a3b33QRd8oETCwZmDMjZb4Es7ZgV6wxBEkUPmoQEBwGKZpLQjjPNuiUFRgc6yM1y5Jp3rjYjbhy2PjzZUf9Cum1"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "500 SOL",
+   "usd": 47165,
+   "time": "2026-11-02T13:53:17Z",
+   "tx": "4Zukk888wL3mBWUCVHtLNTyGS9U5Rni9T49GtYyPofrHzbz1fTLbVhdTTMV4SfavrbD4dfGwwC4vDie6fvXDUF5r"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "500 SOL",
+   "usd": 47165,
+   "time": "2026-11-02T13:59:24Z",
+   "tx": "h6yPsvEz91LBTPdHJxAPdXFZsCMj5KXNN6DgAg4EEWogsvshgwQEYEXD3hz7P3m9NAFV8dWaKz2KF3G4Sz9545w"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "500 SOL",
+   "usd": 47165,
+   "time": "2026-11-02T14:00:20Z",
+   "tx": "4git48XoCZT1PymqPxG6PjxAeiPXvXPzaZizKbiGpRApgNGnvbxStK68Xu8GHtn9o3oLRaBAfDXHhuPXtTCAowya"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "500 SOL",
+   "usd": 47165,
+   "time": "2026-11-02T14:01:14Z",
+   "tx": "4PctCVmQzNDJnDkXPSyKiehUGjVYMzaSmMffdTCdBGGoDJ8xwx7rGDES7YdBvcBBNk3snuJCQPgXiBqdpHkHsL66"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "1,000 SOL",
+   "usd": 94330,
+   "time": "2026-11-02T14:01:40Z",
+   "tx": "2iaTPxRfeUAZGHJiuDiSVfgBChSaxoPKnhmJ6TwQ2Z2z9siUhUULY4B9nqAggJLRtXzxUMUaFbgZXCJqDMCJztJk"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "1,000 SOL",
+   "usd": 94330,
+   "time": "2026-11-02T14:02:16Z",
+   "tx": "qfUP8znRY9YwCLJJiHonZBsBaMKh4EcqNkW8tSbUEEGSAaPFQroBKWKCiXC58SzL9JkCw5zfud6Em1BdDd9k2Pr"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "1,000 SOL",
+   "usd": 94330,
+   "time": "2026-11-02T14:02:50Z",
+   "tx": "4YuWahp2SsdPAB5omEoChKFqZ6cfxUQEst3JMAwyYg18h33NgMzkDZgse5hgULcUxbd3LT3hHG9YrpV6K36uhKQg"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "1,000 SOL",
+   "usd": 94330,
+   "time": "2026-11-02T14:03:13Z",
+   "tx": "3LptBZ9ofk9mTqhSd2of7DspJN3QwnMWCF145BpqxsWnjTAKKYdpWoPcFYjFLSWhvKQ3wwwYEmbSn1uVXQAvkG3F"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "1,000 SOL",
+   "usd": 94330,
+   "time": "2026-11-02T14:10:48Z",
+   "tx": "61FjwLChe8ecG5LvuFnyCFBvPL2jr1dfG3kUAqQ11qYtpmiKkt3x1HGXBW5gtWsKrFcpxKQXntyotJse1mbakMF5"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "1,000 SOL",
+   "usd": 94330,
+   "time": "2026-11-02T14:11:36Z",
+   "tx": "5gEUkeaHSv5DRGWae59WcRqMPDWBYJ7GPvwQZG8Ap6yuaJVKcCFm2J9mGc8R5PmSEdwJG1b6Khc4kzuoqet9wrqs"
+  },
+  {
+   "from": "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU",
+   "to": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "asset": "475.651 SOL",
+   "usd": 44868,
+   "time": "2026-11-02T14:12:21Z",
+   "tx": "3CHPg6neRuERQQd6CqYxEXCyYNgpG2cA67yy3GujJNWKufBjKsxgwaHAdPfwC2G45eejosgGovrDEd5VR2cPFAEV",
+   "note": "the remainder of A's balance"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "0.04106158 whETH → 0.040839 ETH",
+   "usd": 94,
+   "time": "2026-11-02T13:49:05Z",
+   "tx": "218g1mvsjJqn2wWFZBm59HhhoSr7SticchLaxbK4v2ktKAdVPHZnUjhVdHvwZDpD4pWnPeLpecQGAx6qp4Yo7xbe",
+   "note": "Mayan Swift order, filled by 0xccc944aa… (C4-23, C4-25)"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "4.11160269 whETH → 4.111088 ETH",
+   "usd": 9407,
+   "time": "2026-11-02T13:52:05Z",
+   "tx": "qQChbHEgNG48qVqa7BbG2LwXWkxQ2d3UeYEmQCzgQV1QWpqxYkdMp4rUwMTaHGabV8ueGzHYFkZePaKcfQEbFxV",
+   "note": "Mayan Swift order, filled by 0x17dde1fe…"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "47,089.527677 USDC → 20.606572 ETH",
+   "usd": 47090,
+   "time": "2026-11-02T13:53:20Z",
+   "tx": "2bdY1c1grLDAeZLzbsj3TvZ42QEFYzW2429dij9N6ZFDup2xUuEEawMzJ8bMXaKVjNbZFABnfMrU61yPLciBkSZA",
+   "note": "Mayan Swift order, filled by 0xd7e018c5…"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "47,093.955919 USDC → 20.581854 ETH",
+   "usd": 47094,
+   "time": "2026-11-02T13:59:27Z",
+   "tx": "5Bi7hAUWY6mcpJqYGNrG1UEwVPgTX6BQQd7REX5n4tmLtox1GdKS9PUeUVCMdUijABHphRfxfrsti9ecps2e78KP",
+   "note": "Mayan Swift order, filled by 0x32eb85b0…"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "47,037.812123 USDC → 20.574329 ETH",
+   "usd": 47038,
+   "time": "2026-11-02T14:00:23Z",
+   "tx": "2TqERnQw8wTkg9H2Goxf1J4BHX6ikxgf6ScXLtCVSh4B1iUZzLrBLddoPwiAiQn89xEha2Bz6iNvq1vkRA68CU8S",
+   "note": "Mayan Swift order, filled by 0xfbe0998b…"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "47,063.013129 USDC → 20.587863 ETH",
+   "usd": 47063,
+   "time": "2026-11-02T14:01:16Z",
+   "tx": "3z5GiyNbFm7TVmu1UidsypzczXHaqQiwS9hkZydMbQ638igpuV3cWs6YgkBKbC647ijFMDQsHgRMFvDvjPusBv9H",
+   "note": "Mayan Swift order, filled by 0x95a1d514…"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "94,182.007802 USDC → 41.149036 ETH",
+   "usd": 94182,
+   "time": "2026-11-02T14:01:42Z",
+   "tx": "d1ZBz7rg38UG59MtnGhThfxWwtY5x81ejkjqtbodBhgA7tyEJr6W9LhDesSF2nVoSPZWVKdaN3fyqS7kL32EZXW",
+   "note": "Mayan Swift order, filled by 0x1e5cff18…"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "94,267.565255 USDC → 41.206127 ETH",
+   "usd": 94268,
+   "time": "2026-11-02T14:02:19Z",
+   "tx": "q7gapgmHWSuGsNLhcLYvKpUiaywJ12jyR9YP1LrAyqyiG9DoCanwoTLNoxC152vaH5YXCLa2z3euUJzR1AQAvr7",
+   "note": "Mayan Swift order, filled by 0x3a164968…"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "94,156.643571 USDC → 41.148982 ETH",
+   "usd": 94157,
+   "time": "2026-11-02T14:02:52Z",
+   "tx": "Dbs52Sj2g2juis6VnvCXsyt3f3eVWJLx5ntxuxZaXnfAja5byD5dnE3gpV1WLU8uh1s2BPae4WHPNLKp8ptwEgW",
+   "note": "Mayan Swift order, filled by 0xa225a0e1…"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "0xf2fbf0292215a597f85409e753a4fe4f191663c1",
+   "asset": "94,185.785685 USDC → 41.139994 ETH",
+   "usd": 94186,
+   "time": "2026-11-02T14:03:15Z",
+   "tx": "3Br3qrfqxJgcE6w6Yp7kPfL8mrk6VUBDdGzmu1UGHU7h2Q8vvAz5q6AJSQEKcxs1xyCrfQ6xPAmxn82beFWistZa",
+   "note": "Mayan Swift order, filled by 0xe88fd26b…; the last fill"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "Fj2PPeNbkfS1vagKj9XnwVxKRg2bztLmLqoGXVJrG2U6",
+   "asset": "93,996.659573 USDC",
+   "usd": 93997,
+   "time": "2026-11-02T14:11:39Z",
+   "tx": "3LxvF27HfjF9k2LguAg3pJdekeHpksefmWMdoyWfCoxGZZNoqHDztqo8wgSaX7oW7gcBodSukLE6iFWoriE56WPN",
+   "note": "Mayan Swift order never filled, cancelled, never refunded: USDC still in escrow (C4-27, C4-28)"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "QLcnnbAjX6Db564MARQHG1yq3XPxHVf3hdDSQQYE9Z1",
+   "asset": "94,148.525771 USDC",
+   "usd": 94149,
+   "time": "2026-11-03T11:07:25Z",
+   "tx": "4N3Rb1dUT3h8wsK6jqZzfP6m9U21PuU8owvnbK6cQo2KM1Q2bLevijUZWJiLuNTb6vCkABTEVx28X1GeYEMLNh43",
+   "note": "re-submission of a refunded order (C4-26); cancelled, never refunded: USDC still in escrow"
+  },
+  {
+   "from": "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj",
+   "to": "Ff4uihAPMdPYuF1DgEzEjRaWnGaNpGjVWvcEAGMgBCU8",
+   "asset": "44,729.481555 USDC",
+   "usd": 44729,
+   "time": "2026-11-03T11:07:32Z",
+   "tx": "3ahFVWggpWejdTnnVbbKsLPczCHvbZafdtmhswhRyUjKMqXR89UqZkCSrZpw4gAX1Ar8Rb2o8smnhnrfEAbDyeLA",
+   "note": "re-submission of a refunded order (C4-26); cancelled, never refunded: USDC still in escrow"
+  }
+ ]
+}

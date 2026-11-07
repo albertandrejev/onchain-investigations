@@ -1,0 +1,37 @@
+{
+ "key": "getSignaturesForAddress|[\"B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc\", {\"limit\": 1000}]",
+ "fetched_at": 1794011371,
+ "response": [
+  {
+   "signature": "6q8HbmgyEzvcGBAGUt2Z7UFnEwieSzub5fMv7jGvYKKWTn386zmPVE7HfjWDFrWwMVWDW9BuhXRw2s39daGfzxJ",
+   "slot": 464506578,
+   "err": {
+    "InsufficientFundsForRent": {
+     "account_index": 1
+    }
+   },
+   "memo": null,
+   "blockTime": 1793624904,
+   "confirmationStatus": "finalized",
+   "transactionIndex": 64
+  },
+  {
+   "signature": "4GDQEULcjo7oLBcdyvXHwAbgnZRMGsQGZp9mM9ND6ao1XuwU36v4sbSfGHXF75E8kqnvDkGv5n3zRAAkPi8rRCPE",
+   "slot": 464506368,
+   "err": null,
+   "memo": null,
+   "blockTime": 1793624859,
+   "confirmationStatus": "finalized",
+   "transactionIndex": 87
+  },
+  {
+   "signature": "2E3Ph5VvS17Y3ch5ohXazmz1wE2htXfUiKNUVSGizEasftSu4SR1SdyY4F2nsCxaWoejs25Akpe4B1ERJ82sZMKV",
+   "slot": 464506352,
+   "err": null,
+   "memo": null,
+   "blockTime": 1793624856,
+   "confirmationStatus": "finalized",
+   "transactionIndex": 126
+  }
+ ]
+}

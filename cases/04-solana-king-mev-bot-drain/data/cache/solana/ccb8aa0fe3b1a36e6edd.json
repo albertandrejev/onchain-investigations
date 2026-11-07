@@ -1,0 +1,172 @@
+{
+ "key": "getTransaction|[\"4dGdiwV7mFJhDLfdeDw9WbD8S3fHM4257i3LUxewJbyboQggXP1HCcNWMsUCq64gHrGStjfxxdFhuv6Gnwo9z9yQ\", {\"encoding\": \"jsonParsed\", \"maxSupportedTransactionVersion\": 1}]",
+ "fetched_at": 1794009406,
+ "response": {
+  "transaction": {
+   "signatures": [
+    "4dGdiwV7mFJhDLfdeDw9WbD8S3fHM4257i3LUxewJbyboQggXP1HCcNWMsUCq64gHrGStjfxxdFhuv6Gnwo9z9yQ"
+   ],
+   "message": {
+    "accountKeys": [
+     {
+      "pubkey": "EAPJ7P9Zz4DQC7WWpiZMTai18uEoC2u1BU1tEnsS9N9Q",
+      "writable": true,
+      "signer": true,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "BAqDvFPmZoto3KGxMLmmZLTZxxAMFRLxXpWnMcYuSyxc",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "C7HaUt9CYZSd3LW2pdBMHiDo6Q52H6DJU7Ar3M5xFgCM",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "DzrYVeiKz55ASsP2GiUxBpZrGsRxhjKpv6jVdpRwYWE1",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "HfmiYHRtGpFn2PiqXF1HyNTsMStyD2NP1CDkZdvBmusQ",
+      "writable": true,
+      "signer": false,
+      "source": "transaction"
+     },
+     {
+      "pubkey": "11111111111111111111111111111111",
+      "writable": false,
+      "signer": false,
+      "source": "transaction"
+     }
+    ],
+    "recentBlockhash": "hgj5zL2BULmqumj847KkKeiuotZ4cmH36Kiwy8jf3b9",
+    "instructions": [
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "C7HaUt9CYZSd3LW2pdBMHiDo6Q52H6DJU7Ar3M5xFgCM",
+        "lamports": 12300000,
+        "source": "EAPJ7P9Zz4DQC7WWpiZMTai18uEoC2u1BU1tEnsS9N9Q"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     },
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby",
+        "lamports": 1,
+        "source": "EAPJ7P9Zz4DQC7WWpiZMTai18uEoC2u1BU1tEnsS9N9Q"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     },
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "BAqDvFPmZoto3KGxMLmmZLTZxxAMFRLxXpWnMcYuSyxc",
+        "lamports": 1,
+        "source": "EAPJ7P9Zz4DQC7WWpiZMTai18uEoC2u1BU1tEnsS9N9Q"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     },
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "DzrYVeiKz55ASsP2GiUxBpZrGsRxhjKpv6jVdpRwYWE1",
+        "lamports": 1,
+        "source": "EAPJ7P9Zz4DQC7WWpiZMTai18uEoC2u1BU1tEnsS9N9Q"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     },
+     {
+      "program": "system",
+      "programId": "11111111111111111111111111111111",
+      "parsed": {
+       "info": {
+        "destination": "HfmiYHRtGpFn2PiqXF1HyNTsMStyD2NP1CDkZdvBmusQ",
+        "lamports": 1,
+        "source": "EAPJ7P9Zz4DQC7WWpiZMTai18uEoC2u1BU1tEnsS9N9Q"
+       },
+       "type": "transfer"
+      },
+      "stackHeight": 1
+     }
+    ]
+   }
+  },
+  "meta": {
+   "err": null,
+   "status": {
+    "Ok": null
+   },
+   "fee": 5000,
+   "preBalances": [
+    133509256,
+    993745957,
+    107307548725,
+    129158709,
+    60866177251,
+    40631123684,
+    1
+   ],
+   "postBalances": [
+    121204252,
+    993745958,
+    107307548726,
+    141458709,
+    60866177252,
+    40631123685,
+    1
+   ],
+   "innerInstructions": [],
+   "logMessages": [
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success",
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success",
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success",
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success",
+    "Program 11111111111111111111111111111111 invoke [1]",
+    "Program 11111111111111111111111111111111 success"
+   ],
+   "preTokenBalances": [],
+   "postTokenBalances": [],
+   "rewards": [],
+   "computeUnitsConsumed": 750,
+   "costUnits": 3293
+  },
+  "version": "legacy",
+  "slot": 434075919,
+  "transactionIndex": 189,
+  "blockTime": 1784540608
+ }
+}
