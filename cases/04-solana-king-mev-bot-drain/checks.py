@@ -10,6 +10,7 @@ Run:  python cases/04-solana-king-mev-bot-drain/checks.py
 from __future__ import annotations
 
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -25,8 +26,8 @@ from tools.net import solana, ethereum, cached, _http
 
 # --- addresses ----------------------------------------------------------------------------
 VICTIM = "7dGrdJRYtsNR8UYxZ3TnifXGjGc9eRYLq9sELwYpuuUu"     # King arbitrage bot wallet
-A = "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU"          # drainer: received everything, swapped stables to SOL
-B = "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj"          # forwarder: deposit account of a swap service, Mayan orders
+A = "BHRayETPjvgg3BCr9H82V1D6NRwxu5v44JAaVuaod3jU"          # thief's address: received everything, swapped stables to SOL
+B = "Ddmy5oM8xtTs1EBC6eF2SZwQfBreewQpFgtUDm51Hkqj"          # deposit account of Mayan's MPS program, Mayan orders
 C = "3UECQUbsLTAfYYtEf3kzvgpw2F5GTu9YFK9dMyokswMy"          # 500 SOL to Relay, blocked
 G = "B2N8LwcUiXD6dCqdnPkyi1TMJQtroefGVLHjjRWrVvCc"          # 1 SOL to Relay: gas for the Ethereum address
 E = "0xf2fbf0292215a597f85409e753a4fe4f191663c1"            # Ethereum destination of every Mayan and Relay order
@@ -70,6 +71,7 @@ ESCROWS = {  # Mayan Swift source-state accounts of the three orders that were n
 THEFT_TS = 1793604770  # 2026-11-02 07:32:50 UTC, first theft transaction
 THEFT_END = 1793604916  # 07:35:16 UTC, the fifth transfer
 KING = "King7ki4SKMBPb3iupnQwTyjsq294jaXsgLmJo8cb7T"   # the bot's own program: every pre-theft transaction calls it
+SECOND = "GQEZDiygN1Ric4po2zCSs42kfr6SeBL6Pz1G4DENVWyA"  # a second wallet running the King program, not drained
 OPERATOR = "Ace7hXUYzheTYG6EAYEYec25Y6SXUfKvauavEGy3KRby"  # the bot's treasury: funded by the victim since 2 Jul 2026
 DUST_ECHO = "42q8iZYDQVj8im4W9FKUd53Bqy7cG4NNMAT279RrCnTZpqiutWz5feddPtwrDkwoZz3Tb8hdfkUPYQ7qNYDTKYoN"
 OPERATOR_MANUAL_TX = "3CTQRjxLmMwhP1uN3W7WvfJLBVKNZcbho9Ne8q1S6UMTCMM3gU3MHKpoRSWKSXyMDnfZZzSgNhJ6znAoppYqd7Dw"
@@ -229,7 +231,7 @@ def c_theft(r: Report):
             ([VICTIM] * 5, "2026-11-02 07:32:50", "2026-11-02 07:35:16"),
             ([s for t in txs for s in signers(t)], when(txs[0]), when(txs[-1])), evidence=THEFT)
     r.ev("victim: King bot wallet", VICTIM)
-    r.ev("A: drainer", A)
+    r.ev("A: thief's address", A)
     for s in THEFT:
         r.ev("theft tx", s)
     got = {}
@@ -241,6 +243,7 @@ def c_theft(r: Report):
     r.claim("C4-02", "Amounts moved to A: 359,094.73421 USDC, 69,868.765015 USDT, 7,173.929438 USD1, 4,264.570828 wSOL, 191.242413486 SOL",
             {"USDC": D("359094.73421"), "USDT": D("69868.765015"), "USD1": D("7173.929438"),
              "wSOL": D("4264.570828378"), "SOL": D("191.242413486")}, got, evidence=THEFT)
+    _cache["stolen"] = got
     dests = []
     for t in txs[:4]:
         for ins in t["transaction"]["message"]["instructions"]:
@@ -274,6 +277,7 @@ def c_theft(r: Report):
     mine = [t for t in post if VICTIM in signers(t)]
     kinds: dict[str, int] = {}
     closed = withdrawn = 0
+    close_t, withdraw_t = [], []
     for t in mine:
         for ins in t["transaction"]["message"]["instructions"]:
             p = ins.get("parsed") or {}
@@ -281,20 +285,29 @@ def c_theft(r: Report):
             kinds[k] = kinds.get(k, 0) + 1
             closed += p.get("type") == "closeAccount"
             withdrawn += p.get("type") == "withdrawFromNonce"
+            if p.get("type") == "closeAccount":
+                close_t.append(when(t)[:16])
+            if p.get("type") == "withdrawFromNonce":
+                withdraw_t.append(when(t)[:16])
     to_op = sum(sol_delta(t, OPERATOR) for t in mine)
-    r.claim("C4-06b", "After the theft the key was used to dismantle the bot: 88 transactions closed its token accounts (2 Nov 12:07 to 12:09) and withdrew its durable-nonce accounts (3 Nov 15:36 to 15:38); every lamport of rent, 7.94 SOL, went to the bot's treasury Ace7h…",
-            (88, True, True, D("7.94")),
-            (len(mine), closed > 1000, withdrawn > 1000, to_op.quantize(D("0.01"))),
+    last = max(mine, key=lambda t: t["blockTime"])
+    r.claim("C4-06b", "After the theft the key was used to clear out the wallet's accounts: 88 transactions closed its token accounts (2 Nov 12:07 to 12:38, all but 13 by 12:09) and withdrew its durable-nonce accounts (3 Nov 15:36 to 15:38), and a last one sent 0.0026 SOL at 16:46:43; all of it, 7.94 SOL, went to the bot's treasury Ace7h…",
+            (88, True, True, D("7.94"), ("2026-11-02 12:07", "2026-11-02 12:38", 13), ("2026-11-03 15:36", "2026-11-03 15:38"), ("2026-11-03 16:46:43", D("0.0026"))),
+            (len(mine), closed > 1000, withdrawn > 1000, to_op.quantize(D("0.01")),
+             (min(close_t), max(close_t), sum(c > "2026-11-02 12:09" for c in close_t)), (min(withdraw_t), max(withdraw_t)),
+             (when(last), sol_delta(last, OPERATOR).quantize(D("0.0001")))),
             evidence=[mine[0]["transaction"]["signatures"][0], mine[-1]["transaction"]["signatures"][0], OPERATOR])
     r.note("C4-06c", "Token accounts closed and nonce accounts withdrawn by those transactions", (closed, withdrawn))
     r.ev("operator treasury (victim side)", OPERATOR)
     manual = compute_budget(tx(OPERATOR_MANUAL_TX))
-    r.claim("C4-06d", "The operator's own hand-made transaction (0.0103 SOL to the treasury at 12:11) carries a third fingerprint, limit 562 and price 133,333,334, unlike both the bot and the thief",
-            (562, 133333334), manual, evidence=[OPERATOR_MANUAL_TX])
+    r.claim("C4-06d", "The operator's own hand-made transaction (0.0102 SOL to the treasury at 12:11) carries a third fingerprint, limit 562 and price 133,333,334, unlike both the bot and the thief",
+            (562, 133333334, D("0.0102")), (*manual, sol_delta(tx(OPERATOR_MANUAL_TX), OPERATOR).quantize(D("0.0001"))), evidence=[OPERATOR_MANUAL_TX])
     co = [t for t in mine if OPERATOR in signers(t)]
-    r.claim("C4-06e", "Four of the clean-up transactions, at 12:38 on 2 Nov, carry two signatures: the treasury pays the fee and the victim's key authorises the token transfers and closures. One client held both keys",
-            (4, {"2026-11-02 12:38"}, [[OPERATOR, VICTIM]] * 4),
-            (len(co), {when(t)[:16] for t in co}, [signers(t) for t in co]), evidence=[t["transaction"]["signatures"][0] for t in co])
+    r.claim("C4-06e", "Four of the clean-up transactions, at 12:38 on 2 Nov, carry two signatures: the treasury pays the fee and the victim's key authorises the token transfers and the last 13 closures, and all four call the pump.fun AMM program pAMMBay6…. Whoever signed them held both keys at that moment",
+            (4, {"2026-11-02 12:38"}, [[OPERATOR, VICTIM]] * 4, 13, True),
+            (len(co), {when(t)[:16] for t in co}, [signers(t) for t in co],
+             sum((i.get("parsed") or {}).get("type") == "closeAccount" for t in co for i in t["transaction"]["message"]["instructions"]),
+             all("pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA" in programs(t) for t in co)), evidence=[t["transaction"]["signatures"][0] for t in co])
     frozen = [(a["pubkey"], a["account"]["data"]["parsed"]["info"]["mint"]) for a in token_accounts(VICTIM)
               if a["account"]["data"]["parsed"]["info"]["state"] == "frozen"]
     r.claim("C4-07", "The victim's three frozen token accounts hold unrelated tokens (none of the stolen mints): spam, not a freeze on the stolen funds",
@@ -337,8 +350,9 @@ def c_a_wallet(r: Report):
             (7, D("3710.28"), D("94.33")), (len(big), sol_for_350k.quantize(D("0.01")), px),
             evidence=[t["transaction"]["signatures"][0] for t in big[:2]])
     _cache["sol_px"] = px
-    stable = D("359094.73421") + D("69868.765015") + D("7173.929438")
-    total = stable + (D("4264.570828") + D("191.242413486")) * px
+    stolen = _cache["stolen"]
+    stable = stolen["USDC"] + stolen["USDT"] + stolen["USD1"]
+    total = stable + (stolen["wSOL"] + stolen["SOL"]) * px
     r.claim("C4-12", "Value stolen at that price: 436,137.43 in stablecoins plus 4,455.81 SOL, about $856k",
             D("856454"), total.quantize(D("1")), tol=D("50"), evidence=THEFT)
     gap = dt.datetime.fromtimestamp(swaps[0]["blockTime"], dt.timezone.utc) - dt.datetime.fromtimestamp(THEFT_TS, dt.timezone.utc)
@@ -352,7 +366,7 @@ def c_a_wallet(r: Report):
             ({B: D("8576.651"), C: D("500.0001"), G: D("1.01")}, 13),
             ({k: v for k, v in by.items() if v >= 1}, sum(1 for _, k, _d in outs if k == B)),
             evidence=[t["transaction"]["signatures"][0] for t, k, _d in outs if k in (C, G)])
-    r.ev("B: forwarder (swap-service deposit account)", B)
+    r.ev("B: deposit account of Mayan's MPS program", B)
     r.ev("C: Relay attempt, blocked", C)
     r.ev("G: Relay gas top-up", G)
     r.claim("C4-15", "A holds nothing now: 0.00076924 SOL and 0.0002 USDC left behind",
@@ -383,6 +397,7 @@ def c_relay(r: Report):
     r.claim("C4-18", "That SOL sits with Relay: the blocked transfer credited Relay's Solana depository 499.99 SOL, and C keeps 0.010095001 SOL",
             (D("499.99"), D("0.010095001")), (sol_delta(t, RELAY_SOL), Decimal(account(C)["lamports"]) / Decimal(10 ** 9)),
             evidence=[RELAY_BLOCKED_TX, RELAY_SOL])
+    _cache["relay_sol"] = sol_delta(t, RELAY_SOL)
     r.ev("Relay Solana depository (infrastructure)", RELAY_SOL)
     single = {}
     for name, addr in (("C", C), ("G", G)):
@@ -398,9 +413,9 @@ def c_relay(r: Report):
 def c_b_wallet(r: Report):
     h = history(B)
     sg = {s for t in h for s in signers(t)}
-    r.claim("C4-20", "B never signed anything: its 44 transactions carry one signature each, from A (the SOL hand-offs), the service relayer (swaps, orders), Mayan's refund relayer or a dust sender",
-            (44, False, {A, RELAYER, MAYAN_REFUNDER, "653pnYtpZGMvFytHWsF6yB1DpjBRgHBjswg3pnPfmpsG"}, {1}), (len(h), B in sg, sg, {len(t["transaction"]["signatures"]) for t in h}), evidence=[B, RELAYER])
-    r.ev("service relayer (infrastructure)", RELAYER)
+    r.claim("C4-20", "B never signed anything: its 44 transactions carry one signature each, from A (the SOL hand-offs), the MPS relayer (swaps, orders), Mayan's refund relayer or a dust sender",
+            (44, False, sorted({A, RELAYER, MAYAN_REFUNDER, "653pnYtpZGMvFytHWsF6yB1DpjBRgHBjswg3pnPfmpsG"}), {1}), (len(h), B in sg, sorted(sg), {len(t["transaction"]["signatures"]) for t in h}), evidence=[B, RELAYER])
+    r.ev("MPS relayer (infrastructure)", RELAYER)
     swaps = [t for t in h if JUPITER in programs(t)]
     tot: dict[str, Decimal] = {}
     for t in swaps:
@@ -423,7 +438,8 @@ def c_b_wallet(r: Report):
     usdc = sum(D(o["fromAmount"]) for o in done if o["fromTokenSymbol"] == "USDC")
     weth = sum(D(o["fromAmount"]) for o in done if o["fromTokenSymbol"] == "WETH")
     eth = sum(D(o["toAmount"]) for o in done)
-    r.claim("C4-23", "10 orders were filled: 565,076.3112 USDC and 4.1527 WETH in, 251.146683 ETH out to E (13:49 to 14:05 UTC)",
+    _cache["fills_eth"] = eth
+    r.claim("C4-23", "10 orders were filled: 565,076.3112 USDC and 4.1527 whETH in, 251.146683 ETH out to E (13:49 to 14:05 UTC)",
             (10, D("565076.3112"), D("4.1527"), D("251.146683")),
             (len(done), usdc.quantize(D("0.0001")), weth.quantize(D("0.0001")), eth.quantize(D("0.000001"))),
             evidence=[o["fulfillTxHash"] for o in done])
@@ -436,9 +452,9 @@ def c_b_wallet(r: Report):
     internal = rest("blockscout", f"https://eth.blockscout.com/api/v2/addresses/{E}/internal-transactions")["items"]
     ins = [i for i in internal if i["to"]["hash"].lower() == E]
     r.claim("C4-25", "Ethereum side: E received exactly those 10 fills as internal transfers from Mayan's SwiftDest contract, 251.146683 ETH in total",
-            (10, {SWIFT_DEST.lower()}, D("251.146683"), {o["fulfillTxHash"] for o in done}),
+            (10, {SWIFT_DEST.lower()}, D("251.146683"), sorted(o["fulfillTxHash"] for o in done)),
             (len(ins), {i["from"]["hash"].lower() for i in ins}, (sum(Decimal(i["value"]) for i in ins) / Decimal(10 ** 18)).quantize(D("0.000001")),
-             {i["transaction_hash"] for i in ins}), evidence=[E, SWIFT_DEST])
+             sorted(i["transaction_hash"] for i in ins)), evidence=[E, SWIFT_DEST])
     r.ev("Mayan SwiftDest (infrastructure)", SWIFT_DEST)
     refunded = {o["sourceTxHash"]: o for o in orders if o["status"] == "ORDER_REFUNDED"}
     back = {}
@@ -452,13 +468,19 @@ def c_b_wallet(r: Report):
     r.claim("C4-27", "Three orders are cancelled in Mayan's records but never refunded: one from 2 Nov 14:11 and the two re-submissions of 3 Nov 11:07",
             (3, {"2026-11-02T14:11", "2026-11-03T11:07"}, {None}),
             (len(stuck), {o["initiatedAt"][:16] for o in stuck}, {o["refundTxHash"] for o in stuck}), evidence=[o["orderId"] for o in stuck])
+    unfilled = [o for o in orders if o["status"] != "ORDER_UNLOCKED"]
+    r.claim("C4-27c", "Mayan's own records give the reason: all 5 unfilled orders carry sanctioned=true and security code SWAP_BLOCKED, 'Detected blocked address'; none of the 10 filled orders is marked. The record does not say which address was flagged",
+            (5, {True}, {("SWAP_BLOCKED", "Detected blocked address")}, 10, {False}),
+            (len(unfilled), {o.get("sanctioned") for o in unfilled},
+             {((o.get("security") or {}).get("code"), (o.get("security") or {}).get("msg")) for o in unfilled},
+             len(done), {bool(o.get("sanctioned")) for o in done}), evidence=[o["orderId"] for o in unfilled])
     resub = {}
     for o in stuck:
         for s in MAYAN_REFUNDS:
             if back[s] == D(o["fromAmount"]):
                 src = tx(o["sourceTxHash"])
                 resub[s[:8]] = (signers(src), src["blockTime"] - tx(s)["blockTime"], src["slot"] - tx(s)["slot"])
-    r.claim("C4-27b", "Each refund was re-ordered to E by the service relayer 2 s and 1 s later (5 slots): the service re-submits a refunded order by itself, so a Mayan refund would go straight back into a new order to E",
+    r.claim("C4-27b", "Each refund was re-ordered to E by the MPS relayer 2 s and 1 s later (5 slots): a delay that short points to automation, so another Mayan refund would probably go straight back into a new order to E",
             {MAYAN_REFUNDS[0][:8]: ([RELAYER], 2, 5), MAYAN_REFUNDS[1][:8]: ([RELAYER], 1, 5)}, resub,
             evidence=[o["sourceTxHash"] for o in stuck if o["initiatedAt"].startswith("2026-11-03")])
     held = {}
@@ -469,6 +491,7 @@ def c_b_wallet(r: Report):
     r.claim("C4-28", "Their USDC is still in the three Mayan escrow accounts on Solana, 232,874.666899 USDC in total, token accounts initialized (not frozen)",
             ({k: (v, {"initialized"}) for k, v in ESCROWS.items()}, D("232874.666899")),
             (held, sum(v for v, _ in held.values())), evidence=list(ESCROWS))
+    _cache["escrow_usdc"] = sum(v for v, _ in held.values())
     for st in ESCROWS:
         r.ev("Mayan Swift escrow (holds stolen USDC)", st)
     r.claim("C4-29", "B is empty now: 0.00065025 SOL, no token accounts",
@@ -506,9 +529,9 @@ def c_freeze(r: Report):
 
 def c_reconcile(r: Report):
     px, eth_px = _cache["sol_px"], _cache["eth_px"]
-    exits = {"ETH at E": (D("251.146683") * eth_px).quantize(D("1")),
-             "USDC in Mayan escrow": D("232874.666899").quantize(D("1")),
-             "SOL held by Relay": (D("499.99") * px).quantize(D("1"))}
+    exits = {"ETH at E": (_cache["fills_eth"] * eth_px).quantize(D("1")),
+             "USDC in Mayan escrow": _cache["escrow_usdc"].quantize(D("1")),
+             "SOL held by Relay": (_cache["relay_sol"] * px).quantize(D("1"))}
     total = sum(exits.values())
     r.claim("C4-35", "Where the money is: about $575k as ETH at E, $233k as USDC in Mayan escrow, $47k as SOL at Relay; together about $855k of the $856k taken (the rest is swap fees)",
             (D("574576"), D("232875"), D("47164"), D("854615")),
@@ -524,18 +547,20 @@ def c_relayer(r: Report):
             if d < 0 and o != RELAYER:
                 owners.add(o)
     first = dt.datetime.fromtimestamp(h[0]["blockTime"], dt.timezone.utc).strftime("%Y-%m-%d")
-    r.claim("C4-36", "The relayer is shared infrastructure, not the attacker: active since 23 Jul 2026, it has signed Mayan orders for 32 different deposit accounts, B being one",
+    r.claim("C4-36", "The relayer is shared infrastructure, not the thief: active since 23 Jul 2026, it has signed Mayan orders for 32 different deposit accounts, B being one",
             ("2026-07-23", True, 32), (first, len(h) > 100, len(owners)), evidence=[RELAYER, h[0]["transaction"]["signatures"][0]])
-    r.claim("C4-37", "The deposit accounts are plain system accounts (the service moves their funds by program signature, so B's funds moved without B ever signing)",
+    r.claim("C4-37", "The deposit accounts are plain system accounts (Mayan's MPS program moves their funds by program signature, so B's funds moved without B ever signing)",
             "11111111111111111111111111111111", account(B)["owner"], evidence=[B])
 
 
 def c_reports(r: Report):
     """What Onchain Lens published against what the chain shows."""
+    stolen = _cache["stolen"]
+    stable = stolen["USDC"] + stolen["USDT"] + stolen["USD1"]
     r.claim("C4-38", "Onchain Lens: '4.26K WSOL, 191 SOL and $366K in stablecoins' (~$786K). Chain: the stablecoins were 436,137 (the 69,868.77 USDT was left out), total about $856k",
             (D("436137"), D("856454")),
-            ((D("359094.73421") + D("69868.765015") + D("7173.929438")).quantize(D("1")),
-             (D("436137.428663") + (D("4264.570828") + D("191.242413486")) * _cache["sol_px"]).quantize(D("1"))), tol=D("50"), evidence=THEFT)
+            (stable.quantize(D("1")),
+             (stable + (stolen["wSOL"] + stolen["SOL"]) * _cache["sol_px"]).quantize(D("1"))), tol=D("50"), evidence=THEFT)
 
 
 def c_noise(r: Report):
@@ -551,14 +576,14 @@ def c_noise(r: Report):
     usdt_dust = next(x["signature"] for x in sigs(VICTIM) if x["signature"].startswith("5jYL5HLtedDy"))
     usdt_sold = sum(d for t in history(A) if JUPITER in programs(t) for (o, s), d in token_deltas(t).items() if o == A and s == "USDT")
     victim_left = Decimal(theft[4]["meta"]["postBalances"][keys(theft[4]).index(VICTIM)]) / Decimal(10 ** 9)
-    r.claim("C4-39b", "The echo is the drain script's sweep loop: the dust landed at 07:34:54 and the victim's key forwarded it at 07:34:57, between the USD1 transfer (07:34:50) and the wSOL transfer (07:35:06). The USDT dust that landed at 07:36:47, after the final SOL transfer, was never forwarded (A's USDT equals the theft plus one dust from another look-alike), and the key left the victim 0.0009947 SOL. The drain was scripted and stopped once it had the SOL",
+    r.claim("C4-39b", "The echo fits a drain script's sweep loop: the dust landed at 07:34:54 and the victim's key forwarded it at 07:34:57, between the USD1 transfer (07:34:50) and the wSOL transfer (07:35:06). The USDT dust that landed at 07:36:47, after the final SOL transfer, was never forwarded (A's USDT equals the theft plus one dust from another look-alike), and the key left the victim 0.0009947 SOL. The timing points to a script that stopped once it had the SOL",
             ("2026-11-02 07:34:54", "2026-11-02 07:34:57", "2026-11-02 07:34:50", "2026-11-02 07:35:06", "2026-11-02 07:36:47", D("0"), D("0.0009947")),
             (when(t), when(e), when(theft[2]), when(theft[3]), when(tx(usdt_dust)), usdt_sold + D("69868.765015") + D("0.001111"), victim_left),
             evidence=[DUST_ECHO, usdt_dust, THEFT[4]])
     look_v = "7dGrPwHjdeAEcU2VKjFj7GhdoSnb3JqfRxWLkfjGuuUu"
     lv = [t for t in history(A) if look_v in signers(t)]
     bx = {compute_budget(tx(x["signature"])) for x in sigs(VICTIM) if x["blockTime"] > THEFT_TS and look in signers(tx(x["signature"]))}
-    r.claim("C4-39c", "A second look-alike, 7dGrPwHj…uuUu (first four and last four characters of the victim), dusted A with 0.001111 USDC at 07:34:54, 0.001111 USDT at 07:36:43 and 0.00001 SOL at 07:37:22, with the same client fingerprint (limit 1,000,000, price 5) as BHRaXMvv…3jU used on the victim: one poisoning operation working both sides of the theft",
+    r.claim("C4-39c", "A second look-alike, 7dGrPwHj…uuUu (first four and last four characters of the victim), dusted A with 0.001111 USDC at 07:34:54, 0.001111 USDT at 07:36:43 and 0.00001 SOL at 07:37:22, with the same client fingerprint (limit 1,000,000, price 5) as BHRaXMvv…3jU used on the victim: apparently one poisoning operation working both sides of the theft",
             (["2026-11-02 07:34:54", "2026-11-02 07:36:43", "2026-11-02 07:37:22"], {(1000000, 5)}, {(1000000, 5)}),
             ([when(t) for t in lv], {compute_budget(t) for t in lv}, bx), evidence=[t["transaction"]["signatures"][0] for t in lv] + [look_v])
     r.ev("look-alike of the victim: dust sender (third party)", look_v)
@@ -599,6 +624,194 @@ def c_operator(r: Report):
     r.claim("C4-44", "No reply and no return: A never signed a memo, and nothing went from A to the treasury; A had already handed everything on by 14:12",
             (0, D("0")), (len(replies), back), evidence=[A, OPERATOR])
 
+def c_second_wallet(r: Report):
+    page = sigs(SECOND)
+    last_v = next(x for x in sigs(VICTIM) if x["blockTime"] < THEFT_TS)
+    last_w = tx(next(x for x in page if x["blockTime"] < THEFT_TS)["signature"])
+    r.claim("C4-45", "A second wallet ran the same program and stopped first: its last call to King7ki… was at 07:32:22, four seconds before the victim's. Both last calls failed",
+            ("2026-11-02 07:32:22", True, 4, True, True),
+            (when(last_w), KING in programs(last_w), last_v["blockTime"] - last_w["blockTime"], bool(last_v.get("err")), bool(last_w["meta"].get("err"))),
+            evidence=[SECOND, last_w["transaction"]["signatures"][0]])
+    r.ev("second King wallet (victim side, not drained)", SECOND)
+    after = [tx(x["signature"]) for x in sorted(page, key=lambda x: x["blockTime"]) if THEFT_TS < x["blockTime"] < THEFT_TS + 7200]
+    own = [t for t in after if SECOND in signers(t)]
+    moved: dict[str, Decimal] = {}
+    for t in own:
+        for (o, sym), d in token_deltas(t).items():
+            if o == OPERATOR:
+                moved[sym] = moved.get(sym, Decimal(0)) + d
+    moved["SOL"] = sum(sol_delta(t, OPERATOR) for t in own)
+    usd = sum(v for k, v in moved.items() if k in ("USDC", "USDT", "USD1")) + (moved["wSOL"] + moved["SOL"]) * _cache["sol_px"]
+    r.claim("C4-46", "That wallet signed nothing after the theft until 08:52:17, then its own key sent everything to the treasury in five transactions by 08:53:23: 196.73 wSOL, 9,542.53 USDC, 5,772.67 USDT, 312.71 USD1 and 18.62 SOL, about $36k. The theft's fingerprint is on none of them",
+            (5, "2026-11-02 08:52:17", "2026-11-02 08:53:23", {"wSOL": D("196.731799599"), "USDC": D("9542.52909"), "USDT": D("5772.67392"), "USD1": D("312.712965"), "SOL": D("18.615572998")}, D("35942"), False),
+            (len(own), when(own[0]), when(own[-1]), moved, usd.quantize(D("1")), any(compute_budget(t) == (None, 50000) for t in own)),
+            tol=D("0"), evidence=[t["transaction"]["signatures"][0] for t in own])
+    gap = own[0]["blockTime"] - THEFT_END
+    r.note("C4-46b", "Seconds from the fifth theft transfer to the first transfer out of the second wallet", gap, evidence=[own[0]["transaction"]["signatures"][0]])
+    fp = (562, 133333334)
+    others = sorted({signers(t)[0] for t in (tx(x["signature"]) for x in sigs(VICTIM) if x["blockTime"] > THEFT_END) if compute_budget(t) == fp} - {VICTIM})
+    r.claim("C4-47", "The limit-562 fingerprint identifies no one: the second wallet's SOL transfer and the 12:11 transfer use it, but so do two strangers who sent the victim dust. It looks like a common wallet's default for a plain SOL transfer, so it separates the theft from these transfers and attributes nothing",
+            (fp, ["AvipEWEtFKTWbG3o6p6JKsYqcDiGQktXvn69xeDKugYt", "AvjPPe5Kda3tDYWe3Lbb75FBdWs88tZNLEAbEzp3nYtg"]),
+            (compute_budget(own[-1]), others), evidence=[own[-1]["transaction"]["signatures"][0], OPERATOR_MANUAL_TX, *others])
+
+
+def text_extract(url: str, pattern: str) -> dict:
+    """Cache what a pattern finds in a plain-text file (the SDK bundle is not JSON)."""
+    import re
+    import urllib.request
+
+    def fetch():
+        req = urllib.request.Request(url, headers={"User-Agent": "onchain-investigations/1.0"})
+        body = urllib.request.urlopen(req, timeout=60).read().decode(errors="replace")
+        return dict(sorted(set(re.findall(pattern, body))))
+    return cached("sdk", url + "|" + pattern, fetch)
+
+
+def elf_strings(program: str, wanted: list[str]) -> dict:
+    """Which strings a deployed program's binary contains."""
+    import base64
+
+    def fetch():
+        pd = account(program)["data"]["parsed"]["info"]["programData"]
+        raw = base64.b64decode(solana("getAccountInfo", [pd, {"encoding": "base64"}])["value"]["data"][0])
+        return {w: w.encode() in raw for w in wanted}
+    return cached("elf", program + "|" + "|".join(wanted), fetch)
+
+
+def relay_quote(user: str, recipient: str = "0x000000000000000000000000000000000000dEaD") -> str:
+    """Ask Relay for a 1 SOL quote: read-only, and it refuses blocked addresses."""
+    import json
+
+    def fetch():
+        body = {"user": user, "recipient": recipient, "originChainId": 792703809, "destinationChainId": 1,
+                "originCurrency": "11111111111111111111111111111111", "destinationCurrency": "0x" + "0" * 40,
+                "amount": "1000000000", "tradeType": "EXACT_INPUT"}
+        d = _http("https://api.relay.link/quote", data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
+        return {"result": "ok" if "steps" in d else d.get("errorCode")}
+    return cached("relay-quote", user + "|" + recipient, fetch)["result"]
+
+
+REFUND_SAMPLE = [
+    "5tnDwY1vhjUUrKPdMTNEDpSzG4dTstaNpY8M7Gp5v5o8x1eaHvtReMvqBP14bfeF3cZLnmiQNYEYHpsdoxY6PJHe",
+    "qm3jSXMkC3KByca3YwNhQ1mWQtGX2X6SMnVb6dkygpy9eUy9MUseGpRpwdkMu6TU4A5CzEjVZXwZ1w3o6o6C29D",
+    "31Lte4gVt8GUSJ4MNzip2PQA2uqCLHCfKChoLSbKw7RsuQkzVRUDo49AJNmbLV1K8bR2gDVQTcBoSwWMhndHeumy",
+    "5wrNFbRhGsR3C7hwfm8mZVnkyHm1HYLFsVUXKk6ViKfqGJNuhc3Q7v5EQ5SaJFxuxfss9PqjphysUQUrKDAeZc67",
+    "46T9hyoUnPzQNZ9ETip6SdFVbebzFySky1pzLJ3LBbCQX7eE8qyQvH4PuC4agU4WzKq7YV2YfnyPim7rCPPrHNk8",
+    "3vQ2VzqGz2XvU3R955Xy9eD2vuzEWW9ULCfFbQWh5Bx5BiZj4dTyqZ4EQkNdF2ARPqQpjUDeWQ4fy2J9XEZ8rc4P",
+    "45vYLkZmwPK1ogTpMHVvz9gkZphfsWaj581RCQmisBbX1VbLnn7eDuYFYijqote6or3ZEWBRZ4jUf3eTsTxjrgnr",
+    "2GEAB6ccoCNiN7o4CqhT5QZMDXzqmQs5q4qY2A78soNNwrBb5rDBRjNUz3UKJPHheHnuEgnw5YbPK3GrNCtBbHWj",
+    "34qAGkhh1DnWsWy7DjebvMawXntfqesBhHF6Tw84Wbr9hfZ6YDhbTiNngQvy7uyBx1zxitfNMxyidA7RWWNQu3QR"
+]
+
+
+def c_mayan_detail(r: Report):
+    mps = "GFRP4yXUjvcQemf2zRJN8w9sPNaDk5PyBUQdPHD1AzLp"
+    sdk = text_extract("https://cdn.jsdelivr.net/npm/@mayanfinance/swap-sdk@15.3.0/dist/index.cjs.min.js", r'(MPS_PROGRAM_ID|FEE_MANAGER_PROGRAM_ID):\s*"(\w+)"')
+    elf = elf_strings(mps, ["programs/mps/src/lib.rs", "programs/swift/src/processor/init_order.rs", "Signer is not the verified relayer", "RescueRefund"])
+    r.claim("C4-48", "B's program is Mayan's own: its SDK lists GFRP4y… as MPS_PROGRAM_ID and 5VtQ… as FEE_MANAGER_PROGRAM_ID, and the binary contains programs/mps paths and the error 'Signer is not the verified relayer'",
+            ({"MPS_PROGRAM_ID": mps, "FEE_MANAGER_PROGRAM_ID": "5VtQHnhs2pfVEr68qQsbTRwKh4JV5GTu9mBHgHFxpHeQ"}, {True}),
+            (sdk, set(elf.values())), evidence=[mps, "5VtQHnhs2pfVEr68qQsbTRwKh4JV5GTu9mBHgHFxpHeQ"])
+    early = tx("4iTWtP94FGR5mHnZXCE5D8ErZ9417or1kywcN32Cd8SJAERCmu8QfxZdRdbe8w7Byh3Qk14kesfboxHGkYrsdDju")
+    r.claim("C4-56", "The relayer's first SOL, 1.24 on 23 Jul 2026, came from a transaction signed by D8cJRpXa…, which itself placed a Mayan order through the relayer's account that day",
+            ("2026-07-23 05:48:22", ["D8cJRpXaCWVK8c3doDq7Ymoz2XE4WyhFhbgNytWwqptA"], D("1.239015522"), True),
+            (when(early), signers(early), sol_delta(early, RELAYER), MAYAN in programs(early)), evidence=[early["transaction"]["signatures"][0], "D8cJRpXaCWVK8c3doDq7Ymoz2XE4WyhFhbgNytWwqptA"])
+    h = history(B)
+    orders = list({o["orderId"]: o for o in (mayan_order(t["transaction"]["signatures"][0]) for t in h if MAYAN in programs(t)) if "orderId" in o}.values())
+    orders.sort(key=lambda o: o["initiatedAt"])
+    done = [o for o in orders if o["status"] == "ORDER_UNLOCKED"]
+    blocked = [o for o in orders if o["status"] != "ORDER_UNLOCKED"]
+    t_ = lambda v: dt.datetime.fromisoformat(v.replace("Z", "+00:00")).timestamp()
+    lat = [int(t_(o["completedAt"]) - t_(o["initiatedAt"])) for o in done]
+    r.claim("C4-49", "Mayan's flag was set between 14:03:15 (the last order it filled) and 14:10:51 (the first it refused). One driver filled all ten: 3 to 19 s for the orders up to 47,000 USDC, 88 to 140 s for the 94,000 USDC orders. B's orders carry no referrer",
+            ("2026-11-02T14:03:15", "2026-11-02T14:10:51", {"0x754DcfB2861547015B221e963b4133A71dBdC024"}, 3, 19, 88, 140, {"11111111111111111111111111111111"}),
+            (done[-1]["initiatedAt"][:19], blocked[0]["initiatedAt"][:19], {o["driverAddress"] for o in done}, min(lat[:6]), max(lat[:6]), min(lat[6:]), max(lat[6:]), {o["referrerAddress"] for o in orders}),
+            evidence=[done[-1]["orderId"], blocked[0]["orderId"], "0x754DcfB2861547015B221e963b4133A71dBdC024"])
+    em = "000000000000000000000000d78d199f8c402e7b5cc2abe278df0412400a3bae"
+    cancels = []
+    for o in blocked:
+        v = rest("wormhole", f"https://api.wormholescan.io/api/v1/vaas/2/{em}/{o['refundSequence']}")["data"]
+        e = rest("blockscout", "https://eth.blockscout.com/api/v2/transactions/0x" + v["txHash"].removeprefix("0x"))
+        cancels.append((e["from"]["hash"], e["method"], bool(v["vaa"]), int(t_(v["timestamp"]) - t_(o["deadline"])), "0x" + v["txHash"].removeprefix("0x")))
+    r.claim("C4-50", "All five refused orders were cancelled on Ethereum by one address, 0x04d9634D…, calling cancelOrder 60 s after the deadline (the 3 Nov pair up to 216 s), and each has a signed Wormhole message, so the three escrows need only a refund transaction on Solana",
+            ({("0x04d9634DF20aa66b23f114D37c45FA6C6Ab76D56", "cancelOrder", True)}, 60, 216),
+            ({c_[:3] for c_ in cancels}, min(c_[3] for c_ in cancels), max(c_[3] for c_ in cancels)), evidence=[c_[4] for c_ in cancels])
+    r.ev("Mayan order canceller on Ethereum", "0x04d9634DF20aa66b23f114D37c45FA6C6Ab76D56")
+    case = sorted(round((t_(o["completedAt"]) - t_(o["deadline"])) / 3600, 1) for o in blocked if o["status"] == "ORDER_REFUNDED")
+    other, who, sent = [], set(), []
+    for sg in REFUND_SAMPLE:
+        o = mayan_order(sg)
+        other.append((tx(sg)["blockTime"] - t_(o["deadline"])) / 60)
+        who |= set(signers(tx(sg)))
+        sent.append(when(tx(sg))[:16])
+    r.claim("C4-51", "The two refunds came 20.6 hours after the deadline. In a sample of 9 other refunds the same relayer sent between 13:52 on 6 Nov and 00:08 on 7 Nov, 5 landed before their deadline and the slowest came 36.6 minutes after it; the third blocked order has had none",
+            ([20.6, 20.6], 9, D("36.6"), 1, {MAYAN_REFUNDER}, 5, "2026-11-06 13:52", "2026-11-07 00:08"),
+            (case, len(other), Decimal(str(round(max(other), 1))), sum(1 for o in blocked if o["status"] == "ORDER_CANCELED" and o["initiatedAt"].startswith("2026-11-02")),
+             who, sum(m < 0 for m in other), min(sent), max(sent)),
+            evidence=REFUND_SAMPLE[:3])
+
+
+def c_screening(r: Report):
+    blocked = {"A": A, "B": B, "C": C, "G": G, "victim": VICTIM}
+    open_ = {"treasury": OPERATOR, "second wallet": SECOND, "MPS relayer": RELAYER, "look-alike": "BHRaXMvvhobJPpFm9x28M5vzWbcGwRTDjW76XH4fY3jU",
+             "control": "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg"}
+    r.claim("C4-52", "Relay's quote API on 7 Nov refuses as BLOCKED_WALLET_ADDRESS the addresses A, B, C, G and the victim as users and E as recipient, and quotes the treasury, the second wallet, the relayer, the look-alike and a control. G had been served at 13:07 on 2 Nov",
+            ({"BLOCKED_WALLET_ADDRESS"}, "BLOCKED_WALLET_ADDRESS", {"ok"}),
+            ({relay_quote(a) for a in blocked.values()}, relay_quote(open_["control"], E), {relay_quote(a) for a in open_.values()}), evidence=[*blocked.values(), E])
+
+
+def c_freeze_activity(r: Report):
+    fa = "7dGbd2QZcCKcTndnHcTL8q7SMVXAkp688NTQYwrRCrar"
+    page = sigs(fa)
+    frozen = []
+    for x in page:
+        if x["blockTime"] < THEFT_TS:
+            continue
+        for ins in tx(x["signature"])["transaction"]["message"]["instructions"]:
+            p = ins.get("parsed") or {}
+            if p.get("type") == "freezeAccount":
+                frozen.append(p["info"]["account"])
+    escrow_tas = {"2zPJeYCyTrBLSFXZc1j7XcRjiUgyZUWv5Jn2eQazckQf", "5xGVVduQQyU8iMpprLAtcrp3XacFErLc2cGVHPxqoMkN", "2yb1VSSjV23hAyQ1iPkDeKrd9cwHR12LV91X6qEhpwPT"}
+    fresh = {}
+    for st in ESCROWS:
+        res = solana("getTokenAccountsByOwner", [st, {"mint": SYM["USDC"]}, {"encoding": "jsonParsed", "commitment": "finalized"}])["value"]
+        for a in res:
+            i = a["account"]["data"]["parsed"]["info"]
+            fresh[a["pubkey"]] = (i["state"], i["tokenAmount"]["uiAmountString"])
+    r.claim("C4-53", "The USDC mint's freeze authority (Circle's) has signed 34 transactions since Aug 2024. It froze 3 accounts after the theft, none on this path, and on 7 Nov the three escrow token accounts are still initialized with the USDC in them",
+            (34, 3, False, {"2zPJeYCyTrBLSFXZc1j7XcRjiUgyZUWv5Jn2eQazckQf": ("initialized", "93996.659573"), "5xGVVduQQyU8iMpprLAtcrp3XacFErLc2cGVHPxqoMkN": ("initialized", "94148.525771"), "2yb1VSSjV23hAyQ1iPkDeKrd9cwHR12LV91X6qEhpwPT": ("initialized", "44729.481555")}),
+            (len(page), len(frozen), bool(set(frozen) & escrow_tas), fresh), evidence=[fa, *frozen])
+
+
+def c_restart(r: Report):
+    newbot = "BkbtvEGSyCqChwzwA9KJFWdLd4RwW9Ps78WUgpQ1Qrun"
+    gnat = "Gnat7qcoWAX4skFUGwVZe5grGR5dSp3d9jxg9z7Hd95g"
+    fund = tx("qbLqC7tQD1TH3PAf3FjtJqzm9BkVfYoQHG6PrwCAh8FrMQYzNxioSYrarVGio36W4jYjyv8fiDS97hLosvtSpWf")
+    up = tx("36qEPkiWYP17jGdpzFdARDx1UWRRLjkxvUn3WVgVT9JLDNuYN1AbtQWLdBUcia7XCPd3YAWmUVW4iBCPHHv9JKAo")
+    recent = [tx(x["signature"]) for x in sigs(KING, limit=40)]
+    r.claim("C4-54", "The bot did not end with the theft: at 16:59:48 on 3 Nov the treasury sent another wallet 20 SOL, 100 wSOL and 10,700 in stablecoins, at 19:12:59 the program was upgraded, and on 7 Nov that wallet and the second new wallet Gnat7… are both among the signers calling the program",
+            ("2026-11-03 16:59:48", [OPERATOR], D("20"), {"USDC": D("8000"), "USDT": D("2500"), "USD1": D("200"), "wSOL": D("100")}, "2026-11-03 19:12:59", "upgrade", True, True),
+            (when(fund), signers(fund), sol_delta(fund, newbot), {k[1]: v for k, v in token_deltas(fund).items() if k[0] == newbot}, when(up),
+             next((i.get("parsed") or {}).get("type") for i in up["transaction"]["message"]["instructions"] if (i.get("parsed") or {}).get("type")),
+             any(newbot in signers(t) and KING in programs(t) for t in recent),
+             any(gnat in signers(t) and KING in programs(t) for t in recent)),
+            evidence=[newbot, gnat, fund["transaction"]["signatures"][0], up["transaction"]["signatures"][0]])
+    r.ev("wallet funded by the treasury after the theft, calls the King program", newbot)
+    au = "JNhq65QPh3xVvW9HK4Usk8WJW34JEEXyhQKes7AMYf3"
+    root = "AvcEM5oLWZ6dWiopzu6Jz7MxeHqia32wA8FKqortRgYt"
+
+    def first(address: str) -> dict:
+        # getTransactionsForAddress is a Helius method: only it reads a busy wallet from the oldest end
+        res = solana("getTransactionsForAddress", [address, {"transactionDetails": "signatures", "sortOrder": "asc", "limit": 1}])
+        return tx(res["data"][0]["signature"])
+    fn, fg, fa, fv = first(newbot), first(gnat), first(au), first(VICTIM)
+    r.claim("C4-55", "Both wallets now calling the program are new: their first transaction is 5 SOL from the program's upgrade authority JNhq65…, at 15:35:34 and 16:01:49 on 3 Nov, while the drained wallet was being cleared out. That authority signed the upgrade (C4-54), and the victim's wallet and the authority had the same first funder, AvcEM5oL…, in 2024",
+            (("2026-11-03 15:35:34", [au], D("5")), ("2026-11-03 16:01:49", [au], D("5")), [au], ([root], "2024-05-17"), ([root], "2024-06-12")),
+            ((when(fn), signers(fn), sol_delta(fn, newbot)), (when(fg), signers(fg), sol_delta(fg, gnat)), signers(up), (signers(fa), when(fa)[:10]), (signers(fv), when(fv)[:10])),
+            evidence=[au, gnat, root, fn["transaction"]["signatures"][0], fg["transaction"]["signatures"][0], fa["transaction"]["signatures"][0], fv["transaction"]["signatures"][0]])
+    r.ev("upgrade authority of the King program", au)
+    r.ev("first funder of the victim's wallet and of the upgrade authority", root)
+
+
 def c_pda(r: Report):
     r.claim("C4-42", "B is off the ed25519 curve: it is a program-derived address with no private key, so it can only be moved by the program that derived it. A, C, G, the victim and the relayer are ordinary key pairs",
             {"B": False, "A": True, "C": True, "G": True, "victim": True, "relayer": True},
@@ -607,7 +820,19 @@ def c_pda(r: Report):
 
 
 if __name__ == "__main__":
-    for fn in (c_theft, c_a_wallet, c_relay, c_b_wallet, c_ethereum, c_freeze, c_reconcile, c_relayer, c_reports, c_noise, c_operator, c_pda):
+    for fn in (c_theft, c_a_wallet, c_relay, c_b_wallet, c_ethereum, c_freeze, c_reconcile, c_relayer, c_reports, c_noise, c_operator, c_second_wallet, c_mayan_detail, c_screening, c_freeze_activity, c_restart, c_pda):
         R.run(fn)
+    def stable(v):  # same text on every run: sets and dicts print in sorted order
+        if isinstance(v, (set, frozenset)):
+            return sorted((stable(x) for x in v), key=repr)
+        if isinstance(v, dict):
+            return {k: stable(v[k]) for k in sorted(v, key=repr)}
+        if isinstance(v, (list, tuple)):
+            return type(v)(stable(x) for x in v)
+        return v
+    for row in R.rows:
+        row["expected"], row["actual"] = stable(row["expected"]), stable(row["actual"])
+    natural = re.compile(r"C4-(\d+)(\w*)")
+    R.rows.sort(key=lambda row: (int(natural.match(row["id"])[1]), natural.match(row["id"])[2]) if natural.match(row["id"]) else (10 ** 6, row["id"]))
     ok = R.write()
     sys.exit(0 if ok else 1)
